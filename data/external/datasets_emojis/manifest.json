@@ -1,0 +1,84 @@
+{
+  "source": "datasets/emojis",
+  "source_url": "https://github.com/datasets/emojis",
+  "raw_data_url": "https://raw.githubusercontent.com/datasets/emojis/main/data/emojis.csv",
+  "retrieved_at": "2026-05-11",
+  "license": "PDDL for data package; Unicode terms apply to source data",
+  "files": {
+    "emojis.csv": {
+      "rows": 5225,
+      "columns": [
+        "Group",
+        "Subgroup",
+        "CodePoint",
+        "Status",
+        "Representation",
+        "Name",
+        "Section"
+      ]
+    }
+  },
+  "stats": {
+    "status_counts": {
+      "fully-qualified": 3944,
+      "unqualified": 243,
+      "minimally-qualified": 1029,
+      "component": 9
+    },
+    "group_counts": {
+      "Activities": 96,
+      "Animals-Nature": 167,
+      "Component": 9,
+      "Flags": 276,
+      "Food-Drink": 133,
+      "Objects": 316,
+      "People-Body": 3468,
+      "Smileys-Emotion": 187,
+      "Symbols": 305,
+      "Travel-Places": 268
+    },
+    "section_counts_top": [
+      [
+        "E4.0",
+        1030
+      ],
+      [
+        "E0.6",
+        793
+      ],
+      [
+        "E1.0",
+        512
+      ],
+      [
+        "E13.1",
+        422
+      ],
+      [
+        "E5.0",
+        339
+      ],
+      [
+        "E15.1",
+        301
+      ],
+      [
+        "E2.0",
+        297
+      ],
+      [
+        "E12.0",
+        266
+      ],
+      [
+        "E0.7",
+        254
+      ],
+      [
+        "E11.0",
+        188
+      ]
+    ]
+  },
+  "integration_policy": "Optional CSV convenience source only. Prefer official Unicode raw files or muan for canonical ingestion."
+}
