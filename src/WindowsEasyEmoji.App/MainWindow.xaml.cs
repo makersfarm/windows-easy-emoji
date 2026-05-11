@@ -71,6 +71,20 @@ public partial class MainWindow : Window
 
     private void SearchBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
     {
+        if (e.Key == Key.Enter && ResultsList.SelectedItem is SearchResult result)
+        {
+            PasteResult(result);
+            e.Handled = true;
+            return;
+        }
+
+        if (e.Key == Key.Escape)
+        {
+            Hide();
+            e.Handled = true;
+            return;
+        }
+
         if (e.Key is not (Key.Up or Key.Down) || ResultsList.Items.Count == 0)
         {
             return;
@@ -109,8 +123,13 @@ public partial class MainWindow : Window
 
     private void PasteResult(SearchResult result)
     {
+        var target = targetWindowHandle;
+        var emoji = result.Record.Emoji;
+        var options = pasteOptions;
+
         Hide();
-        pasteCoordinator.PasteToTarget(targetWindowHandle, result.Record.Emoji, pasteOptions);
+        Dispatcher.BeginInvoke(() =>
+            pasteCoordinator.PasteToTarget(target, emoji, options));
     }
 
     private void UpdatePasteStatus()

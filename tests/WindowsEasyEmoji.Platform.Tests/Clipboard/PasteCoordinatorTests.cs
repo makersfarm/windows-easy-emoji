@@ -52,6 +52,21 @@ public sealed class PasteCoordinatorTests
     }
 
     [Fact]
+    public void PasteToTarget_copies_text_without_pasting_when_target_activation_fails()
+    {
+        var events = new List<string>();
+        var foreground = new RecordingForegroundWindowService(events, activationResult: false);
+        var clipboard = new RecordingClipboardPasteService(events, pasteResult: true);
+        var coordinator = new PasteCoordinator(foreground, clipboard);
+
+        var result = coordinator.PasteToTarget(new IntPtr(55), "⭐");
+
+        Assert.False(result.Pasted);
+        Assert.False(result.TargetActivated);
+        Assert.Equal(["activate:55", "copy:⭐"], events);
+    }
+
+    [Fact]
     public void PasteToTarget_requests_original_clipboard_restore_when_enabled_and_paste_succeeds()
     {
         var events = new List<string>();
@@ -90,9 +105,12 @@ public sealed class PasteCoordinatorTests
     {
         private readonly List<string> events;
 
-        public RecordingForegroundWindowService(List<string> events)
+        private readonly bool activationResult;
+
+        public RecordingForegroundWindowService(List<string> events, bool activationResult = true)
         {
             this.events = events;
+            this.activationResult = activationResult;
         }
 
         public IntPtr GetForegroundWindowHandle()
@@ -103,7 +121,7 @@ public sealed class PasteCoordinatorTests
         public bool TryActivateWindow(IntPtr windowHandle)
         {
             events.Add($"activate:{windowHandle}");
-            return true;
+            return activationResult;
         }
     }
 

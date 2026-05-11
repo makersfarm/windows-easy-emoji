@@ -32,6 +32,11 @@ public sealed class PasteCoordinator
         if (targetWindowHandle != IntPtr.Zero)
         {
             targetActivated = foregroundWindowService.TryActivateWindow(targetWindowHandle);
+            if (!targetActivated)
+            {
+                clipboardPasteService.CopyText(text);
+                return new PasteResult(Pasted: false, TargetActivated: false);
+            }
         }
 
         var pasted = clipboardPasteService.PasteText(text);
