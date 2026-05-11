@@ -9,6 +9,10 @@ jobs:
     runs-on: [self-hosted, windows, ui-e2e]
     timeout-minutes: 30
 
+    defaults:
+      run:
+        shell: powershell
+
     env:
       WINDOWS_EASY_EMOJI_RUN_UI_E2E: "1"
       WINDOWS_EASY_EMOJI_E2E_ARTIFACT_DIR: ${{ github.workspace }}\artifacts\ui-e2e
@@ -18,7 +22,6 @@ jobs:
         uses: actions/checkout@v6.0.2
 
       - name: Verify interactive desktop session
-        shell: pwsh
         run: .\scripts\assert-ui-e2e-session.ps1
 
       - name: Setup .NET
