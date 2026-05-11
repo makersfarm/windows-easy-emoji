@@ -1,6 +1,9 @@
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json;
+using System.Threading;
 using Xunit.Abstractions;
 
 namespace WindowsEasyEmoji.E2ETests;
@@ -44,10 +47,132 @@ public sealed class KeyboardAndPasteE2ETests
         Assert.Equal("❤️", pastedText);
     }
 
+    [UiE2EFact]
+    public async Task Fallback_hotkey_shows_search_overlay()
+    {
+        using var session = await E2ESession.StartAsync(output);
+
+        session.FocusTargetWindow();
+        session.SendFallbackHotkey();
+
+        var overlayHandle = session.WaitForOverlayWindow();
+
+        Assert.NotEqual(IntPtr.Zero, overlayHandle);
+        Assert.Contains("app.shortcut-dispatch sender=HotkeyService", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+    }
+
+    [UiE2EFact]
+    public async Task Korean_alias_query_pastes_matching_emoji()
+    {
+        using var session = await E2ESession.StartAsync(output);
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+        session.TypeSearchText("ㅋㅋ");
+        session.SendEnter();
+
+        var pastedText = session.WaitForTargetText("😂");
+
+        Assert.Equal("😂", pastedText);
+        Assert.Contains("emojiId=face_with_tears_of_joy", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+    }
+
+    [UiE2EFact]
+    public async Task Chosung_query_pastes_matching_emoji()
+    {
+        using var session = await E2ESession.StartAsync(output);
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+        session.TypeSearchText("ㄸㅂ");
+        session.SendEnter();
+
+        var pastedText = session.WaitForTargetText("👍");
+
+        Assert.Equal("👍", pastedText);
+        Assert.Contains("emojiId=thumbs_up", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+    }
+
+    [UiE2EFact]
+    public async Task Escape_after_opening_overlay_hides_overlay_without_pasting()
+    {
+        using var session = await E2ESession.StartAsync(output);
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        var overlayHandle = session.WaitForOverlayWindow();
+        session.SendEscape();
+
+        session.WaitForOverlayHidden(overlayHandle);
+        session.AssertTargetTextRemainsEmpty(TimeSpan.FromMilliseconds(750));
+    }
+
+    [UiE2EFact]
+    public async Task Copy_only_mode_copies_selected_emoji_without_pasting_target()
+    {
+        using var session = await E2ESession.StartAsync(
+            output,
+            E2ESettings.Default with { AutoPaste = false });
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+        session.SendEnter();
+
+        var clipboardText = session.WaitForClipboardText("❤️");
+
+        Assert.Equal("❤️", clipboardText);
+        session.AssertTargetTextRemainsEmpty(TimeSpan.FromMilliseconds(750));
+        Assert.Contains("paste.copy-only", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+    }
+
+    [UiE2EFact]
+    public async Task Restore_clipboard_after_paste_restores_original_clipboard()
+    {
+        const string originalClipboardText = "original clipboard text";
+        E2ESession.SetClipboardText(originalClipboardText);
+        using var session = await E2ESession.StartAsync(
+            output,
+            E2ESettings.Default with { RestoreClipboardAfterPaste = true });
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+        session.SendEnter();
+
+        var pastedText = session.WaitForTargetText("❤️");
+        var clipboardText = session.WaitForClipboardText(originalClipboardText);
+
+        Assert.Equal("❤️", pastedText);
+        Assert.Equal(originalClipboardText, clipboardText);
+        Assert.Contains("clipboard.restore complete", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+    }
+
+    private sealed record E2ESettings(
+        bool ReplaceWinPeriod,
+        bool AutoPaste,
+        bool RegisterFallbackHotkey,
+        bool RestoreClipboardAfterPaste,
+        string FallbackHotkey)
+    {
+        public static E2ESettings Default { get; } = new(
+            ReplaceWinPeriod: true,
+            AutoPaste: true,
+            RegisterFallbackHotkey: true,
+            RestoreClipboardAfterPaste: false,
+            FallbackHotkey: "Ctrl+Alt+Space");
+    }
+
     private sealed class E2ESession : IDisposable
     {
         private const int SwRestore = 9;
+        private const int VkEscape = 0x1B;
         private const int VkReturn = 0x0D;
+        private const int VkControl = 0x11;
+        private const int VkMenu = 0x12;
+        private const int VkSpace = 0x20;
         private const int VkLeftWin = 0x5B;
         private const int VkOemPeriod = 0xBE;
         private const uint InputMouse = 0;
@@ -55,6 +180,8 @@ public sealed class KeyboardAndPasteE2ETests
         private const uint MouseEventFLeftDown = 0x0002;
         private const uint MouseEventFLeftUp = 0x0004;
         private const uint KeyEventFKeyUp = 0x0002;
+        private const uint KeyEventFUnicode = 0x0004;
+        private static readonly JsonSerializerOptions SettingsJsonOptions = new() { WriteIndented = true };
 
         private readonly ITestOutputHelper output;
         private readonly string tempDirectory;
@@ -92,6 +219,7 @@ public sealed class KeyboardAndPasteE2ETests
         }
 
         public string DriverLogPath { get; }
+        public string AppLogPath => appLogPath;
 
         private IntPtr TargetWindowHandle
         {
@@ -107,7 +235,7 @@ public sealed class KeyboardAndPasteE2ETests
             }
         }
 
-        public static async Task<E2ESession> StartAsync(ITestOutputHelper output)
+        public static async Task<E2ESession> StartAsync(ITestOutputHelper output, E2ESettings? settings = null)
         {
             AssertInteractiveDesktop();
             StopExistingAppProcesses();
@@ -129,6 +257,7 @@ public sealed class KeyboardAndPasteE2ETests
             var driverLogPath = Path.Combine(tempDirectory, "driver.log");
             var appLogPath = Path.Combine(tempDirectory, "app.log");
             var settingsPath = Path.Combine(tempDirectory, "settings.json");
+            WriteSettings(settingsPath, settings ?? E2ESettings.Default);
 
             var targetExe = Path.Combine(root, "tests", "WindowsEasyEmoji.E2ETarget", "bin", "Debug", "net8.0-windows", "WindowsEasyEmoji.E2ETarget.exe");
             var appExe = Path.Combine(root, "src", "WindowsEasyEmoji.App", "bin", "Debug", "net8.0-windows", "WindowsEasyEmoji.App.exe");
@@ -206,6 +335,18 @@ public sealed class KeyboardAndPasteE2ETests
                 KeyInput(VkLeftWin, KeyEventFKeyUp));
         }
 
+        public void SendFallbackHotkey()
+        {
+            Log("send-fallback-hotkey");
+            SendKeyboardInputs(
+                KeyInput(VkControl, 0),
+                KeyInput(VkMenu, 0),
+                KeyInput(VkSpace, 0),
+                KeyInput(VkSpace, KeyEventFKeyUp),
+                KeyInput(VkMenu, KeyEventFKeyUp),
+                KeyInput(VkControl, KeyEventFKeyUp));
+        }
+
         public void SendEnter()
         {
             Log("send-enter");
@@ -213,6 +354,25 @@ public sealed class KeyboardAndPasteE2ETests
             SendKeyboardInputs(
                 KeyInput(VkReturn, 0),
                 KeyInput(VkReturn, KeyEventFKeyUp));
+        }
+
+        public void SendEscape()
+        {
+            Log("send-escape");
+            SendKeyboardInputs(
+                KeyInput(VkEscape, 0),
+                KeyInput(VkEscape, KeyEventFKeyUp));
+        }
+
+        public void TypeSearchText(string text)
+        {
+            Log($"type-search-text length={text.Length}");
+            foreach (var character in text)
+            {
+                SendKeyboardInputs(
+                    UnicodeInput(character, KeyEventFUnicode),
+                    UnicodeInput(character, KeyEventFUnicode | KeyEventFKeyUp));
+            }
         }
 
         public IntPtr WaitForOverlayWindow()
@@ -233,7 +393,17 @@ public sealed class KeyboardAndPasteE2ETests
                 TimeSpan.FromSeconds(5),
                 "Windows Easy Emoji overlay did not receive foreground focus");
             Log($"foreground-after-overlay:{DescribeWindow(GetForegroundWindow())}");
+            WaitForAppLogContains("main-window.focus-search-box", TimeSpan.FromSeconds(5));
             return handle;
+        }
+
+        public void WaitForOverlayHidden(IntPtr handle)
+        {
+            WaitUntil(
+                () => !IsWindowVisible(handle),
+                TimeSpan.FromSeconds(5),
+                "Windows Easy Emoji overlay did not hide");
+            Log($"overlay-hidden:{handle}");
         }
 
         public string WaitForTargetText(string expected)
@@ -250,6 +420,47 @@ public sealed class KeyboardAndPasteE2ETests
 
             Log($"target-text:{actual}");
             return actual!;
+        }
+
+        public void AssertTargetTextRemainsEmpty(TimeSpan duration)
+        {
+            var deadline = Stopwatch.StartNew();
+            while (deadline.Elapsed < duration)
+            {
+                var actual = ReadTargetText();
+                if (!string.IsNullOrEmpty(actual))
+                {
+                    throw new InvalidOperationException($"Expected target text to remain empty, but it became '{actual}'.");
+                }
+
+                Thread.Sleep(100);
+            }
+
+            Log("target-text-remained-empty");
+        }
+
+        public string WaitForClipboardText(string expected)
+        {
+            string? actual = null;
+            WaitUntil(
+                () =>
+                {
+                    actual = GetClipboardText();
+                    return actual == expected;
+                },
+                TimeSpan.FromSeconds(5),
+                $"clipboard text did not become '{expected}'");
+
+            Log($"clipboard-text:{actual}");
+            return actual!;
+        }
+
+        public void WaitForAppLogContains(string expected, TimeSpan timeout)
+        {
+            WaitUntil(
+                () => File.Exists(appLogPath) && File.ReadAllText(appLogPath, Encoding.UTF8).Contains(expected, StringComparison.Ordinal),
+                timeout,
+                $"app log did not contain '{expected}'");
         }
 
         public void Dispose()
@@ -303,6 +514,12 @@ public sealed class KeyboardAndPasteE2ETests
             return Process.Start(startInfo) ?? throw new InvalidOperationException($"Failed to start {fileName}");
         }
 
+        private static void WriteSettings(string settingsPath, E2ESettings settings)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(settingsPath)!);
+            File.WriteAllText(settingsPath, JsonSerializer.Serialize(settings, SettingsJsonOptions), Encoding.UTF8);
+        }
+
         private static void StopExistingAppProcesses()
         {
             foreach (var process in Process.GetProcessesByName("WindowsEasyEmoji.App"))
@@ -318,6 +535,59 @@ public sealed class KeyboardAndPasteE2ETests
                 throw new InvalidOperationException(
                     "UI E2E tests require an unlocked interactive desktop session. Run the GitHub runner with run.cmd in the logged-in Cloud PC session, not as a Windows service.");
             }
+        }
+
+        public static void SetClipboardText(string text)
+        {
+            RunOnStaThread(() => System.Windows.Clipboard.SetText(text));
+        }
+
+        private static string GetClipboardText()
+        {
+            return RunOnStaThread(() => System.Windows.Clipboard.ContainsText()
+                ? System.Windows.Clipboard.GetText()
+                : string.Empty);
+        }
+
+        private static T RunOnStaThread<T>(Func<T> action)
+        {
+            T? result = default;
+            Exception? exception = null;
+            var thread = new Thread(() =>
+            {
+                try
+                {
+                    result = action();
+                }
+                catch (Exception caught)
+                {
+                    exception = caught;
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            thread.Join();
+
+            if (exception is not null)
+            {
+                throw exception;
+            }
+
+            return result!;
+        }
+
+        private static void RunOnStaThread(Action action)
+        {
+            RunOnStaThread(() =>
+            {
+                action();
+                return true;
+            });
+        }
+
+        private string ReadTargetText()
+        {
+            return File.Exists(textFile) ? File.ReadAllText(textFile, Encoding.UTF8) : string.Empty;
         }
 
         private static void Kill(Process process)
@@ -436,6 +706,25 @@ public sealed class KeyboardAndPasteE2ETests
                     {
                         VirtualKey = virtualKey,
                         ScanCode = 0,
+                        Flags = flags,
+                        Time = 0,
+                        ExtraInfo = UIntPtr.Zero
+                    }
+                }
+            };
+        }
+
+        private static Input UnicodeInput(char character, uint flags)
+        {
+            return new Input
+            {
+                Type = InputKeyboard,
+                Data = new InputUnion
+                {
+                    Keyboard = new KeyboardInputData
+                    {
+                        VirtualKey = 0,
+                        ScanCode = character,
                         Flags = flags,
                         Time = 0,
                         ExtraInfo = UIntPtr.Zero
