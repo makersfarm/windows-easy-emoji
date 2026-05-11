@@ -11,12 +11,14 @@ public partial class MainWindow : Window
 {
     private readonly EmojiSearchService searchService;
     private readonly PasteCoordinator pasteCoordinator;
+    private readonly PasteOptions pasteOptions;
     private IntPtr targetWindowHandle;
 
-    public MainWindow(PasteCoordinator pasteCoordinator)
+    public MainWindow(PasteCoordinator pasteCoordinator, PasteOptions pasteOptions)
     {
         InitializeComponent();
         this.pasteCoordinator = pasteCoordinator;
+        this.pasteOptions = pasteOptions;
 
         var dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "emoji.json");
         var records = File.Exists(dataPath)
@@ -56,7 +58,7 @@ public partial class MainWindow : Window
         if (e.Key == Key.Enter && ResultsList.SelectedItem is SearchResult result)
         {
             Hide();
-            pasteCoordinator.PasteToTarget(targetWindowHandle, result.Record.Emoji);
+            pasteCoordinator.PasteToTarget(targetWindowHandle, result.Record.Emoji, pasteOptions);
             e.Handled = true;
         }
     }

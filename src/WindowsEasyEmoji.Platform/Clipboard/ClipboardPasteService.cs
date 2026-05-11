@@ -4,6 +4,8 @@ namespace WindowsEasyEmoji.Platform.Clipboard;
 
 public sealed class ClipboardPasteService : IClipboardPasteService
 {
+    private string? originalText;
+
     public bool PasteText(string text)
     {
         if (string.IsNullOrEmpty(text))
@@ -11,6 +13,7 @@ public sealed class ClipboardPasteService : IClipboardPasteService
             return false;
         }
 
+        originalText = TryGetClipboardText();
         System.Windows.Clipboard.SetText(text);
         return SendCtrlV();
     }
@@ -20,6 +23,32 @@ public sealed class ClipboardPasteService : IClipboardPasteService
         if (!string.IsNullOrEmpty(text))
         {
             System.Windows.Clipboard.SetText(text);
+        }
+    }
+
+    public void RestoreOriginalClipboard()
+    {
+        if (originalText is null)
+        {
+            return;
+        }
+
+        Thread.Sleep(650);
+        System.Windows.Clipboard.SetText(originalText);
+        originalText = null;
+    }
+
+    private static string? TryGetClipboardText()
+    {
+        try
+        {
+            return System.Windows.Clipboard.ContainsText()
+                ? System.Windows.Clipboard.GetText()
+                : null;
+        }
+        catch (Exception)
+        {
+            return null;
         }
     }
 

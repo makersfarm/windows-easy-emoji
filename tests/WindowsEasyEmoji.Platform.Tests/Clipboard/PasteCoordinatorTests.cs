@@ -51,6 +51,41 @@ public sealed class PasteCoordinatorTests
         Assert.Equal(["activate:99", "paste:🔥", "copy:🔥"], events);
     }
 
+    [Fact]
+    public void PasteToTarget_requests_original_clipboard_restore_when_enabled_and_paste_succeeds()
+    {
+        var events = new List<string>();
+        var foreground = new RecordingForegroundWindowService(events);
+        var clipboard = new RecordingClipboardPasteService(events, pasteResult: true);
+        var coordinator = new PasteCoordinator(foreground, clipboard);
+
+        var result = coordinator.PasteToTarget(
+            new IntPtr(77),
+            "👍",
+            new PasteOptions(RestoreOriginalClipboard: true));
+
+        Assert.True(result.Pasted);
+        Assert.Equal(["activate:77", "paste:👍", "restore"], events);
+    }
+
+    [Fact]
+    public void PasteToTarget_copies_text_without_activating_target_when_auto_paste_is_disabled()
+    {
+        var events = new List<string>();
+        var foreground = new RecordingForegroundWindowService(events);
+        var clipboard = new RecordingClipboardPasteService(events, pasteResult: true);
+        var coordinator = new PasteCoordinator(foreground, clipboard);
+
+        var result = coordinator.PasteToTarget(
+            new IntPtr(88),
+            "✅",
+            new PasteOptions(AutoPaste: false));
+
+        Assert.False(result.Pasted);
+        Assert.False(result.TargetActivated);
+        Assert.Equal(["copy:✅"], events);
+    }
+
     private sealed class RecordingForegroundWindowService : IForegroundWindowService
     {
         private readonly List<string> events;
@@ -92,6 +127,11 @@ public sealed class PasteCoordinatorTests
         public void CopyText(string text)
         {
             events.Add($"copy:{text}");
+        }
+
+        public void RestoreOriginalClipboard()
+        {
+            events.Add("restore");
         }
     }
 }

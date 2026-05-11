@@ -17,6 +17,17 @@ public sealed class PasteCoordinator
 
     public PasteResult PasteToTarget(IntPtr targetWindowHandle, string text)
     {
+        return PasteToTarget(targetWindowHandle, text, PasteOptions.Default);
+    }
+
+    public PasteResult PasteToTarget(IntPtr targetWindowHandle, string text, PasteOptions options)
+    {
+        if (!options.AutoPaste)
+        {
+            clipboardPasteService.CopyText(text);
+            return new PasteResult(Pasted: false, TargetActivated: false);
+        }
+
         var targetActivated = false;
         if (targetWindowHandle != IntPtr.Zero)
         {
@@ -24,6 +35,11 @@ public sealed class PasteCoordinator
         }
 
         var pasted = clipboardPasteService.PasteText(text);
+        if (pasted && options.RestoreOriginalClipboard)
+        {
+            clipboardPasteService.RestoreOriginalClipboard();
+        }
+
         if (!pasted)
         {
             clipboardPasteService.CopyText(text);

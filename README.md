@@ -16,16 +16,33 @@ Implemented so far:
 - Rule-based local emoji search and ranking
 - JSON emoji data loader
 - WPF search overlay skeleton
-- Windows tray menu skeleton
-- Clipboard paste service skeleton
+- Windows tray app host
+- Clipboard paste into the previously active window
+- Low-level `Win + .` keyboard hook
+- Fallback `Ctrl + Alt + Space` hotkey
+- JSON settings persistence
+- Optional original clipboard restore after paste
 
 Not implemented yet:
 
-- Real `Win + .` low-level keyboard hook
-- Fallback hotkey registration
-- Settings persistence
 - Full CLDR/alias data import
 - Installer or Microsoft Store packaging
+
+## Settings
+
+The app creates a local settings file at:
+
+```text
+%APPDATA%\WindowsEasyEmoji\settings.json
+```
+
+Current MVP settings:
+
+- `ReplaceWinPeriod`: enables the `Win + .` replacement hook.
+- `RegisterFallbackHotkey`: enables the fallback hotkey.
+- `FallbackHotkey`: defaults to `Ctrl+Alt+Space`.
+- `AutoPaste`: pastes the selected emoji into the previously active app. If disabled, selection copies only.
+- `RestoreClipboardAfterPaste`: restores the previous text clipboard after paste. It defaults to `false` because some apps read the clipboard asynchronously.
 
 ## Development
 

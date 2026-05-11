@@ -5,4 +5,6 @@ public interface IClipboardPasteService
     bool PasteText(string text);
 
     void CopyText(string text);
+
+    void RestoreOriginalClipboard();
 }
