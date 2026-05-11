@@ -18,6 +18,8 @@ public sealed class SettingsStore
         this.settingsPath = settingsPath;
     }
 
+    public string SettingsPath => settingsPath;
+
     public static SettingsStore CreateDefault()
     {
         var directory = Path.Combine(

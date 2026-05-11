@@ -21,7 +21,9 @@ Implemented so far:
 - Low-level `Win + .` keyboard hook
 - Fallback `Ctrl + Alt + Space` hotkey
 - JSON settings persistence
+- Runtime tray toggles for shortcut and paste settings
 - Optional original clipboard restore after paste
+- Single-instance app guard
 
 Not implemented yet:
 

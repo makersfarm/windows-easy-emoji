@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Windows.Forms;
 using WindowsEasyEmoji.Platform.Settings;
 using WindowsEasyEmoji.Platform.Windows;
@@ -10,20 +11,25 @@ public sealed class TrayAppHost : IDisposable
     private readonly WpfApplication application;
     private readonly MainWindow overlayWindow;
     private readonly IForegroundWindowService foregroundWindowService;
-    private readonly AppSettings settings;
+    private readonly string settingsPath;
+    private AppSettings settings;
     private NotifyIcon? notifyIcon;
 
     public TrayAppHost(
         WpfApplication application,
         MainWindow overlayWindow,
         IForegroundWindowService foregroundWindowService,
-        AppSettings settings)
+        AppSettings settings,
+        string settingsPath)
     {
         this.application = application;
         this.overlayWindow = overlayWindow;
         this.foregroundWindowService = foregroundWindowService;
         this.settings = settings;
+        this.settingsPath = settingsPath;
     }
+
+    public event EventHandler<AppSettings>? SettingsChangeRequested;
 
     public void Start()
     {
@@ -36,6 +42,12 @@ public sealed class TrayAppHost : IDisposable
         };
 
         notifyIcon.DoubleClick += (_, _) => ShowOverlay();
+    }
+
+    public void UpdateSettings(AppSettings settings)
+    {
+        this.settings = settings;
+        RefreshMenu();
     }
 
     public void Dispose()
@@ -54,12 +66,24 @@ public sealed class TrayAppHost : IDisposable
     {
         var menu = new ContextMenuStrip();
         menu.Items.Add("Emoji Search 열기", null, (_, _) => ShowOverlay());
-        menu.Items.Add($"Win + . 대체: {FormatOnOff(settings.ReplaceWinPeriod)}");
-        menu.Items.Add($"Fallback: {settings.FallbackHotkey}");
-        menu.Items.Add($"자동 붙여넣기: {FormatOnOff(settings.AutoPaste)}");
-        menu.Items.Add($"클립보드 복원: {FormatOnOff(settings.RestoreClipboardAfterPaste)}");
+        menu.Items.Add(CreateToggleItem(
+            "Win + . 대체",
+            settings.ReplaceWinPeriod,
+            value => settings with { ReplaceWinPeriod = value }));
+        menu.Items.Add(CreateToggleItem(
+            $"Fallback hotkey 사용 ({settings.FallbackHotkey})",
+            settings.RegisterFallbackHotkey,
+            value => settings with { RegisterFallbackHotkey = value }));
+        menu.Items.Add(CreateToggleItem(
+            "자동 붙여넣기",
+            settings.AutoPaste,
+            value => settings with { AutoPaste = value }));
+        menu.Items.Add(CreateToggleItem(
+            "클립보드 원본 복원",
+            settings.RestoreClipboardAfterPaste,
+            value => settings with { RestoreClipboardAfterPaste = value }));
         menu.Items.Add(new ToolStripSeparator());
-        menu.Items.Add("설정", null, (_, _) => ShowOverlay());
+        menu.Items.Add("설정 파일 열기", null, (_, _) => OpenSettingsFile());
         menu.Items.Add("종료", null, (_, _) => application.Shutdown());
         return menu;
     }
@@ -78,8 +102,41 @@ public sealed class TrayAppHost : IDisposable
         overlayWindow.FocusSearchBox();
     }
 
-    private static string FormatOnOff(bool value)
+    private ToolStripMenuItem CreateToggleItem(
+        string text,
+        bool isChecked,
+        Func<bool, AppSettings> update)
     {
-        return value ? "ON" : "OFF";
+        var item = new ToolStripMenuItem(text)
+        {
+            Checked = isChecked,
+            CheckOnClick = false
+        };
+
+        item.Click += (_, _) => SettingsChangeRequested?.Invoke(this, update(!isChecked));
+        return item;
+    }
+
+    private void RefreshMenu()
+    {
+        if (notifyIcon is null)
+        {
+            return;
+        }
+
+        var oldMenu = notifyIcon.ContextMenuStrip;
+        notifyIcon.ContextMenuStrip = BuildMenu();
+        oldMenu?.Dispose();
+    }
+
+    private void OpenSettingsFile()
+    {
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = "notepad.exe",
+            UseShellExecute = false
+        };
+        startInfo.ArgumentList.Add(settingsPath);
+        Process.Start(startInfo);
     }
 }

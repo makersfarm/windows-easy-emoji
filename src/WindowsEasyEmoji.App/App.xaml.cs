@@ -8,28 +8,47 @@ namespace WindowsEasyEmoji.App;
 
 public partial class App : System.Windows.Application
 {
+    private Mutex? singleInstanceMutex;
+    private SettingsStore? settingsStore;
+    private AppSettings settings = AppSettings.Default;
+    private MainWindow? overlayWindow;
     private TrayAppHost? trayAppHost;
     private KeyboardHookService? keyboardHookService;
     private HotkeyService? hotkeyService;
 
     protected override void OnStartup(System.Windows.StartupEventArgs e)
     {
+        singleInstanceMutex = new Mutex(
+            initiallyOwned: true,
+            name: "Local\\WindowsEasyEmoji.App",
+            createdNew: out var createdNew);
+        if (!createdNew)
+        {
+            singleInstanceMutex.Dispose();
+            singleInstanceMutex = null;
+            Shutdown();
+            return;
+        }
+
         base.OnStartup(e);
 
         ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
 
-        var settingsStore = SettingsStore.CreateDefault();
-        var settings = settingsStore.Load();
+        settingsStore = SettingsStore.CreateDefault();
+        settings = settingsStore.Load();
         settingsStore.Save(settings);
 
         var foregroundWindowService = new ForegroundWindowService();
         var pasteCoordinator = new PasteCoordinator(foregroundWindowService, new ClipboardPasteService());
-        var pasteOptions = new PasteOptions(
-            AutoPaste: settings.AutoPaste,
-            RestoreOriginalClipboard: settings.RestoreClipboardAfterPaste);
 
-        var overlayWindow = new MainWindow(pasteCoordinator, pasteOptions);
-        trayAppHost = new TrayAppHost(this, overlayWindow, foregroundWindowService, settings);
+        overlayWindow = new MainWindow(pasteCoordinator, CreatePasteOptions(settings));
+        trayAppHost = new TrayAppHost(
+            this,
+            overlayWindow,
+            foregroundWindowService,
+            settings,
+            settingsStore.SettingsPath);
+        trayAppHost.SettingsChangeRequested += (_, nextSettings) => ApplySettings(nextSettings);
         trayAppHost.Start();
 
         ConfigureShortcuts(settings);
@@ -37,53 +56,100 @@ public partial class App : System.Windows.Application
 
     protected override void OnExit(System.Windows.ExitEventArgs e)
     {
-        keyboardHookService?.Dispose();
-        hotkeyService?.Dispose();
+        DisposeShortcuts();
         trayAppHost?.Dispose();
+        singleInstanceMutex?.ReleaseMutex();
+        singleInstanceMutex?.Dispose();
         base.OnExit(e);
+    }
+
+    private void ApplySettings(AppSettings nextSettings)
+    {
+        settings = nextSettings;
+        settingsStore?.Save(settings);
+        overlayWindow?.UpdatePasteOptions(CreatePasteOptions(settings));
+        trayAppHost?.UpdateSettings(settings);
+        ConfigureShortcuts(settings);
     }
 
     private void ConfigureShortcuts(AppSettings settings)
     {
+        DisposeShortcuts();
+
         if (settings.ReplaceWinPeriod)
         {
-            keyboardHookService = new KeyboardHookService();
-            keyboardHookService.WinPeriodPressed += ShowOverlayFromShortcut;
+            var service = new KeyboardHookService();
+            service.WinPeriodPressed += ShowOverlayFromShortcut;
 
             try
             {
-                keyboardHookService.Start();
+                service.Start();
+                keyboardHookService = service;
             }
             catch (InvalidOperationException)
             {
-                keyboardHookService.Dispose();
-                keyboardHookService = null;
+                service.WinPeriodPressed -= ShowOverlayFromShortcut;
+                service.Dispose();
             }
         }
 
         if (settings.RegisterFallbackHotkey)
         {
-            hotkeyService = new HotkeyService();
-            hotkeyService.HotkeyPressed += ShowOverlayFromShortcut;
+            var service = new HotkeyService();
+            service.HotkeyPressed += ShowOverlayFromShortcut;
 
             try
             {
-                hotkeyService.RegisterFallbackHotkey(HotkeyGesture.Parse(settings.FallbackHotkey));
-                if (!hotkeyService.IsRegistered &&
+                service.RegisterFallbackHotkey(HotkeyGesture.Parse(settings.FallbackHotkey));
+                if (!service.IsRegistered &&
                     !settings.FallbackHotkey.Equals(AppSettings.Default.FallbackHotkey, StringComparison.OrdinalIgnoreCase))
                 {
-                    hotkeyService.RegisterFallbackHotkey();
+                    service.RegisterFallbackHotkey();
                 }
             }
             catch (ArgumentException)
             {
-                hotkeyService.RegisterFallbackHotkey();
+                service.RegisterFallbackHotkey();
             }
+
+            if (service.IsRegistered)
+            {
+                hotkeyService = service;
+            }
+            else
+            {
+                service.HotkeyPressed -= ShowOverlayFromShortcut;
+                service.Dispose();
+            }
+        }
+    }
+
+    private void DisposeShortcuts()
+    {
+        if (keyboardHookService is not null)
+        {
+            keyboardHookService.WinPeriodPressed -= ShowOverlayFromShortcut;
+            keyboardHookService.Dispose();
+            keyboardHookService = null;
+        }
+
+        if (hotkeyService is not null)
+        {
+            hotkeyService.HotkeyPressed -= ShowOverlayFromShortcut;
+            hotkeyService.Dispose();
+            hotkeyService = null;
         }
     }
 
     private void ShowOverlayFromShortcut(object? sender, EventArgs e)
     {
         Dispatcher.BeginInvoke(() => trayAppHost?.ShowOverlay());
+    }
+
+    private static PasteOptions CreatePasteOptions(AppSettings settings)
+    {
+        return new PasteOptions(
+            AutoPaste: settings.AutoPaste,
+            RestoreOriginalClipboard: settings.RestoreClipboardAfterPaste);
     }
 }

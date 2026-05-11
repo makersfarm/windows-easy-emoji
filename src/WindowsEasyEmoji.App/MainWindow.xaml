@@ -41,6 +41,7 @@
                              FontSize="24"
                              FontWeight="SemiBold"
                              VerticalContentAlignment="Center"
+                             PreviewKeyDown="SearchBox_PreviewKeyDown"
                              TextChanged="SearchBox_TextChanged" />
                 </DockPanel>
             </Border>
@@ -56,7 +57,8 @@
                      Background="Transparent"
                      BorderThickness="0"
                      Foreground="{StaticResource TextPrimaryBrush}"
-                     SelectionMode="Single">
+                     SelectionMode="Single"
+                     MouseDoubleClick="ResultsList_MouseDoubleClick">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Background="{StaticResource PanelBrush}" BorderBrush="#3F3F46" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,0,8">
@@ -73,7 +75,7 @@
             </ListBox>
 
             <DockPanel Grid.Row="4" Margin="2,12,0,0">
-                <TextBlock DockPanel.Dock="Right" Text="자동 붙여넣기 ON" Foreground="#86EFAC" FontSize="12" />
+                <TextBlock x:Name="PasteStatusText" DockPanel.Dock="Right" Foreground="#86EFAC" FontSize="12" />
                 <TextBlock Text="↑↓ 이동   Enter 붙여넣기   Esc 닫기" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" />
             </DockPanel>
         </Grid>

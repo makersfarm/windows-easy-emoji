@@ -11,7 +11,7 @@ public partial class MainWindow : Window
 {
     private readonly EmojiSearchService searchService;
     private readonly PasteCoordinator pasteCoordinator;
-    private readonly PasteOptions pasteOptions;
+    private PasteOptions pasteOptions;
     private IntPtr targetWindowHandle;
 
     public MainWindow(PasteCoordinator pasteCoordinator, PasteOptions pasteOptions)
@@ -19,6 +19,7 @@ public partial class MainWindow : Window
         InitializeComponent();
         this.pasteCoordinator = pasteCoordinator;
         this.pasteOptions = pasteOptions;
+        UpdatePasteStatus();
 
         var dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "emoji.json");
         var records = File.Exists(dataPath)
@@ -41,6 +42,12 @@ public partial class MainWindow : Window
         targetWindowHandle = windowHandle;
     }
 
+    public void UpdatePasteOptions(PasteOptions pasteOptions)
+    {
+        this.pasteOptions = pasteOptions;
+        UpdatePasteStatus();
+    }
+
     private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
     {
         RefreshResults();
@@ -57,9 +64,39 @@ public partial class MainWindow : Window
 
         if (e.Key == Key.Enter && ResultsList.SelectedItem is SearchResult result)
         {
-            Hide();
-            pasteCoordinator.PasteToTarget(targetWindowHandle, result.Record.Emoji, pasteOptions);
+            PasteResult(result);
             e.Handled = true;
+        }
+    }
+
+    private void SearchBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        if (e.Key is not (Key.Up or Key.Down) || ResultsList.Items.Count == 0)
+        {
+            return;
+        }
+
+        var direction = e.Key == Key.Down ? 1 : -1;
+        var nextIndex = ResultsList.SelectedIndex + direction;
+        if (nextIndex < 0)
+        {
+            nextIndex = ResultsList.Items.Count - 1;
+        }
+        else if (nextIndex >= ResultsList.Items.Count)
+        {
+            nextIndex = 0;
+        }
+
+        ResultsList.SelectedIndex = nextIndex;
+        ResultsList.ScrollIntoView(ResultsList.SelectedItem);
+        e.Handled = true;
+    }
+
+    private void ResultsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+        if (ResultsList.SelectedItem is SearchResult result)
+        {
+            PasteResult(result);
         }
     }
 
@@ -68,5 +105,18 @@ public partial class MainWindow : Window
         var results = searchService.Search(SearchBox.Text);
         ResultsList.ItemsSource = results;
         ResultsList.SelectedIndex = results.Count > 0 ? 0 : -1;
+    }
+
+    private void PasteResult(SearchResult result)
+    {
+        Hide();
+        pasteCoordinator.PasteToTarget(targetWindowHandle, result.Record.Emoji, pasteOptions);
+    }
+
+    private void UpdatePasteStatus()
+    {
+        PasteStatusText.Text = pasteOptions.AutoPaste
+            ? pasteOptions.RestoreOriginalClipboard ? "붙여넣기 · 클립보드 복원" : "자동 붙여넣기"
+            : "클립보드에 복사";
     }
 }
