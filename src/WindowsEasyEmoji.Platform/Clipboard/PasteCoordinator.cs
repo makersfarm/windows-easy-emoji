@@ -1,4 +1,5 @@
 using WindowsEasyEmoji.Platform.Windows;
+using WindowsEasyEmoji.Platform.Diagnostics;
 
 namespace WindowsEasyEmoji.Platform.Clipboard;
 
@@ -22,9 +23,13 @@ public sealed class PasteCoordinator
 
     public PasteResult PasteToTarget(IntPtr targetWindowHandle, string text, PasteOptions options)
     {
+        DiagnosticLog.Write(
+            $"paste.start target={DiagnosticLog.Handle(targetWindowHandle)} textLength={text.Length} autoPaste={options.AutoPaste} restore={options.RestoreOriginalClipboard}");
+
         if (!options.AutoPaste)
         {
             clipboardPasteService.CopyText(text);
+            DiagnosticLog.Write("paste.copy-only");
             return new PasteResult(Pasted: false, TargetActivated: false);
         }
 
@@ -43,8 +48,10 @@ public sealed class PasteCoordinator
         if (!pasted)
         {
             clipboardPasteService.CopyText(text);
+            DiagnosticLog.Write("paste.fallback-copy");
         }
 
+        DiagnosticLog.Write($"paste.complete pasted={pasted} targetActivated={targetActivated}");
         return new PasteResult(pasted, targetActivated);
     }
 }

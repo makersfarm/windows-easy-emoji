@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using WindowsEasyEmoji.Platform.Diagnostics;
 
 namespace WindowsEasyEmoji.Platform.Clipboard;
 
@@ -10,18 +11,24 @@ public sealed class ClipboardPasteService : IClipboardPasteService
     {
         if (string.IsNullOrEmpty(text))
         {
+            DiagnosticLog.Write("clipboard.paste skipped-empty-text");
             return false;
         }
 
+        DiagnosticLog.Write($"clipboard.paste start textLength={text.Length}");
         originalText = TryGetClipboardText();
         System.Windows.Clipboard.SetText(text);
-        return SendCtrlV();
+        DiagnosticLog.Write($"clipboard.paste set-text originalTextPresent={originalText is not null}");
+        var result = SendCtrlV();
+        DiagnosticLog.Write($"clipboard.paste send-ctrl-v result={result}");
+        return result;
     }
 
     public void CopyText(string text)
     {
         if (!string.IsNullOrEmpty(text))
         {
+            DiagnosticLog.Write($"clipboard.copy textLength={text.Length}");
             System.Windows.Clipboard.SetText(text);
         }
     }
@@ -30,12 +37,15 @@ public sealed class ClipboardPasteService : IClipboardPasteService
     {
         if (originalText is null)
         {
+            DiagnosticLog.Write("clipboard.restore skipped-no-original");
             return;
         }
 
+        DiagnosticLog.Write("clipboard.restore start");
         Thread.Sleep(650);
         System.Windows.Clipboard.SetText(originalText);
         originalText = null;
+        DiagnosticLog.Write("clipboard.restore complete");
     }
 
     private static string? TryGetClipboardText()
@@ -62,7 +72,13 @@ public sealed class ClipboardPasteService : IClipboardPasteService
             KeyboardInput(VirtualKey.Control, KeyEventFlags.KeyUp)
         };
 
-        return SendInput((uint)inputs.Length, inputs, Marshal.SizeOf<Input>()) == inputs.Length;
+        var sent = SendInput((uint)inputs.Length, inputs, Marshal.SizeOf<Input>());
+        if (sent != inputs.Length)
+        {
+            DiagnosticLog.Write($"clipboard.send-input sent={sent} expected={inputs.Length} error={Marshal.GetLastWin32Error()}");
+        }
+
+        return sent == inputs.Length;
     }
 
     private static Input KeyboardInput(ushort virtualKey, KeyEventFlags flags)
@@ -115,7 +131,21 @@ public sealed class ClipboardPasteService : IClipboardPasteService
     private struct InputUnion
     {
         [FieldOffset(0)]
+        public MouseInputData Mouse;
+
+        [FieldOffset(0)]
         public KeyboardInputData Keyboard;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct MouseInputData
+    {
+        public int Dx;
+        public int Dy;
+        public uint MouseData;
+        public uint Flags;
+        public uint Time;
+        public UIntPtr ExtraInfo;
     }
 
     [StructLayout(LayoutKind.Sequential)]
