@@ -61,6 +61,24 @@ public sealed class SettingsStoreTests
     }
 
     [Fact]
+    public void CreateDefault_uses_environment_override_when_set()
+    {
+        var path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"), "settings.json");
+        Environment.SetEnvironmentVariable("WINDOWS_EASY_EMOJI_SETTINGS_PATH", path);
+
+        try
+        {
+            var store = SettingsStore.CreateDefault();
+
+            Assert.Equal(path, store.SettingsPath);
+        }
+        finally
+        {
+            Environment.SetEnvironmentVariable("WINDOWS_EASY_EMOJI_SETTINGS_PATH", null);
+        }
+    }
+
+    [Fact]
     public void Validator_accepts_default_settings()
     {
         var isValid = AppSettingsValidator.TryValidate(AppSettings.Default, out var errorMessage);

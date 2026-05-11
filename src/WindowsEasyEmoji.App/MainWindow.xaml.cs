@@ -4,6 +4,7 @@ using System.Windows.Input;
 using WindowsEasyEmoji.Core.Emoji;
 using WindowsEasyEmoji.Core.Search;
 using WindowsEasyEmoji.Platform.Clipboard;
+using WindowsEasyEmoji.Platform.Diagnostics;
 
 namespace WindowsEasyEmoji.App;
 
@@ -25,6 +26,7 @@ public partial class MainWindow : Window
         var records = File.Exists(dataPath)
             ? EmojiRepository.LoadFromJson(File.ReadAllText(dataPath))
             : [];
+        DiagnosticLog.Write($"main-window.init dataPath={dataPath} recordCount={records.Count}");
 
         searchService = new EmojiSearchService(records);
         SearchBox.Text = "하트";
@@ -35,11 +37,13 @@ public partial class MainWindow : Window
     {
         SearchBox.Focus();
         SearchBox.SelectAll();
+        DiagnosticLog.Write($"main-window.focus-search-box isKeyboardFocusWithin={SearchBox.IsKeyboardFocusWithin}");
     }
 
     public void RememberTargetWindow(IntPtr windowHandle)
     {
         targetWindowHandle = windowHandle;
+        DiagnosticLog.Write($"main-window.remember-target target={DiagnosticLog.Handle(targetWindowHandle)}");
     }
 
     public void UpdatePasteOptions(PasteOptions pasteOptions)
@@ -57,6 +61,7 @@ public partial class MainWindow : Window
     {
         if (e.Key == Key.Escape)
         {
+            DiagnosticLog.Write("main-window.key escape");
             Hide();
             e.Handled = true;
             return;
@@ -64,6 +69,7 @@ public partial class MainWindow : Window
 
         if (e.Key == Key.Enter && ResultsList.SelectedItem is SearchResult result)
         {
+            DiagnosticLog.Write($"main-window.key enter selected={result.Record.Id}");
             PasteResult(result);
             e.Handled = true;
         }
@@ -119,6 +125,7 @@ public partial class MainWindow : Window
         var results = searchService.Search(SearchBox.Text);
         ResultsList.ItemsSource = results;
         ResultsList.SelectedIndex = results.Count > 0 ? 0 : -1;
+        DiagnosticLog.Write($"main-window.refresh queryLength={SearchBox.Text.Length} resultCount={results.Count} selectedIndex={ResultsList.SelectedIndex}");
     }
 
     private void PasteResult(SearchResult result)
@@ -126,10 +133,14 @@ public partial class MainWindow : Window
         var target = targetWindowHandle;
         var emoji = result.Record.Emoji;
         var options = pasteOptions;
+        DiagnosticLog.Write($"main-window.paste-result begin target={DiagnosticLog.Handle(target)} emojiId={result.Record.Id}");
 
         Hide();
         Dispatcher.BeginInvoke(() =>
-            pasteCoordinator.PasteToTarget(target, emoji, options));
+        {
+            var pasteResult = pasteCoordinator.PasteToTarget(target, emoji, options);
+            DiagnosticLog.Write($"main-window.paste-result complete pasted={pasteResult.Pasted} targetActivated={pasteResult.TargetActivated}");
+        });
     }
 
     private void UpdatePasteStatus()

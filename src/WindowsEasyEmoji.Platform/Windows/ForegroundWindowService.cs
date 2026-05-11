@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using WindowsEasyEmoji.Platform.Diagnostics;
 
 namespace WindowsEasyEmoji.Platform.Windows;
 
@@ -9,18 +10,22 @@ public sealed class ForegroundWindowService : IForegroundWindowService
 
     public IntPtr GetForegroundWindowHandle()
     {
-        return GetForegroundWindow();
+        var handle = GetForegroundWindow();
+        DiagnosticLog.Write($"foreground.get handle={DiagnosticLog.Handle(handle)}");
+        return handle;
     }
 
     public bool TryActivateWindow(IntPtr windowHandle)
     {
         if (windowHandle == IntPtr.Zero)
         {
+            DiagnosticLog.Write("foreground.activate target=0x0 result=False reason=zero-handle");
             return false;
         }
 
         if (GetForegroundWindow() == windowHandle)
         {
+            DiagnosticLog.Write($"foreground.activate target={DiagnosticLog.Handle(windowHandle)} result=True reason=already-foreground");
             return true;
         }
 
@@ -40,7 +45,8 @@ public sealed class ForegroundWindowService : IForegroundWindowService
         try
         {
             BringWindowToTop(windowHandle);
-            SetForegroundWindow(windowHandle);
+            var setForegroundResult = SetForegroundWindow(windowHandle);
+            DiagnosticLog.Write($"foreground.activate set-foreground target={DiagnosticLog.Handle(windowHandle)} result={setForegroundResult}");
         }
         finally
         {
@@ -48,7 +54,9 @@ public sealed class ForegroundWindowService : IForegroundWindowService
             AttachThreadInputIfNeeded(currentThreadId, foregroundThreadId, attach: false);
         }
 
-        return WaitUntilForeground(windowHandle);
+        var result = WaitUntilForeground(windowHandle);
+        DiagnosticLog.Write($"foreground.activate target={DiagnosticLog.Handle(windowHandle)} result={result}");
+        return result;
     }
 
     private static void AttachThreadInputIfNeeded(uint sourceThreadId, uint targetThreadId, bool attach)

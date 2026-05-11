@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using WindowsEasyEmoji.Platform.Diagnostics;
 
 namespace WindowsEasyEmoji.Platform.Keyboard;
 
@@ -35,10 +36,12 @@ public sealed class KeyboardHookService : IDisposable
         hookHandle = SetWindowsHookEx(WhKeyboardLl, hookProc, moduleHandle, 0);
         if (hookHandle == IntPtr.Zero)
         {
+            DiagnosticLog.Write($"keyboard-hook.start failed error={Marshal.GetLastWin32Error()}");
             throw new InvalidOperationException($"Failed to install keyboard hook. Win32 error: {Marshal.GetLastWin32Error()}");
         }
 
         IsRunning = true;
+        DiagnosticLog.Write($"keyboard-hook.start handle={DiagnosticLog.Handle(hookHandle)}");
     }
 
     public void Stop()
@@ -70,6 +73,7 @@ public sealed class KeyboardHookService : IDisposable
             var keyEvent = new LowLevelKeyboardEvent(wParam.ToInt32(), (int)keyboardData.VirtualKey);
             if (detector.ShouldHandleWinPeriod(keyEvent))
             {
+                DiagnosticLog.Write($"keyboard-hook.win-period vk={keyEvent.VirtualKey} message={keyEvent.Message}");
                 WinPeriodPressed?.Invoke(this, EventArgs.Empty);
                 return new IntPtr(1);
             }

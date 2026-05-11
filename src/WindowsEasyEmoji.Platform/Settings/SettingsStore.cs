@@ -22,6 +22,12 @@ public sealed class SettingsStore
 
     public static SettingsStore CreateDefault()
     {
+        var overridePath = Environment.GetEnvironmentVariable("WINDOWS_EASY_EMOJI_SETTINGS_PATH");
+        if (!string.IsNullOrWhiteSpace(overridePath))
+        {
+            return new SettingsStore(overridePath);
+        }
+
         var directory = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "WindowsEasyEmoji");

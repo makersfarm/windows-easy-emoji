@@ -1,5 +1,8 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Windows.Interop;
+using WindowsEasyEmoji.Platform.Diagnostics;
 using WindowsEasyEmoji.Platform.Settings;
 using WindowsEasyEmoji.Platform.Windows;
 using WpfApplication = System.Windows.Application;
@@ -8,6 +11,8 @@ namespace WindowsEasyEmoji.App.Tray;
 
 public sealed class TrayAppHost : IDisposable
 {
+    private const int ShowWindowShow = 5;
+
     private readonly WpfApplication application;
     private readonly MainWindow overlayWindow;
     private readonly IForegroundWindowService foregroundWindowService;
@@ -43,6 +48,7 @@ public sealed class TrayAppHost : IDisposable
         };
 
         notifyIcon.DoubleClick += (_, _) => ShowOverlay();
+        DiagnosticLog.Write("tray.start complete");
     }
 
     public void UpdateSettings(AppSettings settings)
@@ -93,16 +99,21 @@ public sealed class TrayAppHost : IDisposable
 
     public void ShowOverlay()
     {
+        DiagnosticLog.Write($"tray.show-overlay begin visible={overlayWindow.IsVisible}");
         var targetWindowHandle = foregroundWindowService.GetForegroundWindowHandle();
         overlayWindow.RememberTargetWindow(targetWindowHandle);
+        DiagnosticLog.Write($"tray.show-overlay target={DiagnosticLog.Handle(targetWindowHandle)}");
 
         if (!overlayWindow.IsVisible)
         {
             overlayWindow.Show();
+            DiagnosticLog.Write("tray.show-overlay window-shown");
         }
 
-        overlayWindow.Activate();
+        var activated = ActivateOverlayWindow();
+        DiagnosticLog.Write($"tray.show-overlay activate-result={activated}");
         overlayWindow.FocusSearchBox();
+        DiagnosticLog.Write("tray.show-overlay complete");
     }
 
     private ToolStripMenuItem CreateToggleItem(
@@ -142,4 +153,82 @@ public sealed class TrayAppHost : IDisposable
         startInfo.ArgumentList.Add(settingsPath);
         Process.Start(startInfo);
     }
+
+    private bool ActivateOverlayWindow()
+    {
+        var wpfActivated = overlayWindow.Activate();
+        var handle = new WindowInteropHelper(overlayWindow).Handle;
+        var forcedActivated = TryForceForegroundWindow(handle);
+        return wpfActivated || forcedActivated;
+    }
+
+    private static bool TryForceForegroundWindow(IntPtr windowHandle)
+    {
+        if (windowHandle == IntPtr.Zero)
+        {
+            DiagnosticLog.Write("tray.activate-overlay skipped-zero-handle");
+            return false;
+        }
+
+        var currentThreadId = GetCurrentThreadId();
+        var foregroundWindow = GetForegroundWindow();
+        var foregroundThreadId = foregroundWindow == IntPtr.Zero
+            ? 0
+            : GetWindowThreadProcessId(foregroundWindow, out _);
+        var attached = false;
+
+        try
+        {
+            if (foregroundThreadId != 0 && foregroundThreadId != currentThreadId)
+            {
+                attached = AttachThreadInput(currentThreadId, foregroundThreadId, attach: true);
+            }
+
+            ShowWindow(windowHandle, ShowWindowShow);
+            BringWindowToTop(windowHandle);
+            var setForegroundResult = SetForegroundWindow(windowHandle);
+            SetActiveWindow(windowHandle);
+            SetFocus(windowHandle);
+            var foregroundAfter = GetForegroundWindow();
+            var activated = setForegroundResult || foregroundAfter == windowHandle;
+
+            DiagnosticLog.Write(
+                $"tray.activate-overlay handle={DiagnosticLog.Handle(windowHandle)} foregroundBefore={DiagnosticLog.Handle(foregroundWindow)} foregroundAfter={DiagnosticLog.Handle(foregroundAfter)} attached={attached} setForeground={setForegroundResult} activated={activated}");
+            return activated;
+        }
+        finally
+        {
+            if (attached)
+            {
+                AttachThreadInput(currentThreadId, foregroundThreadId, attach: false);
+            }
+        }
+    }
+
+    [DllImport("kernel32.dll")]
+    private static extern uint GetCurrentThreadId();
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetForegroundWindow();
+
+    [DllImport("user32.dll")]
+    private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
+
+    [DllImport("user32.dll")]
+    private static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool attach);
+
+    [DllImport("user32.dll")]
+    private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+    [DllImport("user32.dll")]
+    private static extern bool BringWindowToTop(IntPtr hWnd);
+
+    [DllImport("user32.dll")]
+    private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr SetActiveWindow(IntPtr hWnd);
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr SetFocus(IntPtr hWnd);
 }

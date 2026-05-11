@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using WindowsEasyEmoji.Platform.Diagnostics;
 
 namespace WindowsEasyEmoji.Platform.Keyboard;
 
@@ -34,6 +35,7 @@ public sealed class HotkeyService : IDisposable
 
         source.AddHook(WndProc);
         IsRegistered = RegisterHotKey(source.Handle, HotkeyId, (uint)gesture.Modifiers, (uint)gesture.VirtualKey);
+        DiagnosticLog.Write($"hotkey.register hwnd={DiagnosticLog.Handle(source.Handle)} modifiers={gesture.Modifiers} vk={gesture.VirtualKey} result={IsRegistered}");
         if (!IsRegistered)
         {
             source.RemoveHook(WndProc);
@@ -64,6 +66,7 @@ public sealed class HotkeyService : IDisposable
     {
         if (message == WmHotkey && wParam.ToInt32() == HotkeyId)
         {
+            DiagnosticLog.Write("hotkey.pressed");
             HotkeyPressed?.Invoke(this, EventArgs.Empty);
             handled = true;
         }

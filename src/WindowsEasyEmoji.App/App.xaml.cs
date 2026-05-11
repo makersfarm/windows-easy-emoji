@@ -1,5 +1,6 @@
 using WindowsEasyEmoji.App.Tray;
 using WindowsEasyEmoji.Platform.Clipboard;
+using WindowsEasyEmoji.Platform.Diagnostics;
 using WindowsEasyEmoji.Platform.Keyboard;
 using WindowsEasyEmoji.Platform.Settings;
 using WindowsEasyEmoji.Platform.Windows;
@@ -19,12 +20,14 @@ public partial class App : System.Windows.Application
 
     protected override void OnStartup(System.Windows.StartupEventArgs e)
     {
+        DiagnosticLog.Write("app.startup begin");
         singleInstanceMutex = new Mutex(
             initiallyOwned: true,
             name: "Local\\WindowsEasyEmoji.App",
             createdNew: out var createdNew);
         if (!createdNew)
         {
+            DiagnosticLog.Write("app.startup duplicate-instance");
             singleInstanceMutex.Dispose();
             singleInstanceMutex = null;
             Shutdown();
@@ -38,6 +41,8 @@ public partial class App : System.Windows.Application
         settingsStore = SettingsStore.CreateDefault();
         settings = settingsStore.Load();
         settingsStore.Save(settings);
+        DiagnosticLog.Write(
+            $"app.settings replaceWinPeriod={settings.ReplaceWinPeriod} autoPaste={settings.AutoPaste} fallback={settings.RegisterFallbackHotkey} restore={settings.RestoreClipboardAfterPaste} fallbackHotkey={settings.FallbackHotkey}");
 
         var foregroundWindowService = new ForegroundWindowService();
         var pasteCoordinator = new PasteCoordinator(foregroundWindowService, new ClipboardPasteService());
@@ -54,20 +59,25 @@ public partial class App : System.Windows.Application
         trayAppHost.Start();
 
         ConfigureShortcuts(settings);
+        DiagnosticLog.Write("app.startup complete");
     }
 
     protected override void OnExit(System.Windows.ExitEventArgs e)
     {
+        DiagnosticLog.Write("app.exit begin");
         DisposeShortcuts();
         trayAppHost?.Dispose();
         singleInstanceMutex?.ReleaseMutex();
         singleInstanceMutex?.Dispose();
         base.OnExit(e);
+        DiagnosticLog.Write("app.exit complete");
     }
 
     private void ApplySettings(AppSettings nextSettings)
     {
         settings = AppSettingsValidator.Normalize(nextSettings);
+        DiagnosticLog.Write(
+            $"app.apply-settings replaceWinPeriod={settings.ReplaceWinPeriod} autoPaste={settings.AutoPaste} fallback={settings.RegisterFallbackHotkey} restore={settings.RestoreClipboardAfterPaste} fallbackHotkey={settings.FallbackHotkey}");
         settingsStore?.Save(settings);
         overlayWindow?.UpdatePasteOptions(CreatePasteOptions(settings));
         trayAppHost?.UpdateSettings(settings);
@@ -100,6 +110,7 @@ public partial class App : System.Windows.Application
     private void ConfigureShortcuts(AppSettings settings)
     {
         DisposeShortcuts();
+        DiagnosticLog.Write("app.configure-shortcuts begin");
 
         if (settings.ReplaceWinPeriod)
         {
@@ -110,9 +121,11 @@ public partial class App : System.Windows.Application
             {
                 service.Start();
                 keyboardHookService = service;
+                DiagnosticLog.Write("app.configure-shortcuts keyboard-hook-enabled");
             }
             catch (InvalidOperationException)
             {
+                DiagnosticLog.Write("app.configure-shortcuts keyboard-hook-failed");
                 service.WinPeriodPressed -= ShowOverlayFromShortcut;
                 service.Dispose();
             }
@@ -134,19 +147,23 @@ public partial class App : System.Windows.Application
             }
             catch (ArgumentException)
             {
+                DiagnosticLog.Write("app.configure-shortcuts fallback-parse-failed");
                 service.RegisterFallbackHotkey();
             }
 
             if (service.IsRegistered)
             {
                 hotkeyService = service;
+                DiagnosticLog.Write("app.configure-shortcuts fallback-enabled");
             }
             else
             {
+                DiagnosticLog.Write("app.configure-shortcuts fallback-failed");
                 service.HotkeyPressed -= ShowOverlayFromShortcut;
                 service.Dispose();
             }
         }
+        DiagnosticLog.Write("app.configure-shortcuts complete");
     }
 
     private void DisposeShortcuts()
@@ -168,6 +185,7 @@ public partial class App : System.Windows.Application
 
     private void ShowOverlayFromShortcut(object? sender, EventArgs e)
     {
+        DiagnosticLog.Write($"app.shortcut-dispatch sender={sender?.GetType().Name ?? "unknown"}");
         Dispatcher.BeginInvoke(() => trayAppHost?.ShowOverlay());
     }
 
