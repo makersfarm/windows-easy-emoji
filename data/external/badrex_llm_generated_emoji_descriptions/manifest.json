@@ -1,0 +1,24 @@
+{
+  "source": "https://huggingface.co/datasets/badrex/LLM-generated-emoji-descriptions",
+  "api": "https://datasets-server.huggingface.co/rows",
+  "dataset": "badrex/LLM-generated-emoji-descriptions",
+  "config": "default",
+  "split": "train",
+  "rowCount": 5034,
+  "expectedRowCount": 5034,
+  "columns": [
+    "character",
+    "unicode",
+    "short description",
+    "tags",
+    "LLM description"
+  ],
+  "license": "cc",
+  "importedAt": "2026-05-11",
+  "files": {
+    "sourceReadme": "README.source.md",
+    "sourceParquet": "train-00000-of-00001.parquet",
+    "jsonlSnapshot": "rows.jsonl",
+    "jsonPreview": "rows.preview.json"
+  }
+}

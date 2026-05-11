@@ -1,0 +1,6562 @@
+[
+    {
+        "emoji" : "😀",
+        "hexcode" : "1F600",
+        "description" : "웃는 얼굴"
+    },
+    {
+        "emoji" : "😃",
+        "hexcode" : "1F603",
+        "description" : "큰 눈을 가진 웃는 얼굴"
+    },
+    {
+        "emoji" : "😄",
+        "hexcode" : "1F604",
+        "description" : "웃는 눈으로 웃는 얼굴"
+    },
+    {
+        "emoji" : "😁",
+        "hexcode" : "1F601",
+        "description" : "웃는 눈으로 환하게 웃는 얼굴"
+    },
+    {
+        "emoji" : "😆",
+        "hexcode" : "1F606",
+        "description" : "찡그린 얼굴"
+    },
+    {
+        "emoji" : "😅",
+        "hexcode" : "1F605",
+        "description" : "땀으로 웃는 얼굴"
+    },
+    {
+        "emoji" : "🤣",
+        "hexcode" : "1F923",
+        "description" : "바닥에 구르며 웃다"
+    },
+    {
+        "emoji" : "😂",
+        "hexcode" : "1F602",
+        "description" : "기쁨의 눈물을 흘리며 얼굴을 맞대다"
+    },
+    {
+        "emoji" : "🙂",
+        "hexcode" : "1F642",
+        "description" : "살짝 웃는 얼굴"
+    },
+    {
+        "emoji" : "🙃",
+        "hexcode" : "1F643",
+        "description" : "거꾸로 된 얼굴"
+    },
+    {
+        "emoji" : "🫠",
+        "hexcode" : "1FAE0",
+        "description" : "녹는 얼굴"
+    },
+    {
+        "emoji" : "😉",
+        "hexcode" : "1F609",
+        "description" : "윙크하는 얼굴"
+    },
+    {
+        "emoji" : "😊",
+        "hexcode" : "1F60A",
+        "description" : "웃는 눈으로 미소 짓는 얼굴"
+    },
+    {
+        "emoji" : "😇",
+        "hexcode" : "1F607",
+        "description" : "후광으로 미소 짓는 얼굴"
+    },
+    {
+        "emoji" : "🥰",
+        "hexcode" : "1F970",
+        "description" : "애정하는 얼굴"
+    },
+    {
+        "emoji" : "😍",
+        "hexcode" : "1F60D",
+        "description" : "하트 눈으로 웃는 얼굴"
+    },
+    {
+        "emoji" : "🤩",
+        "hexcode" : "1F929",
+        "description" : "눈에 별이 빛나는 얼굴"
+    },
+    {
+        "emoji" : "😘",
+        "hexcode" : "1F618",
+        "description" : "키스를 날리는 얼굴"
+    },
+    {
+        "emoji" : "😗",
+        "hexcode" : "1F617",
+        "description" : "키스하는 얼굴"
+    },
+    {
+        "emoji" : "😚",
+        "hexcode" : "1F61A",
+        "description" : "눈을 감고 키스하는 얼굴"
+    },
+    {
+        "emoji" : "😙",
+        "hexcode" : "1F619",
+        "description" : "웃는 눈으로 키스하는 얼굴"
+    },
+    {
+        "emoji" : "🥲",
+        "hexcode" : "1F972",
+        "description" : "눈물 흘리며 웃는 얼굴"
+    },
+    {
+        "emoji" : "😋",
+        "hexcode" : "1F60B",
+        "description" : "음식을 음미하는 얼굴"
+    },
+    {
+        "emoji" : "😛",
+        "hexcode" : "1F61B",
+        "description" : "얼굴에 혀를 내밀다"
+    },
+    {
+        "emoji" : "😜",
+        "hexcode" : "1F61C",
+        "description" : "혀로 윙크하는 얼굴"
+    },
+    {
+        "emoji" : "🤪",
+        "hexcode" : "1F92A",
+        "description" : "엉뚱한 얼굴"
+    },
+    {
+        "emoji" : "😝",
+        "hexcode" : "1F61D",
+        "description" : "혀를 내밀고 눈을 가늘게 뜨고 있는 얼굴"
+    },
+    {
+        "emoji" : "🤑",
+        "hexcode" : "1F911",
+        "description" : "돈 입 얼굴"
+    },
+    {
+        "emoji" : "🤗",
+        "hexcode" : "1F917",
+        "description" : "두 손을 벌리고 웃는 얼굴"
+    },
+    {
+        "emoji" : "🤭",
+        "hexcode" : "1F92D",
+        "description" : "입에 손을 대고 얼굴"
+    },
+    {
+        "emoji" : "🫢",
+        "hexcode" : "1FAE2",
+        "description" : "눈을 뜨고 입에 손을 대고 있는 얼굴"
+    },
+    {
+        "emoji" : "🫣",
+        "hexcode" : "1FAE3",
+        "description" : "엿보는 눈으로 얼굴"
+    },
+    {
+        "emoji" : "🤫",
+        "hexcode" : "1F92B",
+        "description" : "조용히 하는 얼굴"
+    },
+    {
+        "emoji" : "🤔",
+        "hexcode" : "1F914",
+        "description" : "생각하는 얼굴"
+    },
+    {
+        "emoji" : "🫡",
+        "hexcode" : "1FAE1",
+        "description" : "경례하는 얼굴"
+    },
+    {
+        "emoji" : "🤐",
+        "hexcode" : "1F910",
+        "description" : "지퍼 입 얼굴"
+    },
+    {
+        "emoji" : "🤨",
+        "hexcode" : "1F928",
+        "description" : "눈썹을 치켜올린 얼굴"
+    },
+    {
+        "emoji" : "😐",
+        "hexcode" : "1F610",
+        "description" : "중립 얼굴"
+    },
+    {
+        "emoji" : "😑",
+        "hexcode" : "1F611",
+        "description" : "무표정한 얼굴"
+    },
+    {
+        "emoji" : "😶",
+        "hexcode" : "1F636",
+        "description" : "입 없는 얼굴"
+    },
+    {
+        "emoji" : "🫥",
+        "hexcode" : "1F611",
+        "description" : "점선 얼굴"
+    },
+    {
+        "emoji" : "😏",
+        "hexcode" : "1F60F",
+        "description" : "웃는 얼굴"
+    },
+    {
+        "emoji" : "😒",
+        "hexcode" : "1F612",
+        "description" : "재미없는 얼굴"
+    },
+    {
+        "emoji" : "🙄",
+        "hexcode" : "1F644",
+        "description" : "눈을 굴리는 얼굴"
+    },
+    {
+        "emoji" : "😬",
+        "hexcode" : "1F62C",
+        "description" : "찡그린 얼굴"
+    },
+    {
+        "emoji" : "🤥",
+        "hexcode" : "1F925",
+        "description" : "거짓말하는 얼굴"
+    },
+    {
+        "emoji" : "🫨",
+        "hexcode" : "1FAE8",
+        "description" : "흔들리는 얼굴"
+    },
+    {
+        "emoji" : "😌",
+        "hexcode" : "1F60C",
+        "description" : "안도한 얼굴"
+    },
+    {
+        "emoji" : "😔",
+        "hexcode" : "1F614",
+        "description" : "잠겨있는 얼굴"
+    },
+    {
+        "emoji" : "😪",
+        "hexcode" : "1F62A",
+        "description" : "졸린 얼굴"
+    },
+    {
+        "emoji" : "🤤",
+        "hexcode" : "1F924",
+        "description" : "침 흘리는 얼굴"
+    },
+    {
+        "emoji" : "😴",
+        "hexcode" : "1F634",
+        "description" : "잠자는 얼굴"
+    },
+    {
+        "emoji" : "😷",
+        "hexcode" : "1F637",
+        "description" : "의료용 마스크를 쓴 얼굴"
+    },
+    {
+        "emoji" : "🤒",
+        "hexcode" : "1F912",
+        "description" : "온도계를 들고 있는 얼굴"
+    },
+    {
+        "emoji" : "🤕",
+        "hexcode" : "1F915",
+        "description" : "머리에 붕대를 감은 얼굴"
+    },
+    {
+        "emoji" : "🤢",
+        "hexcode" : "1F922",
+        "description" : "메스꺼운 얼굴"
+    },
+    {
+        "emoji" : "🤮",
+        "hexcode" : "1F92E",
+        "description" : "구토하는 얼굴"
+    },
+    {
+        "emoji" : "🤧",
+        "hexcode" : "1F927",
+        "description" : "재채기하는 얼굴"
+    },
+    {
+        "emoji" : "🥵",
+        "hexcode" : "1F975",
+        "description" : "뜨거운 얼굴"
+    },
+    {
+        "emoji" : "🥶",
+        "hexcode" : "1F976",
+        "description" : "차가운 얼굴"
+    },
+    {
+        "emoji" : "🥴",
+        "hexcode" : "1F974",
+        "description" : "멍한 얼굴"
+    },
+    {
+        "emoji" : "😵",
+        "hexcode" : "1F635",
+        "description" : "눈을 가린 얼굴"
+    },
+    {
+        "emoji" : "🤯",
+        "hexcode" : "1F92F",
+        "description" : "폭발하는 머리"
+    },
+    {
+        "emoji" : "🤠",
+        "hexcode" : "1F920",
+        "description" : "카우보이 모자 얼굴"
+    },
+    {
+        "emoji" : "🥳",
+        "hexcode" : "1F973",
+        "description" : "파티하는 얼굴"
+    },
+    {
+        "emoji" : "🥸",
+        "hexcode" : "1F978",
+        "description" : "위장한 얼굴"
+    },
+    {
+        "emoji" : "😎",
+        "hexcode" : "1F60E",
+        "description" : "선글라스를 끼고 웃는 얼굴"
+    },
+    {
+        "emoji" : "🤓",
+        "hexcode" : "1F913",
+        "description" : "괴상한 얼굴"
+    },
+    {
+        "emoji" : "🧐",
+        "hexcode" : "1F9D0",
+        "description" : "단안경을 쓴 얼굴"
+    },
+    {
+        "emoji" : "😕",
+        "hexcode" : "1F615",
+        "description" : "혼란스러운 얼굴"
+    },
+    {
+        "emoji" : "🫤",
+        "hexcode" : "1FAE4",
+        "description" : "대각선 입으로 얼굴"
+    },
+    {
+        "emoji" : "😟",
+        "hexcode" : "1F61F",
+        "description" : "걱정스러운 얼굴"
+    },
+    {
+        "emoji" : "🙁",
+        "hexcode" : "1F641",
+        "description" : "살짝 찡그린 얼굴"
+    },
+    {
+        "emoji" : "😮",
+        "hexcode" : "1F62E",
+        "description" : "입을 벌린 얼굴"
+    },
+    {
+        "emoji" : "😯",
+        "hexcode" : "1F62F",
+        "description" : "숨죽인 얼굴"
+    },
+    {
+        "emoji" : "😲",
+        "hexcode" : "1F632",
+        "description" : "놀란 얼굴"
+    },
+    {
+        "emoji" : "😳",
+        "hexcode" : "1F633",
+        "description" : "붉어진 얼굴"
+    },
+    {
+        "emoji" : "🥺",
+        "hexcode" : "1F97A",
+        "description" : "애원하는 얼굴"
+    },
+    {
+        "emoji" : "🥹",
+        "hexcode" : "1F979",
+        "description" : "눈물을 참는 얼굴"
+    },
+    {
+        "emoji" : "😦",
+        "hexcode" : "1F626",
+        "description" : "입을 벌리고 찡그린 얼굴"
+    },
+    {
+        "emoji" : "😧",
+        "hexcode" : "1F627",
+        "description" : "괴로운 얼굴"
+    },
+    {
+        "emoji" : "😨",
+        "hexcode" : "1F628",
+        "description" : "두려운 얼굴"
+    },
+    {
+        "emoji" : "😰",
+        "hexcode" : "1F630",
+        "description" : "땀에 젖은 불안한 얼굴"
+    },
+    {
+        "emoji" : "😥",
+        "hexcode" : "1F625",
+        "description" : "슬프지만 안심하는 얼굴"
+    },
+    {
+        "emoji" : "😢",
+        "hexcode" : "1F622",
+        "description" : "우는 얼굴"
+    },
+    {
+        "emoji" : "😭",
+        "hexcode" : "1F62D",
+        "description" : "크게 우는 얼굴"
+    },
+    {
+        "emoji" : "😱",
+        "hexcode" : "1F631",
+        "description" : "두려움에 비명을 지르는 얼굴"
+    },
+    {
+        "emoji" : "😖",
+        "hexcode" : "1F616",
+        "description" : "당황한 얼굴"
+    },
+    {
+        "emoji" : "😣",
+        "hexcode" : "1F623",
+        "description" : "인내하는 얼굴"
+    },
+    {
+        "emoji" : "😞",
+        "hexcode" : "1F61E",
+        "description" : "실망한 얼굴"
+    },
+    {
+        "emoji" : "😓",
+        "hexcode" : "1F613",
+        "description" : "땀에 젖은 얼굴"
+    },
+    {
+        "emoji" : "😩",
+        "hexcode" : "1F629",
+        "description" : "지친 얼굴"
+    },
+    {
+        "emoji" : "😫",
+        "hexcode" : "1F62B",
+        "description" : "피곤한 얼굴"
+    },
+    {
+        "emoji" : "🥱",
+        "hexcode" : "1F971",
+        "description" : "하품하는 얼굴"
+    },
+    {
+        "emoji" : "😤",
+        "hexcode" : "1F624",
+        "description" : "코에서 김이 나는 얼굴"
+    },
+    {
+        "emoji" : "😡",
+        "hexcode" : "1F621",
+        "description" : "분노한 얼굴"
+    },
+    {
+        "emoji" : "😠",
+        "hexcode" : "1F620",
+        "description" : "화난 얼굴"
+    },
+    {
+        "emoji" : "🤬",
+        "hexcode" : "1F92C",
+        "description" : "입에 상징이 있는 얼굴"
+    },
+    {
+        "emoji" : "😈",
+        "hexcode" : "1F608",
+        "description" : "뿔이 달린 웃는 얼굴"
+    },
+    {
+        "emoji" : "👿",
+        "hexcode" : "1F47F",
+        "description" : "뿔이 달린 화난 얼굴"
+    },
+    {
+        "emoji" : "💀",
+        "hexcode" : "1F480",
+        "description" : "두개골"
+    },
+    {
+        "emoji" : "💩",
+        "hexcode" : "1F4A9",
+        "description" : "똥 더미"
+    },
+    {
+        "emoji" : "🤡",
+        "hexcode" : "1F921",
+        "description" : "광대 얼굴"
+    },
+    {
+        "emoji" : "👹",
+        "hexcode" : "1F479",
+        "description" : "오우거"
+    },
+    {
+        "emoji" : "👺",
+        "hexcode" : "1F47A",
+        "description" : "고블린"
+    },
+    {
+        "emoji" : "👻",
+        "hexcode" : "1F47B",
+        "description" : "귀신"
+    },
+    {
+        "emoji" : "👽",
+        "hexcode" : "1F47D",
+        "description" : "외계인"
+    },
+    {
+        "emoji" : "👾",
+        "hexcode" : "1F47E",
+        "description" : "외계 괴물"
+    },
+    {
+        "emoji" : "🤖",
+        "hexcode" : "1F916",
+        "description" : "로봇"
+    },
+    {
+        "emoji" : "😺",
+        "hexcode" : "1F63A",
+        "description" : "웃는 고양이"
+    },
+    {
+        "emoji" : "😸",
+        "hexcode" : "1F638",
+        "description" : "웃는 눈으로 웃는 고양이"
+    },
+    {
+        "emoji" : "😹",
+        "hexcode" : "1F639",
+        "description" : "기쁨의 눈물을 흘리는 고양이"
+    },
+    {
+        "emoji" : "😻",
+        "hexcode" : "1F63B",
+        "description" : "하트눈을 가지고 웃는 고양이"
+    },
+    {
+        "emoji" : "😼",
+        "hexcode" : "1F63C",
+        "description" : "쓴웃음을 짓는 고양이"
+    },
+    {
+        "emoji" : "😽",
+        "hexcode" : "1F63D",
+        "description" : "키스를 날리는 고양이"
+    },
+    {
+        "emoji" : "🙀",
+        "hexcode" : "1F640",
+        "description" : "지친 고양이"
+    },
+    {
+        "emoji" : "😿",
+        "hexcode" : "1F63F",
+        "description" : "우는 고양이"
+    },
+    {
+        "emoji" : "😾",
+        "hexcode" : "1F63E",
+        "description" : "삐죽삐죽 고양이"
+    },
+    {
+        "emoji" : "🙈",
+        "hexcode" : "1F648",
+        "description" : "눈에 보이지 않는 원숭이"
+    },
+    {
+        "emoji" : "🙉",
+        "hexcode" : "1F649",
+        "description" : "악의를 듣지 못하는 원숭이"
+    },
+    {
+        "emoji" : "🙊",
+        "hexcode" : "1F64A",
+        "description" : "말을 하지 못하는 원숭이"
+    },
+    {
+        "emoji" : "💌",
+        "hexcode" : "1F48C",
+        "description" : "연애 편지"
+    },
+    {
+        "emoji" : "💘",
+        "hexcode" : "1F498",
+        "description" : "화살표가 있는 하트"
+    },
+    {
+        "emoji" : "💝",
+        "hexcode" : "1F49D",
+        "description" : "리본이 달린 하트"
+    },
+    {
+        "emoji" : "💖",
+        "hexcode" : "1F496",
+        "description" : "반짝이는 하트"
+    },
+    {
+        "emoji" : "💗",
+        "hexcode" : "1F497",
+        "description" : "성장하는 하트"
+    },
+    {
+        "emoji" : "💓",
+        "hexcode" : "1F493",
+        "description" : "성뛰는 하트"
+    },
+    {
+        "emoji" : "💞",
+        "hexcode" : "1F49E",
+        "description" : "회전하는 하트"
+    },
+    {
+        "emoji" : "💕",
+        "hexcode" : "1F495",
+        "description" : "두개의 하트"
+    },
+    {
+        "emoji" : "💟",
+        "hexcode" : "1F49F",
+        "description" : "하트 장식"
+    },
+    {
+        "emoji" : "💔",
+        "hexcode" : "1F494",
+        "description" : "깨진 하트"
+    },
+    {
+        "emoji" : "🩷",
+        "hexcode" : "1FA77",
+        "description" : "핑크 하트"
+    },
+    {
+        "emoji" : "🧡",
+        "hexcode" : "1F9E1",
+        "description" : "오렌지 하트"
+    },
+    {
+        "emoji" : "💛",
+        "hexcode" : "1F949B",
+        "description" : "노란 하트"
+    },
+    {
+        "emoji" : "💚",
+        "hexcode" : "1F49A",
+        "description" : "녹색 하트"
+    },
+    {
+        "emoji" : "💙",
+        "hexcode" : "1F499",
+        "description" : "푸른 하트"
+    },
+    {
+        "emoji" : "🩵",
+        "hexcode" : "1FA75",
+        "description" : "하늘색 하트"
+    },
+    {
+        "emoji" : "💜",
+        "hexcode" : "1F49C",
+        "description" : "보라색 하트"
+    },
+    {
+        "emoji" : "🤎",
+        "hexcode" : "1FA90E",
+        "description" : "갈색 하트"
+    },
+    {
+        "emoji" : "🖤",
+        "hexcode" : "1F5A4",
+        "description" : "흑색 하트"
+    },
+    {
+        "emoji" : "🩶",
+        "hexcode" : "1FA76",
+        "description" : "회색 하트"
+    },
+    {
+        "emoji" : "🤍",
+        "hexcode" : "1F90D",
+        "description" : "흰색 하트"
+    },
+    {
+        "emoji" : "💋",
+        "hexcode" : "1F48B",
+        "description" : "키스마크"
+    },
+    {
+        "emoji" : "💯",
+        "hexcode" : "1F4AF",
+        "description" : "백점 포인트"
+    },
+    {
+        "emoji" : "💢",
+        "hexcode" : "1F4A2",
+        "description" : "분노의 상징"
+    },
+    {
+        "emoji" : "💥",
+        "hexcode" : "1F4A5",
+        "description" : "충돌"
+    },
+    {
+        "emoji" : "💫",
+        "hexcode" : "1F4AB",
+        "description" : "어지러운"
+    },
+    {
+        "emoji" : "💦",
+        "hexcode" : "1F4A6",
+        "description" : "땀방울"
+    },
+    {
+        "emoji" : "💨",
+        "hexcode" : "1F4A8",
+        "description" : "돌진해 가다"
+    },
+    {
+        "emoji" : "💬",
+        "hexcode" : "1F4AC",
+        "description" : "말풍선"
+    },
+    {
+        "emoji" : "💭",
+        "hexcode" : "1F4AD",
+        "description" : "생각 풍선"
+    },
+    {
+        "emoji" : "💤",
+        "hexcode" : "1F4A4",
+        "description" : "ZZZ"
+    },
+    {
+        "emoji" : "👋",
+        "hexcode" : "1F44B",
+        "description" : "손을 흔들며"
+    },
+    {
+        "emoji" : "🤚",
+        "hexcode" : "1F91A",
+        "description" : "손등을 들었다"
+    },
+    {
+        "emoji" : "🖐",
+        "hexcode" : "1F590",
+        "description" : "손가락이 벌어진 손"
+    },
+    {
+        "emoji" : "✋",
+        "hexcode" : "270B",
+        "description" : "손을 들었다"
+    },
+    {
+        "emoji" : "🖖",
+        "hexcode" : "1F596",
+        "description" : "벌컨의 경례"
+    },
+    {
+        "emoji" : "🫱",
+        "hexcode" : "1FAF1",
+        "description" : "오른쪽 손"
+    },
+    {
+        "emoji" : "🫲",
+        "hexcode" : "1FAF2",
+        "description" : "왼쪽 손"
+    },
+    {
+        "emoji" : "🫳",
+        "hexcode" : "1FAF3",
+        "description" : "손바닥을 아래로 한 손"
+    },
+    {
+        "emoji" : "🫴",
+        "hexcode" : "1FAF4",
+        "description" : "손바닥을 위로 한 손"
+    },
+    {
+        "emoji" : "🫷",
+        "hexcode" : "1FAF7",
+        "description" : "왼쪽으로 미는 손"
+    },
+    {
+        "emoji" : "🫸",
+        "hexcode" : "1FAF8",
+        "description" : "오른쪽으로 미는 손"
+    },
+    {
+        "emoji" : "👌",
+        "hexcode" : "1F44C",
+        "description" : "알았어 손"
+    },
+    {
+        "emoji" : "🤌",
+        "hexcode" : "1F90C",
+        "description" : "끼인 손가락"
+    },
+    {
+        "emoji" : "🤏",
+        "hexcode" : "1F90F",
+        "description" : "꼬집는 손"
+    },
+    {
+        "emoji" : "✌",
+        "hexcode" : "270C",
+        "description" : "승리의 손"
+    },
+    {
+        "emoji" : "🤞",
+        "hexcode" : "1F91E",
+        "description" : "교차 손가락"
+    },
+    {
+        "emoji" : "🫰",
+        "hexcode" : "1FAF0",
+        "description" : "검지와 엄지손가락을 교차한 손"
+    },
+    {
+        "emoji" : "🤟",
+        "hexcode" : "1F91F",
+        "description" : "사랑해 몸짓"
+    },
+    {
+        "emoji" : "🤘",
+        "hexcode" : "1F918",
+        "description" : "뿔의 표시"
+    },
+    {
+        "emoji" : "🤙",
+        "hexcode" : "1F919",
+        "description" : "나한테 손 좀 불러줘"
+    },
+    {
+        "emoji" : "👈",
+        "hexcode" : "1F448",
+        "description" : "왼쪽을 가리키는 백핸드 인덱스"
+    },
+    {
+        "emoji" : "👉",
+        "hexcode" : "1F449",
+        "description" : "오른쪽을 가리키는 백핸드 인덱스"
+    },
+    {
+        "emoji" : "👆",
+        "hexcode" : "1F446",
+        "description" : "위쪽을 가리키는 백핸드 인덱스"
+    },
+    {
+        "emoji" : "🖕",
+        "hexcode" : "1F595",
+        "description" : "가운데 손가락"
+    },
+    {
+        "emoji" : "👇",
+        "hexcode" : "1F447",
+        "description" : "아래쪽을 가리키는 백핸드 인덱스"
+    },
+    {
+        "emoji" : "☝",
+        "hexcode" : "261D",
+        "description" : "위를 가리키는 지수"
+    },
+    {
+        "emoji" : "🫵",
+        "hexcode" : "1FAF5",
+        "description" : "뷰어를 가리키는 인덱스"
+    },
+    {
+        "emoji" : "👍",
+        "hexcode" : "1F44D",
+        "description" : "엄지손가락"
+    },
+    {
+        "emoji" : "👎",
+        "hexcode" : "1F44E",
+        "description" : "거절하다"
+    },
+    {
+        "emoji" : "✊",
+        "hexcode" : "270A",
+        "description" : "주먹을 들었다"
+    },
+    {
+        "emoji" : "👊",
+        "hexcode" : "1F44A",
+        "description" : "다가오는 주먹"
+    },
+    {
+        "emoji" : "🤛",
+        "hexcode" : "1F91B",
+        "description" : "왼쪽을 향한 주먹"
+    },
+    {
+        "emoji" : "🤜",
+        "hexcode" : "1F91C",
+        "description" : "오른쪽을 향한 주먹"
+    },
+    {
+        "emoji" : "👏",
+        "hexcode" : "1F44F",
+        "description" : "박수를 치다"
+    },
+    {
+        "emoji" : "🙌",
+        "hexcode" : "1F64C",
+        "description" : "손을 들다"
+    },
+    {
+        "emoji" : "🫶",
+        "hexcode" : "1FAF6",
+        "description" : "심장 손"
+    },
+    {
+        "emoji" : "👐",
+        "hexcode" : "1F450",
+        "description" : "손을 벌리다"
+    },
+    {
+        "emoji" : "🤲",
+        "hexcode" : "1F932",
+        "description" : "손바닥을 함께 위로"
+    },
+    {
+        "emoji" : "🤝",
+        "hexcode" : "1F91D",
+        "description" : "악수"
+    },
+    {
+        "emoji" : "🙏",
+        "hexcode" : "1F64F",
+        "description" : "접힌 손"
+    },
+    {
+        "emoji" : "✍",
+        "hexcode" : "270D",
+        "description" : "손으로 쓰는"
+    },
+    {
+        "emoji" : "💅",
+        "hexcode" : "1F485",
+        "description" : "매니큐어"
+    },
+    {
+        "emoji" : "🤳",
+        "hexcode" : "1F933",
+        "description" : "셀카"
+    },
+    {
+        "emoji" : "💪",
+        "hexcode" : "1F4AA",
+        "description" : "굴곡된 팔뚝"
+    },
+    {
+        "emoji" : "🦾",
+        "hexcode" : "1F9BE",
+        "description" : "기계 팔"
+    },
+    {
+        "emoji" : "🦿",
+        "hexcode" : "1F9BF",
+        "description" : "기계 다리"
+    },
+    {
+        "emoji" : "🦵",
+        "hexcode" : "1F9B5",
+        "description" : "다리"
+    },
+    {
+        "emoji" : "🦶",
+        "hexcode" : "1F9B6",
+        "description" : "발"
+    },
+    {
+        "emoji" : "👂",
+        "hexcode" : "1F442",
+        "description" : "귀"
+    },
+    {
+        "emoji" : "🦻",
+        "hexcode" : "1F9BB",
+        "description" : "보청기를 착용한 귀"
+    },
+    {
+        "emoji" : "👃",
+        "hexcode" : "1F443",
+        "description" : "코"
+    },
+    {
+        "emoji" : "🧠",
+        "hexcode" : "1F9E0",
+        "description" : "뇌"
+    },
+    {
+        "emoji" : "🫀",
+        "hexcode" : "1FAC0",
+        "description" : "해부학적 심장"
+    },
+    {
+        "emoji" : "🫁",
+        "hexcode" : "1FAC1",
+        "description" : "폐"
+    },
+    {
+        "emoji" : "🦷",
+        "hexcode" : "1F9B7",
+        "description" : "치아"
+    },
+    {
+        "emoji" : "🦴",
+        "hexcode" : "1F9B4",
+        "description" : "뼈"
+    },
+    {
+        "emoji" : "👀",
+        "hexcode" : "1F440",
+        "description" : "눈"
+    },
+    {
+        "emoji" : "👅",
+        "hexcode" : "1F445",
+        "description" : "혀"
+    },
+    {
+        "emoji" : "👄",
+        "hexcode" : "1F444",
+        "description" : "입"
+    },
+    {
+        "emoji" : "🫦",
+        "hexcode" : "1FAE6",
+        "description" : "입술을 깨물다"
+    },
+    {
+        "emoji" : "👶",
+        "hexcode" : "1F476",
+        "description" : "아기"
+    },
+    {
+        "emoji" : "🧒",
+        "hexcode" : "1F9D2",
+        "description" : "어린이"
+    },
+    {
+        "emoji" : "👦",
+        "hexcode" : "1F466",
+        "description" : "소년"
+    },
+    {
+        "emoji" : "👧",
+        "hexcode" : "1F467",
+        "description" : "소녀"
+    },
+    {
+        "emoji" : "🧑",
+        "hexcode" : "1F9D1",
+        "description" : "사람"
+    },
+    {
+        "emoji" : "👱",
+        "hexcode" : "1F471",
+        "description" : "사람: 금발머리"
+    },
+    {
+        "emoji" : "👨",
+        "hexcode" : "1F468",
+        "description" : "남성"
+    },
+    {
+        "emoji" : "🧔",
+        "hexcode" : "1F9D4",
+        "description" : "사람: 수염"
+    },
+    {
+        "emoji" : "👩",
+        "hexcode" : "1F469",
+        "description" : "여성"
+    },
+    {
+        "emoji" : "🧓",
+        "hexcode" : "1F9D3",
+        "description" : "노인"
+    },
+    {
+        "emoji" : "👴",
+        "hexcode" : "1F474",
+        "description" : "늙은 남자"
+    },
+    {
+        "emoji" : "👵",
+        "hexcode" : "1F475",
+        "description" : "늙은 여자"
+    },
+    {
+        "emoji" : "🙍",
+        "hexcode" : "1F64D",
+        "description" : "눈살을 찌푸리는 사람"
+    },
+    {
+        "emoji" : "🙎",
+        "hexcode" : "1F64E",
+        "description" : "삐죽삐죽한 사람"
+    },
+    {
+        "emoji" : "🙅",
+        "hexcode" : "1F645",
+        "description" : "아니오라고 몸짓하는 사람"
+    },
+    {
+        "emoji" : "🙆",
+        "hexcode" : "1F646",
+        "description" : "괜찮다는 몸짓을 하는 사람"
+    },
+    {
+        "emoji" : "💁",
+        "hexcode" : "1F481",
+        "description" : "손을 기울이는 사람"
+    },
+    {
+        "emoji" : "🙋",
+        "hexcode" : "1F64B",
+        "description" : "손을 드는 사람"
+    },
+    {
+        "emoji" : "🧏",
+        "hexcode" : "1F9CF",
+        "description" : "청각 장애인"
+    },
+    {
+        "emoji" : "🙇",
+        "hexcode" : "1F647",
+        "description" : "절하는 사람"
+    },
+    {
+        "emoji" : "🤦",
+        "hexcode" : "1F926",
+        "description" : "얼굴을 찡그린 사람"
+    },
+    {
+        "emoji" : "🤷",
+        "hexcode" : "1F937",
+        "description" : "어깨를 으쓱하는 사람"
+    },
+    {
+        "emoji" : "👮",
+        "hexcode" : "1F46E",
+        "description" : "경찰관"
+    },
+    {
+        "emoji" : "🕵",
+        "hexcode" : "1F575",
+        "description" : "형사"
+    },
+    {
+        "emoji" : "💂",
+        "hexcode" : "1F482",
+        "description" : "경비원"
+    },
+    {
+        "emoji" : "🥷",
+        "hexcode" : "1F977",
+        "description" : "닌자"
+    },
+    {
+        "emoji" : "👷",
+        "hexcode" : "1F477",
+        "description" : "건설 노동자"
+    },
+    {
+        "emoji" : "🫅",
+        "hexcode" : "1FAC5",
+        "description" : "왕관을 쓴 사람"
+    },
+    {
+        "emoji" : "🤴",
+        "hexcode" : "1F934",
+        "description" : "왕자"
+    },
+    {
+        "emoji" : "👸",
+        "hexcode" : "1F478",
+        "description" : "공주"
+    },
+    {
+        "emoji" : "👳",
+        "hexcode" : "1F473",
+        "description" : "터번을 쓴 사람"
+    },
+    {
+        "emoji" : "👲",
+        "hexcode" : "1F472",
+        "description" : "해골모자를 쓴 사람"
+    },
+    {
+        "emoji" : "🧕",
+        "hexcode" : "1F9D5",
+        "description" : "머리스카프를 쓴 여자"
+    },
+    {
+        "emoji" : "🤵",
+        "hexcode" : "1F935",
+        "description" : "턱시도 입은 사람"
+    },
+    {
+        "emoji" : "👰",
+        "hexcode" : "1F470",
+        "description" : "베일을 쓴 사람"
+    },
+    {
+        "emoji" : "🤰",
+        "hexcode" : "1F930",
+        "description" : "임산부"
+    },
+    {
+        "emoji" : "🫃",
+        "hexcode" : "1FAC3",
+        "description" : "임부"
+    },
+    {
+        "emoji" : "🫄",
+        "hexcode" : "1FAC4",
+        "description" : "임신한 사람"
+    },
+    {
+        "emoji" : "🤱",
+        "hexcode" : "1F931",
+        "description" : "모유 수유"
+    },
+    {
+        "emoji" : "👼",
+        "hexcode" : "1F74C",
+        "description" : "아기천사"
+    },
+    {
+        "emoji" : "🎅",
+        "hexcode" : "1F385",
+        "description" : "산타클로스"
+    },
+    {
+        "emoji" : "🤶",
+        "hexcode" : "1F936",
+        "description" : "미세스 클로스"
+    },
+    {
+        "emoji" : "🦸",
+        "hexcode" : "1F9B8",
+        "description" : "슈퍼히어로"
+    },
+    {
+        "emoji" : "🦹",
+        "hexcode" : "1F9B9",
+        "description" : "슈퍼빌런"
+    },
+    {
+        "emoji" : "🧙",
+        "hexcode" : "1F9D9",
+        "description" : "마술사"
+    },
+    {
+        "emoji" : "🧚",
+        "hexcode" : "1F9DA",
+        "description" : "요정"
+    },
+    {
+        "emoji" : "🧛",
+        "hexcode" : "1F9DB",
+        "description" : "뱀파이어"
+    },
+    {
+        "emoji" : "🧜",
+        "hexcode" : "1F9DC",
+        "description" : "인어"
+    },
+    {
+        "emoji" : "🧝",
+        "hexcode" : "1F9DD",
+        "description" : "꼬마 요정"
+    },
+    {
+        "emoji" : "🧞",
+        "hexcode" : "1F9DE",
+        "description" : "요정"
+    },
+    {
+        "emoji" : "🧟",
+        "hexcode" : "1F9DF",
+        "description" : "좀비"
+    },
+    {
+        "emoji" : "🧌",
+        "hexcode" : "1F9CC",
+        "description" : "트롤"
+    },
+    {
+        "emoji" : "💆",
+        "hexcode" : "1F486",
+        "description" : "마사지 받는 사람"
+    },
+    {
+        "emoji" : "💇",
+        "hexcode" : "1F487",
+        "description" : "머리 자르는 사람"
+    },
+    {
+        "emoji" : "🚶",
+        "hexcode" : "1F6B6",
+        "description" : "걷는 사람"
+    },
+    {
+        "emoji" : "🧍",
+        "hexcode" : "1F9CD",
+        "description" : "서있는 사람"
+    },
+    {
+        "emoji" : "🧎",
+        "hexcode" : "1F9CE",
+        "description" : "무릎을 꿇고 있는 사람"
+    },
+    {
+        "emoji" : "🏃",
+        "hexcode" : "1F3C3",
+        "description" : "달리는 사람"
+    },
+    {
+        "emoji" : "💃",
+        "hexcode" : "1F483",
+        "description" : "춤추는 여자"
+    },
+    {
+        "emoji" : "🕺",
+        "hexcode" : "1F57A",
+        "description" : "춤추는 남자"
+    },
+    {
+        "emoji" : "🕴",
+        "hexcode" : "1F574",
+        "description" : "공중에 떠 있는 정장 입은 사람"
+    },
+    {
+        "emoji" : "👯",
+        "hexcode" : "1F46F",
+        "description" : "토끼 귀를 가진 사람들"
+    },
+    {
+        "emoji" : "🧖",
+        "hexcode" : "1F9D6",
+        "description" : "증기 방에 있는 남자"
+    },
+    {
+        "emoji" : "🧗",
+        "hexcode" : "1F9D7",
+        "description" : "등산하는 사람"
+    },
+    {
+        "emoji" : "🤺",
+        "hexcode" : "1F93A",
+        "description" : "펜싱하는 사람"
+    },
+    {
+        "emoji" : "🏇",
+        "hexcode" : "1F3C7",
+        "description" : "경마"
+    },
+    {
+        "emoji" : "🏂",
+        "hexcode" : "1F3C2",
+        "description" : "스노보더"
+    },
+    {
+        "emoji" : "🏌",
+        "hexcode" : "1F3CC",
+        "description" : "골프를 치는 사람"
+    },
+    {
+        "emoji" : "🏄",
+        "hexcode" : "1F3C4",
+        "description" : "서핑하는 사람"
+    },
+    {
+        "emoji" : "🚣",
+        "hexcode" : "1F6A3",
+        "description" : "노 젓는 배"
+    },
+    {
+        "emoji" : "🏊",
+        "hexcode" : "1F6CA",
+        "description" : "수영하는 사람"
+    },
+    {
+        "emoji" : "⛹",
+        "hexcode" : "26F9",
+        "description" : "공을 튀는 사람"
+    },
+    {
+        "emoji" : "🏋",
+        "hexcode" : "1F3CB",
+        "description" : "역기를 드는 사람"
+    },
+    {
+        "emoji" : "🚴",
+        "hexcode" : "1F6B4",
+        "description" : "자전거를 타는 사람"
+    },
+    {
+        "emoji" : "🚵",
+        "hexcode" : "1F6B5",
+        "description" : "산악 자전거를 타는 사람"
+    },
+    {
+        "emoji" : "🤸",
+        "hexcode" : "1F938",
+        "description" : "수레바퀴를 돌리는 사람"
+    },
+    {
+        "emoji" : "🤼",
+        "hexcode" : "1F93C",
+        "description" : "레슬링하는 사람들"
+    },
+    {
+        "emoji" : "🤽",
+        "hexcode" : "1F93D",
+        "description" : "수구를 하는 사람"
+    },
+    {
+        "emoji" : "🤾",
+        "hexcode" : "1F93E",
+        "description" : "핸드볼을 하는 사람"
+    },
+    {
+        "emoji" : "🤹",
+        "hexcode" : "1F939",
+        "description" : "저글링하는 사람"
+    },
+    {
+        "emoji" : "🧘",
+        "hexcode" : "1F9D8",
+        "description" : "연꽃 자세의 사람"
+    },
+    {
+        "emoji" : "🛀",
+        "hexcode" : "1F6C0",
+        "description" : "목욕하는 사람"
+    },
+    {
+        "emoji" : "🛌",
+        "hexcode" : "1F6CC",
+        "description" : "침대에 있는 사람"
+    },
+    {
+        "emoji" : "👭",
+        "hexcode" : "1F46D",
+        "description" : "손을 잡고 있는 여성들"
+    },
+    {
+        "emoji" : "👫",
+        "hexcode" : "1F46B",
+        "description" : "여자와 남자가 손을 잡고"
+    },
+    {
+        "emoji" : "👬",
+        "hexcode" : "1F46C",
+        "description" : "손을 잡고 있는 남자들"
+    },
+    {
+        "emoji" : "💏",
+        "hexcode" : "1F48F",
+        "description" : "키스"
+    },
+    {
+        "emoji" : "👤",
+        "hexcode" : "1F464",
+        "description" : "실루엣의 흉상"
+    },
+    {
+        "emoji" : "👥",
+        "hexcode" : "1F465",
+        "description" : "실루엣의 흉상들"
+    },
+    {
+        "emoji" : "🫂",
+        "hexcode" : "1FAC2",
+        "description" : "포옹하는 사람들"
+    },
+    {
+        "emoji" : "👪",
+        "hexcode" : "1F46A",
+        "description" : "가족"
+    },
+    {
+        "emoji" : "💑",
+        "hexcode" : "1F491",
+        "description" : "마음으로 커플"
+    },
+    {
+        "emoji" : "👣",
+        "hexcode" : "1F463",
+        "description" : "발자취"
+    },
+    {
+        "emoji" : "🦰",
+        "hexcode" : "1F9B0",
+        "description" : "빨강 머리"
+    },
+    {
+        "emoji" : "🦱",
+        "hexcode" : "1F9B1",
+        "description" : "곱슬 머리"
+    },
+    {
+        "emoji" : "🦳",
+        "hexcode" : "1F9B3",
+        "description" : "흰머리"
+    },
+    {
+        "emoji" : "🦲",
+        "hexcode" : "1F9B2",
+        "description" : "대머리"
+    },
+    {
+        "emoji" : "🐵",
+        "hexcode" : "1F435",
+        "description" : "원숭이 얼굴"
+    },
+    {
+        "emoji" : "🐒",
+        "hexcode" : "1F412",
+        "description" : "원숭이"
+    },
+    {
+        "emoji" : "🦍",
+        "hexcode" : "1F98D",
+        "description" : "고릴라"
+    },
+    {
+        "emoji" : "🦧",
+        "hexcode" : "1F9A7",
+        "description" : "오랑우탄"
+    },
+    {
+        "emoji" : "🐶",
+        "hexcode" : "1F436",
+        "description" : "강아지 얼굴"
+    },
+    {
+        "emoji" : "🐕",
+        "hexcode" : "1F415",
+        "description" : "개"
+    },
+    {
+        "emoji" : "🦮",
+        "hexcode" : "1F9AE",
+        "description" : "안내견"
+    },
+    {
+        "emoji" : "🐩",
+        "hexcode" : "1F429",
+        "description" : "푸들"
+    },
+    {
+        "emoji" : "🐺",
+        "hexcode" : "1F43A",
+        "description" : "늑대"
+    },
+    {
+        "emoji" : "🦊",
+        "hexcode" : "1F98A",
+        "description" : "여우"
+    },
+    {
+        "emoji" : "🦝",
+        "hexcode" : "1F99D",
+        "description" : "너구리"
+    },
+    {
+        "emoji" : "🐱",
+        "hexcode" : "1F431",
+        "description" : "고양이 얼굴"
+    },
+    {
+        "emoji" : "🐈",
+        "hexcode" : "1F408",
+        "description" : "고양이"
+    },
+    {
+        "emoji" : "🦁",
+        "hexcode" : "1F981",
+        "description" : "사자"
+    },
+    {
+        "emoji" : "🐯",
+        "hexcode" : "1F42F",
+        "description" : "호랑이 얼굴"
+    },
+    {
+        "emoji" : "🐅",
+        "hexcode" : "1F405",
+        "description" : "호랑이"
+    },
+    {
+        "emoji" : "🐆",
+        "hexcode" : "1F406",
+        "description" : "표범"
+    },
+    {
+        "emoji" : "🐴",
+        "hexcode" : "1F434",
+        "description" : "말 얼굴"
+    },
+    {
+        "emoji" : "🫎",
+        "hexcode" : "1FACE",
+        "description" : "무스"
+    },
+    {
+        "emoji" : "🫏",
+        "hexcode" : "1FACF",
+        "description" : "당나귀"
+    },
+    {
+        "emoji" : "🐎",
+        "hexcode" : "1F40E",
+        "description" : "말"
+    },
+    {
+        "emoji" : "🦄",
+        "hexcode" : "1F984",
+        "description" : "유니콘"
+    },
+    {
+        "emoji" : "🦓",
+        "hexcode" : "1F993",
+        "description" : "얼룩말"
+    },
+    {
+        "emoji" : "🦌",
+        "hexcode" : "1F98C",
+        "description" : "사슴"
+    },
+    {
+        "emoji" : "🦬",
+        "hexcode" : "1F9AC",
+        "description" : "들소"
+    },
+    {
+        "emoji" : "🐮",
+        "hexcode" : "1F42E",
+        "description" : "소의 얼굴"
+    },
+    {
+        "emoji" : "🐂",
+        "hexcode" : "1F402",
+        "description" : "소"
+    },
+    {
+        "emoji" : "🐃",
+        "hexcode" : "1F403",
+        "description" : "물소"
+    },
+    {
+        "emoji" : "🐄",
+        "hexcode" : "1F404",
+        "description" : "젖소"
+    },
+    {
+        "emoji" : "🐷",
+        "hexcode" : "1F437",
+        "description" : "돼지 얼굴"
+    },
+    {
+        "emoji" : "🐖",
+        "hexcode" : "1F416",
+        "description" : "돼지"
+    },
+    {
+        "emoji" : "🐗",
+        "hexcode" : "1F417",
+        "description" : "멧돼지"
+    },
+    {
+        "emoji" : "🐽",
+        "hexcode" : "1F43D",
+        "description" : "돼지코"
+    },
+    {
+        "emoji" : "🐏",
+        "hexcode" : "1F40F",
+        "description" : "양"
+    },
+    {
+        "emoji" : "🐑",
+        "hexcode" : "1F411",
+        "description" : "암양"
+    },
+    {
+        "emoji" : "🐐",
+        "hexcode" : "1F410",
+        "description" : "염소"
+    },
+    {
+        "emoji" : "🐪",
+        "hexcode" : "1F42A",
+        "description" : "낙타"
+    },
+    {
+        "emoji" : "🐫",
+        "hexcode" : "1F42B",
+        "description" : "혹이 두 개인 낙타"
+    },
+    {
+        "emoji" : "🦙",
+        "hexcode" : "1F999",
+        "description" : "라마"
+    },
+    {
+        "emoji" : "🦒",
+        "hexcode" : "1F992",
+        "description" : "기린"
+    },
+    {
+        "emoji" : "🐘",
+        "hexcode" : "1F418",
+        "description" : "코끼리"
+    },
+    {
+        "emoji" : "🦣",
+        "hexcode" : "1F9A3",
+        "description" : "매머드"
+    },
+    {
+        "emoji" : "🦏",
+        "hexcode" : "1F98F",
+        "description" : "코뿔소"
+    },
+    {
+        "emoji" : "🦛",
+        "hexcode" : "1F99B",
+        "description" : "하마"
+    },
+    {
+        "emoji" : "🐭",
+        "hexcode" : "1F42D",
+        "description" : "쥐 얼굴"
+    },
+    {
+        "emoji" : "🐁",
+        "hexcode" : "1F401",
+        "description" : "쥐"
+    },
+    {
+        "emoji" : "🐀",
+        "hexcode" : "1F400",
+        "description" : "검은 쥐"
+    },
+    {
+        "emoji" : "🐹",
+        "hexcode" : "1F439",
+        "description" : "햄스터"
+    },
+    {
+        "emoji" : "🐰",
+        "hexcode" : "1F430",
+        "description" : "토끼 얼굴"
+    },
+    {
+        "emoji" : "🐇",
+        "hexcode" : "1F407",
+        "description" : "토끼"
+    },
+    {
+        "emoji" : "🐿",
+        "hexcode" : "1F43F",
+        "description" : "다람쥐"
+    },
+    {
+        "emoji" : "🦫",
+        "hexcode" : "1F9AB",
+        "description" : "비버"
+    },
+    {
+        "emoji" : "🦔",
+        "hexcode" : "1F994",
+        "description" : "고슴도치"
+    },
+    {
+        "emoji" : "🦇",
+        "hexcode" : "1F987",
+        "description" : "박쥐"
+    },
+    {
+        "emoji" : "🐻",
+        "hexcode" : "1F43B",
+        "description" : "곰"
+    },
+    {
+        "emoji" : "🐨",
+        "hexcode" : "1F428",
+        "description" : "코알라"
+    },
+    {
+        "emoji" : "🐼",
+        "hexcode" : "1F43C",
+        "description" : "팬더"
+    },
+    {
+        "emoji" : "🦥",
+        "hexcode" : "1F9A5",
+        "description" : "나무늘보"
+    },
+    {
+        "emoji" : "🦦",
+        "hexcode" : "1F9A6",
+        "description" : "수달"
+    },
+    {
+        "emoji" : "🦨",
+        "hexcode" : "1F9A8",
+        "description" : "스컹크"
+    },
+    {
+        "emoji" : "🦘",
+        "hexcode" : "1F998",
+        "description" : "캥거루"
+    },
+    {
+        "emoji" : "🦡",
+        "hexcode" : "1F9A1",
+        "description" : "오소리"
+    },
+    {
+        "emoji" : "🐾",
+        "hexcode" : "1F43E",
+        "description" : "발자국"
+    },
+    {
+        "emoji" : "🦃",
+        "hexcode" : "1F983",
+        "description" : "칠면조"
+    },
+    {
+        "emoji" : "🐔",
+        "hexcode" : "1F414",
+        "description" : "치킨"
+    },
+    {
+        "emoji" : "🐓",
+        "hexcode" : "1F413",
+        "description" : "수탉"
+    },
+    {
+        "emoji" : "🐣",
+        "hexcode" : "1F423",
+        "description" : "부화한 병아리"
+    },
+    {
+        "emoji" : "🐤",
+        "hexcode" : "1F424",
+        "description" : "아기 병아리"
+    },
+    {
+        "emoji" : "🐥",
+        "hexcode" : "1F425",
+        "description" : "정면 아기 병아리"
+    },
+    {
+        "emoji" : "🐦",
+        "hexcode" : "1F426",
+        "description" : "새"
+    },
+    {
+        "emoji" : "🐧",
+        "hexcode" : "1F427",
+        "description" : "펭귄"
+    },
+    {
+        "emoji" : "🦅",
+        "hexcode" : "1F985",
+        "description" : "독수리"
+    },
+    {
+        "emoji" : "🦆",
+        "hexcode" : "1F986",
+        "description" : "오리"
+    },
+    {
+        "emoji" : "🦢",
+        "hexcode" : "1F9A2",
+        "description" : "백조"
+    },
+    {
+        "emoji" : "🦉",
+        "hexcode" : "1F989",
+        "description" : "올빼미"
+    },
+    {
+        "emoji" : "🦤",
+        "hexcode" : "1F9A4",
+        "description" : "도도새"
+    },
+    {
+        "emoji" : "🪶",
+        "hexcode" : "1FAB6",
+        "description" : "깃털"
+    },
+    {
+        "emoji" : "🦩",
+        "hexcode" : "1F9A9",
+        "description" : "플라밍고"
+    },
+    {
+        "emoji" : "🦚",
+        "hexcode" : "1F99A",
+        "description" : "공작새"
+    },
+    {
+        "emoji" : "🦜",
+        "hexcode" : "1F99C",
+        "description" : "앵무새"
+    },
+    {
+        "emoji" : "🪽",
+        "hexcode" : "1FABD",
+        "description" : "날개"
+    },
+    {
+        "emoji" : "🪿",
+        "hexcode" : "1FABF",
+        "description" : "거위"
+    },
+    {
+        "emoji" : "🐸",
+        "hexcode" : "1F438",
+        "description" : "개구리"
+    },
+    {
+        "emoji" : "🐊",
+        "hexcode" : "1F40A",
+        "description" : "악어"
+    },
+    {
+        "emoji" : "🐢",
+        "hexcode" : "1F422",
+        "description" : "거북이"
+    },
+    {
+        "emoji" : "🦎",
+        "hexcode" : "1F98E",
+        "description" : "도마뱀"
+    },
+    {
+        "emoji" : "🐍",
+        "hexcode" : "1F40D",
+        "description" : "뱀"
+    },
+    {
+        "emoji" : "🐲",
+        "hexcode" : "1F432",
+        "description" : "용 얼굴"
+    },
+    {
+        "emoji" : "🐉",
+        "hexcode" : "1F409",
+        "description" : "용"
+    },
+    {
+        "emoji" : "🦕",
+        "hexcode" : "1F995",
+        "description" : "공룡"
+    },
+    {
+        "emoji" : "🦖",
+        "hexcode" : "1F996",
+        "description" : "티라노"
+    },
+    {
+        "emoji" : "🐳",
+        "hexcode" : "1F443",
+        "description" : "내뿜는 고래"
+    },
+    {
+        "emoji" : "🐋",
+        "hexcode" : "1F40B",
+        "description" : "고래"
+    },
+    {
+        "emoji" : "🐬",
+        "hexcode" : "1F42C",
+        "description" : "돌고래"
+    },
+    {
+        "emoji" : "🦭",
+        "hexcode" : "1F9AD",
+        "description" : "물개"
+    },
+    {
+        "emoji" : "🐟",
+        "hexcode" : "1F41F",
+        "description" : "물고기"
+    },
+    {
+        "emoji" : "🐠",
+        "hexcode" : "1F420",
+        "description" : "열대어"
+    },
+    {
+        "emoji" : "🐡",
+        "hexcode" : "1F421",
+        "description" : "복어"
+    },
+    {
+        "emoji" : "🦈",
+        "hexcode" : "1F988",
+        "description" : "상어"
+    },
+    {
+        "emoji" : "🐙",
+        "hexcode" : "1F419",
+        "description" : "문어"
+    },
+    {
+        "emoji" : "🐚",
+        "hexcode" : "1F41A",
+        "description" : "소라"
+    },
+    {
+        "emoji" : "🪸",
+        "hexcode" : "1FAB8",
+        "description" : "산호"
+    },
+    {
+        "emoji" : "🪼",
+        "hexcode" : "1FABC",
+        "description" : "해파리"
+    },
+    {
+        "emoji" : "🐌",
+        "hexcode" : "1F40C",
+        "description" : "달팽이"
+    },
+    {
+        "emoji" : "🦋",
+        "hexcode" : "1F98B",
+        "description" : "나비"
+    },
+    {
+        "emoji" : "🐛",
+        "hexcode" : "1F41B",
+        "description" : "벌레"
+    },
+    {
+        "emoji" : "🐜",
+        "hexcode" : "1F41C",
+        "description" : "개미"
+    },
+    {
+        "emoji" : "🐝",
+        "hexcode" : "1F41D",
+        "description" : "꿀벌"
+    },
+    {
+        "emoji" : "🪲",
+        "hexcode" : "1FAB2",
+        "description" : "딱정벌레"
+    },
+    {
+        "emoji" : "🐞",
+        "hexcode" : "1F41E",
+        "description" : "무당벌레"
+    },
+    {
+        "emoji" : "🦗",
+        "hexcode" : "1F997",
+        "description" : "귀뚜라미"
+    },
+    {
+        "emoji" : "🪳",
+        "hexcode" : "1FAB3",
+        "description" : "바퀴벌레"
+    },
+    {
+        "emoji" : "🕸",
+        "hexcode" : "1F578",
+        "description" : "거미줄"
+    },
+    {
+        "emoji" : "🕷",
+        "hexcode" : "1F577",
+        "description" : "거미"
+    },
+    {
+        "emoji" : "🦂",
+        "hexcode" : "1F982",
+        "description" : "전갈"
+    },
+    {
+        "emoji" : "🦟",
+        "hexcode" : "1F99F",
+        "description" : "모기"
+    },
+    {
+        "emoji" : "🪰",
+        "hexcode" : "1FAB0",
+        "description" : "파리"
+    },
+    {
+        "emoji" : "🪱",
+        "hexcode" : "1FAB1",
+        "description" : "지렁이"
+    },
+    {
+        "emoji" : "🦠",
+        "hexcode" : "1F9A0",
+        "description" : "미생물"
+    },
+    {
+        "emoji" : "💐",
+        "hexcode" : "1F490",
+        "description" : "꽃다발"
+    },
+    {
+        "emoji" : "🌸",
+        "hexcode" : "1F338",
+        "description" : "벚꽃"
+    },
+    {
+        "emoji" : "💮",
+        "hexcode" : "1F4AE",
+        "description" : "흰 꽃"
+    },
+    {
+        "emoji" : "🪷",
+        "hexcode" : "1FAB7",
+        "description" : "연꽃"
+    },
+    {
+        "emoji" : "🌹",
+        "hexcode" : "1F339",
+        "description" : "장미"
+    },
+    {
+        "emoji" : "🥀",
+        "hexcode" : "1F940",
+        "description" : "시든 꽃"
+    },
+    {
+        "emoji" : "🌺",
+        "hexcode" : "1F33A",
+        "description" : "히비스커스"
+    },
+    {
+        "emoji" : "🌻",
+        "hexcode" : "1F33B",
+        "description" : "해바라기"
+    },
+    {
+        "emoji" : "🌼",
+        "hexcode" : "1F33C",
+        "description" : "꽃을 피우다"
+    },
+    {
+        "emoji" : "🌷",
+        "hexcode" : "1F337",
+        "description" : "튤립"
+    },
+    {
+        "emoji" : "🪻",
+        "hexcode" : "1FABB",
+        "description" : "히아신스"
+    },
+    {
+        "emoji" : "🌱",
+        "hexcode" : "1F331",
+        "description" : "모종"
+    },
+    {
+        "emoji" : "🪴",
+        "hexcode" : "1FAB4",
+        "description" : "화분에 심은 식물"
+    },
+    {
+        "emoji" : "🌲",
+        "hexcode" : "1F332",
+        "description" : "상록수"
+    },
+    {
+        "emoji" : "🌳",
+        "hexcode" : "1F333",
+        "description" : "낙엽수"
+    },
+    {
+        "emoji" : "🌴",
+        "hexcode" : "1F334",
+        "description" : "야자수"
+    },
+    {
+        "emoji" : "🌵",
+        "hexcode" : "1F335",
+        "description" : "선인장"
+    },
+    {
+        "emoji" : "🌾",
+        "hexcode" : "1F33E",
+        "description" : "벼"
+    },
+    {
+        "emoji" : "🌿",
+        "hexcode" : "1F33F",
+        "description" : "약초"
+    },
+    {
+        "emoji" : "🍀",
+        "hexcode" : "1F340",
+        "description" : "네 잎 클로버"
+    },
+    {
+        "emoji" : "🍁",
+        "hexcode" : "1F341",
+        "description" : "단풍잎"
+    },
+    {
+        "emoji" : "🍂",
+        "hexcode" : "1F342",
+        "description" : "낙엽"
+    },
+    {
+        "emoji" : "🍃",
+        "hexcode" : "1F343",
+        "description" : "바람에 흩날리는 나뭇잎"
+    },
+    {
+        "emoji" : "🪹",
+        "hexcode" : "1FAB9",
+        "description" : "빈둥지"
+    },
+    {
+        "emoji" : "🪺",
+        "hexcode" : "1FABA",
+        "description" : "알을 품다"
+    },
+    {
+        "emoji" : "🍄",
+        "hexcode" : "1F344",
+        "description" : "버섯"
+    },
+    {
+        "emoji" : "🍇",
+        "hexcode" : "1F347",
+        "description" : "포도"
+    },
+    {
+        "emoji" : "🍈",
+        "hexcode" : "1F348",
+        "description" : "메론"
+    },
+    {
+        "emoji" : "🍉",
+        "hexcode" : "1F349",
+        "description" : "수박"
+    },
+    {
+        "emoji" : "🍊",
+        "hexcode" : "1F34A",
+        "description" : "귤"
+    },
+    {
+        "emoji" : "🍋",
+        "hexcode" : "1F34B",
+        "description" : "레몬"
+    },
+    {
+        "emoji" : "🍌",
+        "hexcode" : "1F34C",
+        "description" : "바나나"
+    },
+    {
+        "emoji" : "🍍",
+        "hexcode" : "1F34D",
+        "description" : "파인애플"
+    },
+    {
+        "emoji" : "🥭",
+        "hexcode" : "1F96D",
+        "description" : "망고"
+    },
+    {
+        "emoji" : "🍎",
+        "hexcode" : "1F34E",
+        "description" : "붉은 사과"
+    },
+    {
+        "emoji" : "🍏",
+        "hexcode" : "1F34F",
+        "description" : "청사과"
+    },
+    {
+        "emoji" : "🍐",
+        "hexcode" : "1F350",
+        "description" : "먹는 배"
+    },
+    {
+        "emoji" : "🍑",
+        "hexcode" : "1F351",
+        "description" : "복숭아"
+    },
+    {
+        "emoji" : "🍒",
+        "hexcode" : "1F352",
+        "description" : "체리"
+    },
+    {
+        "emoji" : "🍓",
+        "hexcode" : "1F353",
+        "description" : "딸기"
+    },
+    {
+        "emoji" : "🫐",
+        "hexcode" : "1FAD0",
+        "description" : "블루베리"
+    },
+    {
+        "emoji" : "🥝",
+        "hexcode" : "1F95D",
+        "description" : "키위"
+    },
+    {
+        "emoji" : "🍅",
+        "hexcode" : "1F345",
+        "description" : "토마토"
+    },
+    {
+        "emoji" : "🫒",
+        "hexcode" : "1FAD2",
+        "description" : "올리브"
+    },
+    {
+        "emoji" : "🥥",
+        "hexcode" : "1F965",
+        "description" : "코코넛"
+    },
+    {
+        "emoji" : "🥑",
+        "hexcode" : "1F951",
+        "description" : "아보카도"
+    },
+    {
+        "emoji" : "🍆",
+        "hexcode" : "1F346",
+        "description" : "가지"
+    },
+    {
+        "emoji" : "🥔",
+        "hexcode" : "1F954",
+        "description" : "감자"
+    },
+    {
+        "emoji" : "🥕",
+        "hexcode" : "1F955",
+        "description" : "당근"
+    },
+    {
+        "emoji" : "🌽",
+        "hexcode" : "1F33D",
+        "description" : "옥수수"
+    },
+    {
+        "emoji" : "🫑",
+        "hexcode" : "1FAD1",
+        "description" : "피망"
+    },
+    {
+        "emoji" : "🥒",
+        "hexcode" : "1F952",
+        "description" : "오이"
+    },
+    {
+        "emoji" : "🥬",
+        "hexcode" : "1F96C",
+        "description" : "배추"
+    },
+    {
+        "emoji" : "🥦",
+        "hexcode" : "1F966",
+        "description" : "브로콜리"
+    },
+    {
+        "emoji" : "🧄",
+        "hexcode" : "1F9C4",
+        "description" : "마늘"
+    },
+    {
+        "emoji" : "🧅",
+        "hexcode" : "1F9C5",
+        "description" : "양파"
+    },
+    {
+        "emoji" : "🥜",
+        "hexcode" : "1F95C",
+        "description" : "땅콩"
+    },
+    {
+        "emoji" : "🫘",
+        "hexcode" : "1FAD8",
+        "description" : "콩류"
+    },
+    {
+        "emoji" : "🌰",
+        "hexcode" : "1F330",
+        "description" : "밤송이"
+    },
+    {
+        "emoji" : "🫚",
+        "hexcode" : "1FADA",
+        "description" : "생강 뿌리"
+    },
+    {
+        "emoji" : "🫛",
+        "hexcode" : "1FADB",
+        "description" : "완두콩"
+    },
+    {
+        "emoji" : "🍞",
+        "hexcode" : "1F35E",
+        "description" : "빵"
+    },
+    {
+        "emoji" : "🥐",
+        "hexcode" : "1F950",
+        "description" : "크루아상"
+    },
+    {
+        "emoji" : "🥖",
+        "hexcode" : "1F956",
+        "description" : "바게트 빵"
+    },
+    {
+        "emoji" : "🫓",
+        "hexcode" : "1FAD3",
+        "description" : "납작한 빵"
+    },
+    {
+        "emoji" : "🥨",
+        "hexcode" : "1F968",
+        "description" : "프레첼"
+    },
+    {
+        "emoji" : "🥞",
+        "hexcode" : "1F95E",
+        "description" : "호떡"
+    },
+    {
+        "emoji" : "🥯",
+        "hexcode" : "1F96F",
+        "description" : "베이글"
+    },
+    {
+        "emoji" : "🧇",
+        "hexcode" : "1F9C7",
+        "description" : "와플"
+    },
+    {
+        "emoji" : "🧀",
+        "hexcode" : "1F9C0",
+        "description" : "치즈"
+    },
+    {
+        "emoji" : "🍖",
+        "hexcode" : "1F356",
+        "description" : "뼈 있는 고기"
+    },
+    {
+        "emoji" : "🍗",
+        "hexcode" : "1F357",
+        "description" : "양다리 고기"
+    },
+    {
+        "emoji" : "🥩",
+        "hexcode" : "1F969",
+        "description" : "살코기"
+    },
+    {
+        "emoji" : "🥓",
+        "hexcode" : "1F953",
+        "description" : "베이컨"
+    },
+    {
+        "emoji" : "🍔",
+        "hexcode" : "1F354",
+        "description" : "햄버거"
+    },
+    {
+        "emoji" : "🍟",
+        "hexcode" : "1F35F",
+        "description" : "감자튀김"
+    },
+    {
+        "emoji" : "🍕",
+        "hexcode" : "1F355",
+        "description" : "피자"
+    },
+    {
+        "emoji" : "🌭",
+        "hexcode" : "1F32D",
+        "description" : "핫도그"
+    },
+    {
+        "emoji" : "🥪",
+        "hexcode" : "1F96A",
+        "description" : "샌드위치"
+    },
+    {
+        "emoji" : "🌮",
+        "hexcode" : "1F32E",
+        "description" : "타코"
+    },
+    {
+        "emoji" : "🌯",
+        "hexcode" : "1F32F",
+        "description" : "부리토"
+    },
+    {
+        "emoji" : "🫔",
+        "hexcode" : "1FAD4",
+        "description" : "타말"
+    },
+    {
+        "emoji" : "🥙",
+        "hexcode" : "1F959",
+        "description" : "속이 꽉 찬 납작빵"
+    },
+    {
+        "emoji" : "🧆",
+        "hexcode" : "1F9C6",
+        "description" : "파라펠"
+    },
+    {
+        "emoji" : "🥚",
+        "hexcode" : "1F95A",
+        "description" : "달걀"
+    },
+    {
+        "emoji" : "🍳",
+        "hexcode" : "1F373",
+        "description" : "요리"
+    },
+    {
+        "emoji" : "🥘",
+        "hexcode" : "1F958",
+        "description" : "얕은 냄비의 음식"
+    },
+    {
+        "emoji" : "🍲",
+        "hexcode" : "1F372",
+        "description" : "냄비의 음식"
+    },
+    {
+        "emoji" : "🫕",
+        "hexcode" : "1FAD5",
+        "description" : "퐁듀"
+    },
+    {
+        "emoji" : "🥣",
+        "hexcode" : "1F963",
+        "description" : "숟가락으로 그릇에 담다"
+    },
+    {
+        "emoji" : "🥗",
+        "hexcode" : "1F957",
+        "description" : "그린 샐러드"
+    },
+    {
+        "emoji" : "🍿",
+        "hexcode" : "1F37F",
+        "description" : "팝콘"
+    },
+    {
+        "emoji" : "🧈",
+        "hexcode" : "1F9C8",
+        "description" : "버터"
+    },
+    {
+        "emoji" : "🧂",
+        "hexcode" : "1F9C2",
+        "description" : "소금"
+    },
+    {
+        "emoji" : "🥫",
+        "hexcode" : "1F96B",
+        "description" : "통조림"
+    },
+    {
+        "emoji" : "🍱",
+        "hexcode" : "1F371",
+        "description" : "도시락통"
+    },
+    {
+        "emoji" : "🍘",
+        "hexcode" : "1F358",
+        "description" : "쌀 과자"
+    },
+    {
+        "emoji" : "🍙",
+        "hexcode" : "1F359",
+        "description" : "주먹밥"
+    },
+    {
+        "emoji" : "🍚",
+        "hexcode" : "1F35A",
+        "description" : "지은 밥"
+    },
+    {
+        "emoji" : "🍛",
+        "hexcode" : "1F35B",
+        "description" : "카레라이스"
+    },
+    {
+        "emoji" : "🍜",
+        "hexcode" : "1F35C",
+        "description" : "김이 모락모락 나는 그릇"
+    },
+    {
+        "emoji" : "🍝",
+        "hexcode" : "1F35D",
+        "description" : "스파게티"
+    },
+    {
+        "emoji" : "🍠",
+        "hexcode" : "1F360",
+        "description" : "군고구마"
+    },
+    {
+        "emoji" : "🍢",
+        "hexcode" : "1F362",
+        "description" : "꼬지"
+    },
+    {
+        "emoji" : "🍣",
+        "hexcode" : "1F363",
+        "description" : "스시"
+    },
+    {
+        "emoji" : "🍤",
+        "hexcode" : "1F364",
+        "description" : "새우튀김"
+    },
+    {
+        "emoji" : "🍥",
+        "hexcode" : "1F365",
+        "description" : "어묵"
+    },
+    {
+        "emoji" : "🥮",
+        "hexcode" : "1F96E",
+        "description" : "월병"
+    },
+    {
+        "emoji" : "🍡",
+        "hexcode" : "1F361",
+        "description" : "당고"
+    },
+    {
+        "emoji" : "🥟",
+        "hexcode" : "1F95F",
+        "description" : "만두"
+    },
+    {
+        "emoji" : "🥠",
+        "hexcode" : "1F960",
+        "description" : "포춘 쿠키"
+    },
+    {
+        "emoji" : "🥡",
+        "hexcode" : "1F961",
+        "description" : "테이크아웃 박스"
+    },
+    {
+        "emoji" : "🦀",
+        "hexcode" : "1F980",
+        "description" : "게"
+    },
+    {
+        "emoji" : "🦞",
+        "hexcode" : "1F99E",
+        "description" : "바다가재"
+    },
+    {
+        "emoji" : "🦐",
+        "hexcode" : "1F990",
+        "description" : "새우"
+    },
+    {
+        "emoji" : "🦑",
+        "hexcode" : "1F991",
+        "description" : "오징어"
+    },
+    {
+        "emoji" : "🦪",
+        "hexcode" : "1F9AA",
+        "description" : "굴"
+    },
+    {
+        "emoji" : "🍦",
+        "hexcode" : "1F366",
+        "description" : "소프트 아이스크림"
+    },
+    {
+        "emoji" : "🍧",
+        "hexcode" : "1F367",
+        "description" : "빙수"
+    },
+    {
+        "emoji" : "🍨",
+        "hexcode" : "1F368",
+        "description" : "아이스크림"
+    },
+    {
+        "emoji" : "🍩",
+        "hexcode" : "1F369",
+        "description" : "도넛"
+    },
+    {
+        "emoji" : "🍪",
+        "hexcode" : "1F36A",
+        "description" : "쿠키"
+    },
+    {
+        "emoji" : "🎂",
+        "hexcode" : "1F382",
+        "description" : "생일 케이크"
+    },
+    {
+        "emoji" : "🍰",
+        "hexcode" : "1F370",
+        "description" : "조각 케익"
+    },
+    {
+        "emoji" : "🧁",
+        "hexcode" : "1F9C1",
+        "description" : "컵케이크"
+    },
+    {
+        "emoji" : "🥧",
+        "hexcode" : "1F967",
+        "description" : "파이"
+    },
+    {
+        "emoji" : "🍫",
+        "hexcode" : "1F36B",
+        "description" : "초콜릿 바"
+    },
+    {
+        "emoji" : "🍬",
+        "hexcode" : "1F36C",
+        "description" : "사탕"
+    },
+    {
+        "emoji" : "🍭",
+        "hexcode" : "1F36D",
+        "description" : "막대사탕"
+    },
+    {
+        "emoji" : "🍮",
+        "hexcode" : "1F36E",
+        "description" : "푸딩"
+    },
+    {
+        "emoji" : "🍯",
+        "hexcode" : "1F36F",
+        "description" : "꿀단지"
+    },
+    {
+        "emoji" : "🍼",
+        "hexcode" : "1F37C",
+        "description" : "젖병"
+    },
+    {
+        "emoji" : "🥛",
+        "hexcode" : "1F95B",
+        "description" : "우유 한 잔"
+    },
+    {
+        "emoji" : "☕",
+        "hexcode" : "2615",
+        "description" : "뜨거운 음료"
+    },
+    {
+        "emoji" : "🫖",
+        "hexcode" : "1FAD6",
+        "description" : "찻주전자"
+    },
+    {
+        "emoji" : "🍵",
+        "hexcode" : "1F375",
+        "description" : "손이 없는 찻잔"
+    },
+    {
+        "emoji" : "🍶",
+        "hexcode" : "1F376",
+        "description" : "사케"
+    },
+    {
+        "emoji" : "🍾",
+        "hexcode" : "1F37E",
+        "description" : "코르크 마개가 달린 병"
+    },
+    {
+        "emoji" : "🍷",
+        "hexcode" : "1F377",
+        "description" : "포도주 잔"
+    },
+    {
+        "emoji" : "🍸",
+        "hexcode" : "1F378",
+        "description" : "칵테일 잔"
+    },
+    {
+        "emoji" : "🍹",
+        "hexcode" : "1F379",
+        "description" : "열대 음료"
+    },
+    {
+        "emoji" : "🍺",
+        "hexcode" : "1F37A",
+        "description" : "맥주 머그잔"
+    },
+    {
+        "emoji" : "🍻",
+        "hexcode" : "1F37B",
+        "description" : "건배하는 맥주잔"
+    },
+    {
+        "emoji" : "🥂",
+        "hexcode" : "1F942",
+        "description" : "건배하는 샴페인잔"
+    },
+    {
+        "emoji" : "🥃",
+        "hexcode" : "1F943",
+        "description" : "텀블러 글라스"
+    },
+    {
+        "emoji" : "🫗",
+        "hexcode" : "1FAD7",
+        "description" : "쏟아지는 액체"
+    },
+    {
+        "emoji" : "🥤",
+        "hexcode" : "1F964",
+        "description" : "빨대가 든 컵"
+    },
+    {
+        "emoji" : "🧋",
+        "hexcode" : "1F9CB",
+        "description" : "버블티"
+    },
+    {
+        "emoji" : "🧃",
+        "hexcode" : "1F9C3",
+        "description" : "팩 음료수"
+    },
+    {
+        "emoji" : "🧉",
+        "hexcode" : "1F9C9",
+        "description" : "코코넛 음료수"
+    },
+    {
+        "emoji" : "🧊",
+        "hexcode" : "1F9CA",
+        "description" : "얼음"
+    },
+    {
+        "emoji" : "🥢",
+        "hexcode" : "1F962",
+        "description" : "젓가락"
+    },
+    {
+        "emoji" : "🍴",
+        "hexcode" : "1F374",
+        "description" : "포크 나이프"
+    },
+    {
+        "emoji" : "🥄",
+        "hexcode" : "1F944",
+        "description" : "숟가락"
+    },
+    {
+        "emoji" : "🔪",
+        "hexcode" : "1F52A",
+        "description" : "식칼"
+    },
+    {
+        "emoji" : "🫙",
+        "hexcode" : "1FAD9",
+        "description" : "항아리"
+    },
+    {
+        "emoji" : "🏺",
+        "hexcode" : "1F3FA",
+        "description" : "암포라"
+    },
+    {
+        "emoji" : "🌍",
+        "hexcode" : "1F30D",
+        "description" : "유럽-아프리카를 보여주는 지구본"
+    },
+    {
+        "emoji" : "🌎",
+        "hexcode" : "1F30E",
+        "description" : "아메리카 대륙을 보여주는 지구본"
+    },
+    {
+        "emoji" : "🌏",
+        "hexcode" : "1F30F",
+        "description" : "아시아-호주를 보여주는 지구본"
+    },
+    {
+        "emoji" : "🌐",
+        "hexcode" : "1F310",
+        "description" : "자오선이 있는 지구본"
+    },
+    {
+        "emoji" : "🗾",
+        "hexcode" : "1F5FE",
+        "description" : "일본의 지도"
+    },
+    {
+        "emoji" : "🧭",
+        "hexcode" : "1F9ED",
+        "description" : "나침반"
+    },
+    {
+        "emoji" : "⛰",
+        "hexcode" : "26F0",
+        "description" : "산"
+    },
+    {
+        "emoji" : "🌋",
+        "hexcode" : "1F30B",
+        "description" : "화산"
+    },
+    {
+        "emoji" : "🗻",
+        "hexcode" : "1F5FB",
+        "description" : "후지산"
+    },
+    {
+        "emoji" : "🏕",
+        "hexcode" : "1F3D5",
+        "description" : "캠핑"
+    },
+    {
+        "emoji" : "🏖",
+        "hexcode" : "1F3D6",
+        "description" : "파라솔이 있는 해변"
+    },
+    {
+        "emoji" : "🏜",
+        "hexcode" : "1F3DC",
+        "description" : "사막"
+    },
+    {
+        "emoji" : "🏝",
+        "hexcode" : "1F3DD",
+        "description" : "무인도"
+    },
+    {
+        "emoji" : "🏞",
+        "hexcode" : "1F3DE",
+        "description" : "국립공원"
+    },
+    {
+        "emoji" : "🏟",
+        "hexcode" : "1F3DF",
+        "description" : "경기장"
+    },
+    {
+        "emoji" : "🏛",
+        "hexcode" : "1F3DB",
+        "description" : "고전적인 건축물"
+    },
+    {
+        "emoji" : "🏗",
+        "hexcode" : "1F3D7",
+        "description" : "건축 공사"
+    },
+    {
+        "emoji" : "🧱",
+        "hexcode" : "1F9F1",
+        "description" : "벽돌"
+    },
+    {
+        "emoji" : "🪨",
+        "hexcode" : "1FAA8",
+        "description" : "바위"
+    },
+    {
+        "emoji" : "🪵",
+        "hexcode" : "1FAB5",
+        "description" : "나무"
+    },
+    {
+        "emoji" : "🛖",
+        "hexcode" : "1F6D6",
+        "description" : "움막"
+    },
+    {
+        "emoji" : "🏘",
+        "hexcode" : "1F3D8",
+        "description" : "집들"
+    },
+    {
+        "emoji" : "🏚",
+        "hexcode" : "1F3DA",
+        "description" : "폐가"
+    },
+    {
+        "emoji" : "🏠",
+        "hexcode" : "1F3E0",
+        "description" : "집"
+    },
+    {
+        "emoji" : "🏡",
+        "hexcode" : "1F3E1",
+        "description" : "정원이 딸린 집"
+    },
+    {
+        "emoji" : "🏢",
+        "hexcode" : "1F3E2",
+        "description" : "사옥"
+    },
+    {
+        "emoji" : "🏣",
+        "hexcode" : "1F3E3",
+        "description" : "일본우체국"
+    },
+    {
+        "emoji" : "🏤",
+        "hexcode" : "1F3E4",
+        "description" : "우체국"
+    },
+    {
+        "emoji" : "🏥",
+        "hexcode" : "1F3E5",
+        "description" : "병원"
+    },
+    {
+        "emoji" : "🏦",
+        "hexcode" : "1F3E6",
+        "description" : "은행"
+    },
+    {
+        "emoji" : "🏨",
+        "hexcode" : "1F3E8",
+        "description" : "호텔"
+    },
+    {
+        "emoji" : "🏩",
+        "hexcode" : "1F3E9",
+        "description" : "러브호텔"
+    },
+    {
+        "emoji" : "🏪",
+        "hexcode" : "1F3EA",
+        "description" : "편의점"
+    },
+    {
+        "emoji" : "🏫",
+        "hexcode" : "1F3EB",
+        "description" : "학교"
+    },
+    {
+        "emoji" : "🏬",
+        "hexcode" : "1F3EC",
+        "description" : "백화점"
+    },
+    {
+        "emoji" : "🏭",
+        "hexcode" : "1F3ED",
+        "description" : "공장"
+    },
+    {
+        "emoji" : "🏯",
+        "hexcode" : "1F3EF",
+        "description" : "왜성"
+    },
+    {
+        "emoji" : "🏰",
+        "hexcode" : "1F3F0",
+        "description" : "성"
+    },
+    {
+        "emoji" : "💒",
+        "hexcode" : "1F492",
+        "description" : "웨딩"
+    },
+    {
+        "emoji" : "🗼",
+        "hexcode" : "1F5FC",
+        "description" : "도쿄 타워"
+    },
+    {
+        "emoji" : "🗽",
+        "hexcode" : "1F5FD",
+        "description" : "자유의 여신상"
+    },
+    {
+        "emoji" : "⛪",
+        "hexcode" : "26EA",
+        "description" : "교회"
+    },
+    {
+        "emoji" : "🕌",
+        "hexcode" : "1F54C",
+        "description" : "모스크"
+    },
+    {
+        "emoji" : "🛕",
+        "hexcode" : "1F6D5",
+        "description" : "힌두교 사원"
+    },
+    {
+        "emoji" : "🕍",
+        "hexcode" : "1F54D",
+        "description" : "유대교 회당"
+    },
+    {
+        "emoji" : "⛩",
+        "hexcode" : "26E9",
+        "description" : "신사"
+    },
+    {
+        "emoji" : "🕋",
+        "hexcode" : "1F54B",
+        "description" : "카바"
+    },
+    {
+        "emoji" : "⛲",
+        "hexcode" : "26F2",
+        "description" : "분수"
+    },
+    {
+        "emoji" : "⛺",
+        "hexcode" : "26FA",
+        "description" : "천막을 치다"
+    },
+    {
+        "emoji" : "🌁",
+        "hexcode" : "1F301",
+        "description" : "안개가 자욱한"
+    },
+    {
+        "emoji" : "🌃",
+        "hexcode" : "1F303",
+        "description" : "별이 빛나는 밤"
+    },
+    {
+        "emoji" : "🏙",
+        "hexcode" : "1F3D9",
+        "description" : "도시의 풍경"
+    },
+    {
+        "emoji" : "🌄",
+        "hexcode" : "1F304",
+        "description" : "산을 넘는 해돋이"
+    },
+    {
+        "emoji" : "🌅",
+        "hexcode" : "1F305",
+        "description" : "해돋이"
+    },
+    {
+        "emoji" : "🌆",
+        "hexcode" : "1F306",
+        "description" : "해질녘의 도시 풍경"
+    },
+    {
+        "emoji" : "🌇",
+        "hexcode" : "1F307",
+        "description" : "석양"
+    },
+    {
+        "emoji" : "🌉",
+        "hexcode" : "1F309",
+        "description" : "밤에 다리를 놓음"
+    },
+    {
+        "emoji" : "♨",
+        "hexcode" : "2668",
+        "description" : "온천"
+    },
+    {
+        "emoji" : "🎠",
+        "hexcode" : "1F3A0",
+        "description" : "회전목마"
+    },
+    {
+        "emoji" : "🛝",
+        "hexcode" : "1F6DD",
+        "description" : "놀이터 미끄럼틀"
+    },
+    {
+        "emoji" : "🎡",
+        "hexcode" : "1F3A1",
+        "description" : "관람차"
+    },
+    {
+        "emoji" : "🎢",
+        "hexcode" : "1F3A2",
+        "description" : "롤러코스터"
+    },
+    {
+        "emoji" : "💈",
+        "hexcode" : "1F488",
+        "description" : "이발소"
+    },
+    {
+        "emoji" : "🎪",
+        "hexcode" : "1F3AA",
+        "description" : "서커스 텐트"
+    },
+    {
+        "emoji" : "🚂",
+        "hexcode" : "1F682",
+        "description" : "기관차"
+    },
+    {
+        "emoji" : "🚃",
+        "hexcode" : "1F683",
+        "description" : "전철"
+    },
+    {
+        "emoji" : "🚄",
+        "hexcode" : "1F684",
+        "description" : "고속 열차"
+    },
+    {
+        "emoji" : "🚅",
+        "hexcode" : "1F685",
+        "description" : "신칸센"
+    },
+    {
+        "emoji" : "🚆",
+        "hexcode" : "1F686",
+        "description" : "기차"
+    },
+    {
+        "emoji" : "🚇",
+        "hexcode" : "1F687",
+        "description" : "메트로"
+    },
+    {
+        "emoji" : "🚈",
+        "hexcode" : "1F688",
+        "description" : "경전철"
+    },
+    {
+        "emoji" : "🚉",
+        "hexcode" : "1F689",
+        "description" : "역"
+    },
+    {
+        "emoji" : "🚊",
+        "hexcode" : "1F68A",
+        "description" : "전차"
+    },
+    {
+        "emoji" : "🚝",
+        "hexcode" : "1F69D",
+        "description" : "모노레일"
+    },
+    {
+        "emoji" : "🚞",
+        "hexcode" : "1F69E",
+        "description" : "산악 철도"
+    },
+    {
+        "emoji" : "🚋",
+        "hexcode" : "1F68B",
+        "description" : "전차"
+    },
+    {
+        "emoji" : "🚌",
+        "hexcode" : "1F68C",
+        "description" : "버스"
+    },
+    {
+        "emoji" : "🚍",
+        "hexcode" : "1F68D",
+        "description" : "오는 버스"
+    },
+    {
+        "emoji" : "🚎",
+        "hexcode" : "1F68E",
+        "description" : "트롤리버스"
+    },
+    {
+        "emoji" : "🚐",
+        "hexcode" : "1F690",
+        "description" : "미니버스"
+    },
+    {
+        "emoji" : "🚑",
+        "hexcode" : "1F691",
+        "description" : "구급차"
+    },
+    {
+        "emoji" : "🚒",
+        "hexcode" : "1F692",
+        "description" : "소방차"
+    },
+    {
+        "emoji" : "🚓",
+        "hexcode" : "1F693",
+        "description" : "경찰차"
+    },
+    {
+        "emoji" : "🚔",
+        "hexcode" : "1F694",
+        "description" : "마주 오는 경찰차"
+    },
+    {
+        "emoji" : "🚕",
+        "hexcode" : "1F695",
+        "description" : "택시"
+    },
+    {
+        "emoji" : "🚖",
+        "hexcode" : "1F696",
+        "description" : "마주 오는 택시"
+    },
+    {
+        "emoji" : "🚗",
+        "hexcode" : "1F697",
+        "description" : "자동차"
+    },
+    {
+        "emoji" : "🚘",
+        "hexcode" : "1F698",
+        "description" : "마주 오는 자동차"
+    },
+    {
+        "emoji" : "🚙",
+        "hexcode" : "1F699",
+        "description" : "스포츠 유틸리티 차량"
+    },
+    {
+        "emoji" : "🛻",
+        "hexcode" : "1F6FB",
+        "description" : "소형 오픈 트럭"
+    },
+    {
+        "emoji" : "🚚",
+        "hexcode" : "1F69A",
+        "description" : "배달차"
+    },
+    {
+        "emoji" : "🚛",
+        "hexcode" : "1F69B",
+        "description" : "관절식 화물차"
+    },
+    {
+        "emoji" : "🚜",
+        "hexcode" : "1F69C",
+        "description" : "트랙터"
+    },
+    {
+        "emoji" : "🏎",
+        "hexcode" : "1F3CE",
+        "description" : "경주용 자동차"
+    },
+    {
+        "emoji" : "🏍",
+        "hexcode" : "1F3CD",
+        "description" : "오토바이"
+    },
+    {
+        "emoji" : "🛵",
+        "hexcode" : "1F6F5",
+        "description" : "모터 스쿠터"
+    },
+    {
+        "emoji" : "🦽",
+        "hexcode" : "1F9BD",
+        "description" : "수동 휠체어"
+    },
+    {
+        "emoji" : "🦼",
+        "hexcode" : "1F9BC",
+        "description" : "전동 휠체어"
+    },
+    {
+        "emoji" : "🛺",
+        "hexcode" : "1F6FA",
+        "description" : "자동 인력거"
+    },
+    {
+        "emoji" : "🚲",
+        "hexcode" : "1F6B2",
+        "description" : "자전거"
+    },
+    {
+        "emoji" : "🛴",
+        "hexcode" : "1F6F4",
+        "description" : "킥 스쿠터"
+    },
+    {
+        "emoji" : "🛹",
+        "hexcode" : "1F6F9",
+        "description" : "스케이트보드"
+    },
+    {
+        "emoji" : "🛼",
+        "hexcode" : "1F6FC",
+        "description" : "롤러스케이트"
+    },
+    {
+        "emoji" : "🚏",
+        "hexcode" : "1F68F",
+        "description" : "버스 정류장"
+    },
+    {
+        "emoji" : "🛣",
+        "hexcode" : "1F6E3",
+        "description" : "고속도로"
+    },
+    {
+        "emoji" : "🛤",
+        "hexcode" : "1F6E4",
+        "description" : "철도 선로"
+    },
+    {
+        "emoji" : "🛢",
+        "hexcode" : "1F6E2",
+        "description" : "오일 드럼"
+    },
+    {
+        "emoji" : "⛽",
+        "hexcode" : "26FD",
+        "description" : "주유소 연료 펌프"
+    },
+    {
+        "emoji" : "🛞",
+        "hexcode" : "1F6DE",
+        "description" : "바퀴"
+    },
+    {
+        "emoji" : "🚨",
+        "hexcode" : "1F6A8",
+        "description" : "경차등"
+    },
+    {
+        "emoji" : "🚥",
+        "hexcode" : "1F6A5",
+        "description" : "수평 신호등"
+    },
+    {
+        "emoji" : "🚦",
+        "hexcode" : "1F6A6",
+        "description" : "수직 신호등"
+    },
+    {
+        "emoji" : "🛑",
+        "hexcode" : "1F6D1",
+        "description" : "정지표지"
+    },
+    {
+        "emoji" : "🚧",
+        "hexcode" : "1F6A7",
+        "description" : "시공 표지판"
+    },
+    {
+        "emoji" : "⚓",
+        "hexcode" : "2693",
+        "description" : "앵커 닻"
+    },
+    {
+        "emoji" : "🛟",
+        "hexcode" : "1F6DF",
+        "description" : "고리 부표"
+    },
+    {
+        "emoji" : "⛵",
+        "hexcode" : "26F5",
+        "description" : "범선"
+    },
+    {
+        "emoji" : "🛶",
+        "hexcode" : "1F6F6",
+        "description" : "카누"
+    },
+    {
+        "emoji" : "🚤",
+        "hexcode" : "1F6A4",
+        "description" : "쾌속정"
+    },
+    {
+        "emoji" : "🛳",
+        "hexcode" : "1F6F3",
+        "description" : "여객선"
+    },
+    {
+        "emoji" : "⛴",
+        "hexcode" : "26F4",
+        "description" : "페리"
+    },
+    {
+        "emoji" : "🛥",
+        "hexcode" : "1F6E5",
+        "description" : "모터보트"
+    },
+    {
+        "emoji" : "🚢",
+        "hexcode" : "1F6A2",
+        "description" : "배"
+    },
+    {
+        "emoji" : "✈",
+        "hexcode" : "2708",
+        "description" : "비행기"
+    },
+    {
+        "emoji" : "🛩",
+        "hexcode" : "1F6E9",
+        "description" : "소형 비행기"
+    },
+    {
+        "emoji" : "🛫",
+        "hexcode" : "1F6EB",
+        "description" : "비행기 출발"
+    },
+    {
+        "emoji" : "🛬",
+        "hexcode" : "1F6EC",
+        "description" : "비행기 도착"
+    },
+    {
+        "emoji" : "🪂",
+        "hexcode" : "1FA82",
+        "description" : "낙하산"
+    },
+    {
+        "emoji" : "💺",
+        "hexcode" : "1F4BA",
+        "description" : "좌석"
+    },
+    {
+        "emoji" : "🚁",
+        "hexcode" : "1F681",
+        "description" : "헬리콥터"
+    },
+    {
+        "emoji" : "🚟",
+        "hexcode" : "1F69F",
+        "description" : "현수 철도"
+    },
+    {
+        "emoji" : "🚠",
+        "hexcode" : "1F6A0",
+        "description" : "케이블카"
+    },
+    {
+        "emoji" : "🚡",
+        "hexcode" : "1F6A1",
+        "description" : "공중 전차로"
+    },
+    {
+        "emoji" : "🛰",
+        "hexcode" : "1F6F0",
+        "description" : "위성"
+    },
+    {
+        "emoji" : "🚀",
+        "hexcode" : "1F680",
+        "description" : "로켓"
+    },
+    {
+        "emoji" : "🛸",
+        "hexcode" : "1F6F8",
+        "description" : "비행접시"
+    },
+    {
+        "emoji" : "🛎",
+        "hexcode" : "1F6CE",
+        "description" : "종소리"
+    },
+    {
+        "emoji" : "🧳",
+        "hexcode" : "1F9F3",
+        "description" : "짐"
+    },
+    {
+        "emoji" : "⌛",
+        "hexcode" : "231B",
+        "description" : "모래시계"
+    },
+    {
+        "emoji" : "⏳",
+        "hexcode" : "23F3",
+        "description" : "모래시계 미완성"
+    },
+    {
+        "emoji" : "⌚",
+        "hexcode" : "231A",
+        "description" : "시계"
+    },
+    {
+        "emoji" : "⏰",
+        "hexcode" : "23F0",
+        "description" : "자명종"
+    },
+    {
+        "emoji" : "⏱",
+        "hexcode" : "23F1",
+        "description" : "스톱워치"
+    },
+    {
+        "emoji" : "⏲",
+        "hexcode" : "23F2",
+        "description" : "타이머 시계"
+    },
+    {
+        "emoji" : "🕰",
+        "hexcode" : "1F570",
+        "description" : "맨틀피스 시계"
+    },
+    {
+        "emoji" : "🕛",
+        "hexcode" : "1F55B",
+        "description" : "12시"
+    },
+    {
+        "emoji" : "🕧",
+        "hexcode" : "1F567",
+        "description" : "12시 30분"
+    },
+    {
+        "emoji" : "🕐",
+        "hexcode" : "1F550",
+        "description" : "1시"
+    },
+    {
+        "emoji" : "🕜",
+        "hexcode" : "1F55C",
+        "description" : "1시 30분"
+    },
+    {
+        "emoji" : "🕑",
+        "hexcode" : "1F551",
+        "description" : "2시"
+    },
+    {
+        "emoji" : "🕝",
+        "hexcode" : "1F55D",
+        "description" : "2시 30분"
+    },
+    {
+        "emoji" : "🕒",
+        "hexcode" : "1F552",
+        "description" : "3시"
+    },
+    {
+        "emoji" : "🕞",
+        "hexcode" : "1F55E",
+        "description" : "3시 30분"
+    },
+    {
+        "emoji" : "🕓",
+        "hexcode" : "1F553",
+        "description" : "4시"
+    },
+    {
+        "emoji" : "🕟",
+        "hexcode" : "1F55F",
+        "description" : "4시 30분"
+    },
+    {
+        "emoji" : "🕔",
+        "hexcode" : "1F554",
+        "description" : "5시"
+    },
+    {
+        "emoji" : "🕠",
+        "hexcode" : "1F560",
+        "description" : "5시 30분"
+    },
+    {
+        "emoji" : "🕕",
+        "hexcode" : "1F555",
+        "description" : "6시"
+    },
+    {
+        "emoji" : "🕡",
+        "hexcode" : "1F561",
+        "description" : "6시 30분"
+    },
+    {
+        "emoji" : "🕖",
+        "hexcode" : "1F556",
+        "description" : "7시"
+    },
+    {
+        "emoji" : "🕢",
+        "hexcode" : "1F562",
+        "description" : "7시 30분"
+    },
+    {
+        "emoji" : "🕗",
+        "hexcode" : "1F557",
+        "description" : "8시"
+    },
+    {
+        "emoji" : "🕣",
+        "hexcode" : "1F563",
+        "description" : "8시 30분"
+    },
+    {
+        "emoji" : "🕘",
+        "hexcode" : "1F558",
+        "description" : "9시"
+    },
+    {
+        "emoji" : "🕤",
+        "hexcode" : "1F564",
+        "description" : "9시 30분"
+    },
+    {
+        "emoji" : "🕙",
+        "hexcode" : "1F559",
+        "description" : "10시"
+    },
+    {
+        "emoji" : "🕥",
+        "hexcode" : "1F",
+        "description" : "10시 30분"
+    },
+    {
+        "emoji" : "🕚",
+        "hexcode" : "1F55A",
+        "description" : "11시"
+    },
+    {
+        "emoji" : "🕦",
+        "hexcode" : "1F566",
+        "description" : "11시 30분"
+    },
+    {
+        "emoji" : "🌑",
+        "hexcode" : "1F311",
+        "description" : "어두운 달"
+    },
+    {
+        "emoji" : "🌒",
+        "hexcode" : "1F312",
+        "description" : "초승달"
+    },
+    {
+        "emoji" : "🌓",
+        "hexcode" : "1F313",
+        "description" : "상현달"
+    },
+    {
+        "emoji" : "🌔",
+        "hexcode" : "1F314",
+        "description" : "상현달과 보름달 사이"
+    },
+    {
+        "emoji" : "🌕",
+        "hexcode" : "1F315",
+        "description" : "보름달"
+    },
+    {
+        "emoji" : "🌖",
+        "hexcode" : "1F316",
+        "description" : "보름달과 하현달 사이"
+    },
+    {
+        "emoji" : "🌗",
+        "hexcode" : "1F317",
+        "description" : "하현달"
+    },
+    {
+        "emoji" : "🌘",
+        "hexcode" : "1F318",
+        "description" : "그믐달"
+    },
+    {
+        "emoji" : "🌙",
+        "hexcode" : "1F319",
+        "description" : "초승달"
+    },
+    {
+        "emoji" : "🌚",
+        "hexcode" : "1F31A",
+        "description" : "어두운 달 얼굴"
+    },
+    {
+        "emoji" : "🌛",
+        "hexcode" : "1F31B",
+        "description" : "초승달 얼굴"
+    },
+    {
+        "emoji" : "🌜",
+        "hexcode" : "1F31C",
+        "description" : "그믐달 얼굴"
+    },
+    {
+        "emoji" : "🌡",
+        "hexcode" : "1F321",
+        "description" : "온도계"
+    },
+    {
+        "emoji" : "☀",
+        "hexcode" : "2600",
+        "description" : "태양"
+    },
+    {
+        "emoji" : "🌝",
+        "hexcode" : "1F31D",
+        "description" : "보름달 얼굴"
+    },
+    {
+        "emoji" : "🌞",
+        "hexcode" : "1F31E",
+        "description" : "태양 얼굴"
+    },
+    {
+        "emoji" : "🪐",
+        "hexcode" : "1FA90",
+        "description" : "고리형 행성"
+    },
+    {
+        "emoji" : "⭐",
+        "hexcode" : "2B50",
+        "description" : "별"
+    },
+    {
+        "emoji" : "🌟",
+        "hexcode" : "1F31F",
+        "description" : "빛나는 별"
+    },
+    {
+        "emoji" : "🌠",
+        "hexcode" : "1F320",
+        "description" : "별똥별"
+    },
+    {
+        "emoji" : "🌌",
+        "hexcode" : "1F30C",
+        "description" : "은하수"
+    },
+    {
+        "emoji" : "☁",
+        "hexcode" : "2601",
+        "description" : "구름"
+    },
+    {
+        "emoji" : "⛅",
+        "hexcode" : "26C5",
+        "description" : "구름 뒤의 태양"
+    },
+    {
+        "emoji" : "⛈",
+        "hexcode" : "26C8",
+        "description" : "번개와 비를 동반한 구름"
+    },
+    {
+        "emoji" : "🌤",
+        "hexcode" : "1F324",
+        "description" : "작은 구름 뒤의 태양"
+    },
+    {
+        "emoji" : "🌥",
+        "hexcode" : "1F325",
+        "description" : "큰 구름 뒤의 태양"
+    },
+    {
+        "emoji" : "🌦",
+        "hexcode" : "1F326",
+        "description" : "비구름 뒤의 태양"
+    },
+    {
+        "emoji" : "🌧",
+        "hexcode" : "1F327",
+        "description" : "비로 구름이 끼다"
+    },
+    {
+        "emoji" : "🌨",
+        "hexcode" : "1F328",
+        "description" : "눈구름"
+    },
+    {
+        "emoji" : "🌩",
+        "hexcode" : "1F329",
+        "description" : "번개가 치는 구름"
+    },
+    {
+        "emoji" : "🌪",
+        "hexcode" : "1F32A",
+        "description" : "토네이도"
+    },
+    {
+        "emoji" : "🌫",
+        "hexcode" : "1F32B",
+        "description" : "안개"
+    },
+    {
+        "emoji" : "🌬",
+        "hexcode" : "1F32C",
+        "description" : "풍면"
+    },
+    {
+        "emoji" : "🌀",
+        "hexcode" : "1F300",
+        "description" : "태풍"
+    },
+    {
+        "emoji" : "🌈",
+        "hexcode" : "1F308",
+        "description" : "무지개"
+    },
+    {
+        "emoji" : "🌂",
+        "hexcode" : "1F302",
+        "description" : "닫힌 우산"
+    },
+    {
+        "emoji" : "☂",
+        "hexcode" : "2602",
+        "description" : "우산"
+    },
+    {
+        "emoji" : "☔",
+        "hexcode" : "2614",
+        "description" : "빗방울이 떨어지는 우산"
+    },
+    {
+        "emoji" : "⛱",
+        "hexcode" : "26F1",
+        "description" : "파라솔"
+    },
+    {
+        "emoji" : "⚡",
+        "hexcode" : "26A1",
+        "description" : "번개"
+    },
+    {
+        "emoji" : "❄",
+        "hexcode" : "2744",
+        "description" : "눈송이"
+    },
+    {
+        "emoji" : "☃",
+        "hexcode" : "2603",
+        "description" : "눈 내리는 눈사람"
+    },
+    {
+        "emoji" : "⛄",
+        "hexcode" : "26C4",
+        "description" : "눈사람"
+    },
+    {
+        "emoji" : "☄",
+        "hexcode" : "2604",
+        "description" : "혜성"
+    },
+    {
+        "emoji" : "🔥",
+        "hexcode" : "1F525",
+        "description" : "불"
+    },
+    {
+        "emoji" : "💧",
+        "hexcode" : "1F4A7",
+        "description" : "물방울"
+    },
+    {
+        "emoji" : "🌊",
+        "hexcode" : "1F30A",
+        "description" : "파도"
+    },
+    {
+        "emoji" : "🎃",
+        "hexcode" : "1F383",
+        "description" : "호박 랜턴"
+    },
+    {
+        "emoji" : "🎄",
+        "hexcode" : "1F384",
+        "description" : "크리스마스트리"
+    },
+    {
+        "emoji" : "🎆",
+        "hexcode" : "1F386",
+        "description" : "불꽃놀이"
+    },
+    {
+        "emoji" : "🎇",
+        "hexcode" : "1F387",
+        "description" : "반짝반짝 빛나는"
+    },
+    {
+        "emoji" : "🧨",
+        "hexcode" : "1F9E8",
+        "description" : "폭죽"
+    },
+    {
+        "emoji" : "✨",
+        "hexcode" : "2728",
+        "description" : "반짝반짝 빛나다"
+    },
+    {
+        "emoji" : "🎈",
+        "hexcode" : "1F388",
+        "description" : "풍선"
+    },
+    {
+        "emoji" : "🎉",
+        "hexcode" : "1F389",
+        "description" : "파티 폭죽"
+    },
+    {
+        "emoji" : "🎊",
+        "hexcode" : "1F38A",
+        "description" : "색종이 공"
+    },
+    {
+        "emoji" : "🎋",
+        "hexcode" : "1F38B",
+        "description" : "타나바타 나무"
+    },
+    {
+        "emoji" : "🎍",
+        "hexcode" : "1F38D",
+        "description" : "대나무 장식"
+    },
+    {
+        "emoji" : "🎎",
+        "hexcode" : "1F38E",
+        "description" : "일본 인형"
+    },
+    {
+        "emoji" : "🎏",
+        "hexcode" : "1F38F",
+        "description" : "카프 스트리머"
+    },
+    {
+        "emoji" : "🎐",
+        "hexcode" : "1F390",
+        "description" : "풍등"
+    },
+    {
+        "emoji" : "🎑",
+        "hexcode" : "1F391",
+        "description" : "달 구경식"
+    },
+    {
+        "emoji" : "🧧",
+        "hexcode" : "1F9E7",
+        "description" : "빨간 봉투"
+    },
+    {
+        "emoji" : "🎀",
+        "hexcode" : "1F380",
+        "description" : "리본"
+    },
+    {
+        "emoji" : "🎁",
+        "hexcode" : "1F381",
+        "description" : "포장된 선물"
+    },
+    {
+        "emoji" : "🎗",
+        "hexcode" : "1F397",
+        "description" : "리마인더 리본"
+    },
+    {
+        "emoji" : "🎟",
+        "hexcode" : "1F39F",
+        "description" : "입장권"
+    },
+    {
+        "emoji" : "🎫",
+        "hexcode" : "1F3AB",
+        "description" : "표"
+    },
+    {
+        "emoji" : "🎖",
+        "hexcode" : "1F396",
+        "description" : "무공훈장"
+    },
+    {
+        "emoji" : "🏆",
+        "hexcode" : "1F3C6",
+        "description" : "트로피"
+    },
+    {
+        "emoji" : "🏅",
+        "hexcode" : "1F3C5",
+        "description" : "스포츠 메달"
+    },
+    {
+        "emoji" : "🥇",
+        "hexcode" : "1F947",
+        "description" : "1등 메달"
+    },
+    {
+        "emoji" : "🥈",
+        "hexcode" : "1F948",
+        "description" : "2등 메달"
+    },
+    {
+        "emoji" : "🥉",
+        "hexcode" : "1F949",
+        "description" : "3등 메달"
+    },
+    {
+        "emoji" : "⚽",
+        "hexcode" : "26BD",
+        "description" : "축구공"
+    },
+    {
+        "emoji" : "⚾",
+        "hexcode" : "26BE",
+        "description" : "야구공"
+    },
+    {
+        "emoji" : "🥎",
+        "hexcode" : "1F94E",
+        "description" : "소프트볼"
+    },
+    {
+        "emoji" : "🏀",
+        "hexcode" : "1F3C0",
+        "description" : "농구공"
+    },
+    {
+        "emoji" : "🏐",
+        "hexcode" : "1F3D0",
+        "description" : "배구공"
+    },
+    {
+        "emoji" : "🏈",
+        "hexcode" : "1F3C8",
+        "description" : "미식축구공"
+    },
+    {
+        "emoji" : "🏉",
+        "hexcode" : "1F3C9",
+        "description" : "럭비공"
+    },
+    {
+        "emoji" : "🎾",
+        "hexcode" : "1F3BE",
+        "description" : "테니스"
+    },
+    {
+        "emoji" : "🥏",
+        "hexcode" : "1F94F",
+        "description" : "원반"
+    },
+    {
+        "emoji" : "🎳",
+        "hexcode" : "1F3B3",
+        "description" : "볼링"
+    },
+    {
+        "emoji" : "🏏",
+        "hexcode" : "1F3CF",
+        "description" : "크리켓 경기"
+    },
+    {
+        "emoji" : "🏑",
+        "hexcode" : "1F3D1",
+        "description" : "필드하키"
+    },
+    {
+        "emoji" : "🏒",
+        "hexcode" : "1F3D2",
+        "description" : "아이스 하키"
+    },
+    {
+        "emoji" : "🥍",
+        "hexcode" : "1F94D",
+        "description" : "라크로스"
+    },
+    {
+        "emoji" : "🏓",
+        "hexcode" : "1F3D3",
+        "description" : "탁구"
+    },
+    {
+        "emoji" : "🏸",
+        "hexcode" : "1F3F8",
+        "description" : "배드민턴"
+    },
+    {
+        "emoji" : "🥊",
+        "hexcode" : "1F94A",
+        "description" : "권투 글러브"
+    },
+    {
+        "emoji" : "🥋",
+        "hexcode" : "1F94B",
+        "description" : "도복"
+    },
+    {
+        "emoji" : "🥅",
+        "hexcode" : "1F945",
+        "description" : "골망"
+    },
+    {
+        "emoji" : "⛳",
+        "hexcode" : "26F3",
+        "description" : "골프 필드"
+    },
+    {
+        "emoji" : "⛸",
+        "hexcode" : "26F8",
+        "description" : "스케이트 신발"
+    },
+    {
+        "emoji" : "🎣",
+        "hexcode" : "1F3A3",
+        "description" : "낚싯대"
+    },
+    {
+        "emoji" : "🤿",
+        "hexcode" : "1F93F",
+        "description" : "잠수 마스크"
+    },
+    {
+        "emoji" : "🎽",
+        "hexcode" : "1F3BD",
+        "description" : "런닝 셔츠"
+    },
+    {
+        "emoji" : "🎿",
+        "hexcode" : "1F3BF",
+        "description" : "스키"
+    },
+    {
+        "emoji" : "🛷",
+        "hexcode" : "1F6F7",
+        "description" : "썰매"
+    },
+    {
+        "emoji" : "🥌",
+        "hexcode" : "1F94C",
+        "description" : "컬링 스톤"
+    },
+    {
+        "emoji" : "🎯",
+        "hexcode" : "1F3AF",
+        "description" : "양궁 과녁"
+    },
+    {
+        "emoji" : "🪀",
+        "hexcode" : "1FA80",
+        "description" : "요요"
+    },
+    {
+        "emoji" : "🪁",
+        "hexcode" : "1FA81",
+        "description" : "연"
+    },
+    {
+        "emoji" : "🔫",
+        "hexcode" : "1F52B",
+        "description" : "물총"
+    },
+    {
+        "emoji" : "🎱",
+        "hexcode" : "1F3B1",
+        "description" : "포켓볼"
+    },
+    {
+        "emoji" : "🔮",
+        "hexcode" : "1F52E",
+        "description" : "크리스털 볼"
+    },
+    {
+        "emoji" : "🪄",
+        "hexcode" : "1FA84",
+        "description" : "요술 지팡이"
+    },
+    {
+        "emoji" : "🎮",
+        "hexcode" : "1F3AE",
+        "description" : "비디오 게임"
+    },
+    {
+        "emoji" : "🕹",
+        "hexcode" : "1F579",
+        "description" : "조이스틱"
+    },
+    {
+        "emoji" : "🎰",
+        "hexcode" : "1F3B0",
+        "description" : "슬롯머신"
+    },
+    {
+        "emoji" : "🎲",
+        "hexcode" : "1F3B2",
+        "description" : "주사위"
+    },
+    {
+        "emoji" : "🧩",
+        "hexcode" : "1F9E9",
+        "description" : "퍼즐 조각"
+    },
+    {
+        "emoji" : "🧸",
+        "hexcode" : "1F9F8",
+        "description" : "곰인형"
+    },
+    {
+        "emoji" : "🪅",
+        "hexcode" : "1FA85",
+        "description" : "피냐타"
+    },
+    {
+        "emoji" : "🪩",
+        "hexcode" : "1FAA9",
+        "description" : "미러볼"
+    },
+    {
+        "emoji" : "🪆",
+        "hexcode" : "1FA86",
+        "description" : "중첩 인형"
+    },
+    {
+        "emoji" : "♠",
+        "hexcode" : "2660",
+        "description" : "스페이드 문양"
+    },
+    {
+        "emoji" : "♥",
+        "hexcode" : "2665",
+        "description" : "하트 문양"
+    },
+    {
+        "emoji" : "♦",
+        "hexcode" : "2666",
+        "description" : "다이아몬드 문양"
+    },
+    {
+        "emoji" : "♣",
+        "hexcode" : "2663",
+        "description" : "클럽 문양"
+    },
+    {
+        "emoji" : "♟",
+        "hexcode" : "265F",
+        "description" : "체스"
+    },
+    {
+        "emoji" : "🃏",
+        "hexcode" : "1F0CF",
+        "description" : "조커"
+    },
+    {
+        "emoji" : "🀄",
+        "hexcode" : "1F004",
+        "description" : "마작 적룡"
+    },
+    {
+        "emoji" : "🎴",
+        "hexcode" : "1F3B4",
+        "description" : "화투"
+    },
+    {
+        "emoji" : "🎭",
+        "hexcode" : "1F3AD",
+        "description" : "공연 예술"
+    },
+    {
+        "emoji" : "🖼",
+        "hexcode" : "1F5BC",
+        "description" : "액자에 넣어진 그림"
+    },
+    {
+        "emoji" : "🎨",
+        "hexcode" : "1F3A8",
+        "description" : "아티스트 팔레트"
+    },
+    {
+        "emoji" : "🧵",
+        "hexcode" : "1F9F5",
+        "description" : "실"
+    },
+    {
+        "emoji" : "🪡",
+        "hexcode" : "1FAA1",
+        "description" : "바느질 바늘"
+    },
+    {
+        "emoji" : "🧶",
+        "hexcode" : "1F9F6",
+        "description" : "털실"
+    },
+    {
+        "emoji" : "🪢",
+        "hexcode" : "1FAA2",
+        "description" : "매듭을 짓다"
+    },
+    {
+        "emoji" : "👓",
+        "hexcode" : "1F453",
+        "description" : "안경"
+    },
+    {
+        "emoji" : "🕶",
+        "hexcode" : "1F576",
+        "description" : "선글라스"
+    },
+    {
+        "emoji" : "🥽",
+        "hexcode" : "1F97D",
+        "description" : "고글"
+    },
+    {
+        "emoji" : "🥼",
+        "hexcode" : "1F97C",
+        "description" : "실험실 코트"
+    },
+    {
+        "emoji" : "🦺",
+        "hexcode" : "1F9BA",
+        "description" : "안전조끼"
+    },
+    {
+        "emoji" : "👔",
+        "hexcode" : "1F454",
+        "description" : "넥타이"
+    },
+    {
+        "emoji" : "👕",
+        "hexcode" : "1F455",
+        "description" : "티셔츠"
+    },
+    {
+        "emoji" : "👖",
+        "hexcode" : "1F456",
+        "description" : "청바지"
+    },
+    {
+        "emoji" : "🧣",
+        "hexcode" : "1F9E3",
+        "description" : "목도리"
+    },
+    {
+        "emoji" : "🧤",
+        "hexcode" : "1F9E4",
+        "description" : "장갑"
+    },
+    {
+        "emoji" : "🧥",
+        "hexcode" : "1F9E5",
+        "description" : "외투"
+    },
+    {
+        "emoji" : "🧦",
+        "hexcode" : "1F9E6",
+        "description" : "양말"
+    },
+    {
+        "emoji" : "👗",
+        "hexcode" : "1F457",
+        "description" : "드레스"
+    },
+    {
+        "emoji" : "👘",
+        "hexcode" : "1F458",
+        "description" : "기모노"
+    },
+    {
+        "emoji" : "🥻",
+        "hexcode" : "1F97B",
+        "description" : "사리 옷"
+    },
+    {
+        "emoji" : "🩱",
+        "hexcode" : "1FA71",
+        "description" : "원피스 수영복"
+    },
+    {
+        "emoji" : "🩲",
+        "hexcode" : "1FA72",
+        "description" : "팬티"
+    },
+    {
+        "emoji" : "🩳",
+        "hexcode" : "1FA73",
+        "description" : "반바지"
+    },
+    {
+        "emoji" : "👙",
+        "hexcode" : "1F459",
+        "description" : "비키니"
+    },
+    {
+        "emoji" : "👚",
+        "hexcode" : "1F45A",
+        "description" : "여성 옷"
+    },
+    {
+        "emoji" : "🪭",
+        "hexcode" : "1FAAD",
+        "description" : "접이식 부채"
+    },
+    {
+        "emoji" : "👛",
+        "hexcode" : "1F45B",
+        "description" : "지갑"
+    },
+    {
+        "emoji" : "👜",
+        "hexcode" : "1F45C",
+        "description" : "핸드백"
+    },
+    {
+        "emoji" : "👝",
+        "hexcode" : "1F45D",
+        "description" : "클러치백"
+    },
+    {
+        "emoji" : "🛍",
+        "hexcode" : "1F6CD",
+        "description" : "쇼핑백"
+    },
+    {
+        "emoji" : "🎒",
+        "hexcode" : "1F392",
+        "description" : "백팩"
+    },
+    {
+        "emoji" : "🩴",
+        "hexcode" : "1FA74",
+        "description" : "굵은 샌들"
+    },
+    {
+        "emoji" : "👞",
+        "hexcode" : "1F45E",
+        "description" : "구두"
+    },
+    {
+        "emoji" : "👟",
+        "hexcode" : "1F45F",
+        "description" : "러닝화"
+    },
+    {
+        "emoji" : "🥾",
+        "hexcode" : "1F97E",
+        "description" : "등산화"
+    },
+    {
+        "emoji" : "🥿",
+        "hexcode" : "1F97F",
+        "description" : "납작한 구두"
+    },
+    {
+        "emoji" : "👠",
+        "hexcode" : "1F460",
+        "description" : "굽이 높은 구두"
+    },
+    {
+        "emoji" : "👡",
+        "hexcode" : "1F461",
+        "description" : "여자 샌들"
+    },
+    {
+        "emoji" : "🩰",
+        "hexcode" : "1FA70",
+        "description" : "발레 슈즈"
+    },
+    {
+        "emoji" : "👢",
+        "hexcode" : "1F462",
+        "description" : "여성 부츠"
+    },
+    {
+        "emoji" : "🪮",
+        "hexcode" : "1FFAE",
+        "description" : "헤어 픽"
+    },
+    {
+        "emoji" : "👑",
+        "hexcode" : "1F451",
+        "description" : "왕관"
+    },
+    {
+        "emoji" : "👒",
+        "hexcode" : "1F452",
+        "description" : "여성 모자"
+    },
+    {
+        "emoji" : "🎩",
+        "hexcode" : "1F3A9",
+        "description" : "중절모"
+    },
+    {
+        "emoji" : "🎓",
+        "hexcode" : "1F393",
+        "description" : "졸업모"
+    },
+    {
+        "emoji" : "🧢",
+        "hexcode" : "1F9E2",
+        "description" : "캡모자"
+    },
+    {
+        "emoji" : "🪖",
+        "hexcode" : "1FA96",
+        "description" : "군모"
+    },
+    {
+        "emoji" : "⛑",
+        "hexcode" : "26D1",
+        "description" : "구조대원의 헬멧"
+    },
+    {
+        "emoji" : "📿",
+        "hexcode" : "1F4FF",
+        "description" : "기도 구슬"
+    },
+    {
+        "emoji" : "💄",
+        "hexcode" : "1F484",
+        "description" : "립스틱"
+    },
+    {
+        "emoji" : "💍",
+        "hexcode" : "1F48D",
+        "description" : "반지"
+    },
+    {
+        "emoji" : "💎",
+        "hexcode" : "1F48E",
+        "description" : "보석"
+    },
+    {
+        "emoji" : "🔇",
+        "hexcode" : "1F507",
+        "description" : "음소거"
+    },
+    {
+        "emoji" : "🔈",
+        "hexcode" : "1F508",
+        "description" : "스피커 저음량"
+    },
+    {
+        "emoji" : "🔉",
+        "hexcode" : "1F509",
+        "description" : "스피커 미디엄 볼륨"
+    },
+    {
+        "emoji" : "🔊",
+        "hexcode" : "1F50A",
+        "description" : "스피커 고음량"
+    },
+    {
+        "emoji" : "📢",
+        "hexcode" : "1F4E2",
+        "description" : "확성기"
+    },
+    {
+        "emoji" : "📣",
+        "hexcode" : "1F4E3",
+        "description" : "메가폰"
+    },
+    {
+        "emoji" : "📯",
+        "hexcode" : "1F4EF",
+        "description" : "호른"
+    },
+    {
+        "emoji" : "🔔",
+        "hexcode" : "1F514",
+        "description" : "종을 울리다"
+    },
+    {
+        "emoji" : "🔕",
+        "hexcode" : "1F515",
+        "description" : "종을 울리면 안된다."
+    },
+    {
+        "emoji" : "🎼",
+        "hexcode" : "1F3BC",
+        "description" : "악보"
+    },
+    {
+        "emoji" : "🎵",
+        "hexcode" : "1F3B5",
+        "description" : "음표"
+    },
+    {
+        "emoji" : "🎶",
+        "hexcode" : "1F3B6",
+        "description" : "음표"
+    },
+    {
+        "emoji" : "🎙",
+        "hexcode" : "1F399",
+        "description" : "스튜디오 마이크"
+    },
+    {
+        "emoji" : "🎚",
+        "hexcode" : "1F39A",
+        "description" : "수평 슬라이더"
+    },
+    {
+        "emoji" : "🎛",
+        "hexcode" : "1F39B",
+        "description" : "조절 손잡이"
+    },
+    {
+        "emoji" : "🎤",
+        "hexcode" : "1F3A4",
+        "description" : "마이크"
+    },
+    {
+        "emoji" : "🎧",
+        "hexcode" : "1F3A7",
+        "description" : "헤드폰"
+    },
+    {
+        "emoji" : "📻",
+        "hexcode" : "1F4FB",
+        "description" : "라디오"
+    },
+    {
+        "emoji" : "🎷",
+        "hexcode" : "1F3B7",
+        "description" : "색소폰"
+    },
+    {
+        "emoji" : "🪗",
+        "hexcode" : "1FA97",
+        "description" : "아코디언"
+    },
+    {
+        "emoji" : "🎸",
+        "hexcode" : "1F3B8",
+        "description" : "기타"
+    },
+    {
+        "emoji" : "🎹",
+        "hexcode" : "1F3B9",
+        "description" : "피아노 건반"
+    },
+    {
+        "emoji" : "🎺",
+        "hexcode" : "1F3BA",
+        "description" : "트럼펫"
+    },
+    {
+        "emoji" : "🎻",
+        "hexcode" : "1F3BB",
+        "description" : "바이올린"
+    },
+    {
+        "emoji" : "🪕",
+        "hexcode" : "1FA95",
+        "description" : "밴조"
+    },
+    {
+        "emoji" : "🥁",
+        "hexcode" : "1F941",
+        "description" : "북을 치다"
+    },
+    {
+        "emoji" : "🪘",
+        "hexcode" : "1FA98",
+        "description" : "긴 북"
+    },
+    {
+        "emoji" : "🪇",
+        "hexcode" : "1FA87",
+        "description" : "마라카스"
+    },
+    {
+        "emoji" : "🪈",
+        "hexcode" : "1FA88",
+        "description" : "피리"
+    },
+    {
+        "emoji" : "📱",
+        "hexcode" : "1F4F1",
+        "description" : "휴대 전화"
+    },
+    {
+        "emoji" : "📲",
+        "hexcode" : "1F4F2",
+        "description" : "화살이 달린 휴대전화"
+    },
+    {
+        "emoji" : "☎",
+        "hexcode" : "260E",
+        "description" : "전화"
+    },
+    {
+        "emoji" : "📞",
+        "hexcode" : "1F4DE",
+        "description" : "전화 수신기"
+    },
+    {
+        "emoji" : "📟",
+        "hexcode" : "1F4DF",
+        "description" : "호출기"
+    },
+    {
+        "emoji" : "📠",
+        "hexcode" : "1F4E0",
+        "description" : "팩스기"
+    },
+    {
+        "emoji" : "🔋",
+        "hexcode" : "1F50B",
+        "description" : "건전지"
+    },
+    {
+        "emoji" : "🪫",
+        "hexcode" : "1FAAB",
+        "description" : "배터리 부족"
+    },
+    {
+        "emoji" : "🔌",
+        "hexcode" : "1F50C",
+        "description" : "전기 플러그"
+    },
+    {
+        "emoji" : "💻",
+        "hexcode" : "1F4BB",
+        "description" : "노트북"
+    },
+    {
+        "emoji" : "🖥",
+        "hexcode" : "1F5A5",
+        "description" : "데스크톱 컴퓨터"
+    },
+    {
+        "emoji" : "🖨",
+        "hexcode" : "1F5A8",
+        "description" : "프린터"
+    },
+    {
+        "emoji" : "⌨",
+        "hexcode" : "2328",
+        "description" : "키보드"
+    },
+    {
+        "emoji" : "🖱",
+        "hexcode" : "1F5B1",
+        "description" : "컴퓨터 마우스"
+    },
+    {
+        "emoji" : "🖲",
+        "hexcode" : "1F5B2",
+        "description" : "트랙볼"
+    },
+    {
+        "emoji" : "💽",
+        "hexcode" : "1F4BD",
+        "description" : "컴퓨터 디스크"
+    },
+    {
+        "emoji" : "💾",
+        "hexcode" : "1F4BE",
+        "description" : "플로피 디스크"
+    },
+    {
+        "emoji" : "💿",
+        "hexcode" : "1F4BF",
+        "description" : "광디스크"
+    },
+    {
+        "emoji" : "📀",
+        "hexcode" : "1F4C0",
+        "description" : "dvd"
+    },
+    {
+        "emoji" : "🧮",
+        "hexcode" : "1F9EE",
+        "description" : "주판"
+    },
+    {
+        "emoji" : "🎥",
+        "hexcode" : "1F3A5",
+        "description" : "영화 카메라"
+    },
+    {
+        "emoji" : "🎞",
+        "hexcode" : "1F39E",
+        "description" : "필름"
+    },
+    {
+        "emoji" : "📽",
+        "hexcode" : "1F4FD",
+        "description" : "필름 프로젝터"
+    },
+    {
+        "emoji" : "🎬",
+        "hexcode" : "1F3AC",
+        "description" : "슬레이터"
+    },
+    {
+        "emoji" : "📺",
+        "hexcode" : "1F4FA",
+        "description" : "텔레비전"
+    },
+    {
+        "emoji" : "📷",
+        "hexcode" : "1F4F7",
+        "description" : "카메라"
+    },
+    {
+        "emoji" : "📸",
+        "hexcode" : "1F4F8",
+        "description" : "플래시가 달린 카메라"
+    },
+    {
+        "emoji" : "📹",
+        "hexcode" : "1F4F9",
+        "description" : "비디오 카메라"
+    },
+    {
+        "emoji" : "📼",
+        "hexcode" : "1F4FC",
+        "description" : "비디오 카세트"
+    },
+    {
+        "emoji" : "🔍",
+        "hexcode" : "1F50D",
+        "description" : "왼쪽으로 기울어진 돋보기"
+    },
+    {
+        "emoji" : "🔎",
+        "hexcode" : "1F50E",
+        "description" : "오른쪽으로 기울어진 돋보기"
+    },
+    {
+        "emoji" : "🕯",
+        "hexcode" : "1F56F",
+        "description" : "양초"
+    },
+    {
+        "emoji" : "💡",
+        "hexcode" : "1F4A1",
+        "description" : "전구"
+    },
+    {
+        "emoji" : "🔦",
+        "hexcode" : "1F526",
+        "description" : "손전등"
+    },
+    {
+        "emoji" : "🏮",
+        "hexcode" : "1F3EE",
+        "description" : "붉은 색 종이 등불"
+    },
+    {
+        "emoji" : "🪔",
+        "hexcode" : "1FA94",
+        "description" : "디야등"
+    },
+    {
+        "emoji" : "📔",
+        "hexcode" : "1F4D4",
+        "description" : "장식 표지가 달린 수첩"
+    },
+    {
+        "emoji" : "📕",
+        "hexcode" : "1F4D5",
+        "description" : "책"
+    },
+    {
+        "emoji" : "📖",
+        "hexcode" : "1F4D6",
+        "description" : "오픈북"
+    },
+    {
+        "emoji" : "📗",
+        "hexcode" : "1F4D7",
+        "description" : "초록색 책"
+    },
+    {
+        "emoji" : "📘",
+        "hexcode" : "1F4D8",
+        "description" : "하늘색 책"
+    },
+    {
+        "emoji" : "📙",
+        "hexcode" : "1F4D9",
+        "description" : "주황색 책"
+    },
+    {
+        "emoji" : "📚",
+        "hexcode" : "1F4DA",
+        "description" : "책들"
+    },
+    {
+        "emoji" : "📓",
+        "hexcode" : "1F4D3",
+        "description" : "수첩"
+    },
+    {
+        "emoji" : "📒",
+        "hexcode" : "1F4D2",
+        "description" : "장부"
+    },
+    {
+        "emoji" : "📃",
+        "hexcode" : "1F4C3",
+        "description" : "종이"
+    },
+    {
+        "emoji" : "📜",
+        "hexcode" : "1F4DC",
+        "description" : "두루마리를 펴다"
+    },
+    {
+        "emoji" : "📄",
+        "hexcode" : "1F4C4",
+        "description" : "페이지가 위로 향하게"
+    },
+    {
+        "emoji" : "📰",
+        "hexcode" : "1F4F0",
+        "description" : "신문지"
+    },
+    {
+        "emoji" : "🗞",
+        "hexcode" : "1F5DE",
+        "description" : "두루마리 신문"
+    },
+    {
+        "emoji" : "📑",
+        "hexcode" : "1F4D1",
+        "description" : "책갈피 탭"
+    },
+    {
+        "emoji" : "🔖",
+        "hexcode" : "1F516",
+        "description" : "북마크"
+    },
+    {
+        "emoji" : "🏷",
+        "hexcode" : "1F3F7",
+        "description" : "라벨"
+    },
+    {
+        "emoji" : "💰",
+        "hexcode" : "1F4B0",
+        "description" : "돈가방"
+    },
+    {
+        "emoji" : "🪙",
+        "hexcode" : "1FA99",
+        "description" : "동전"
+    },
+    {
+        "emoji" : "💴",
+        "hexcode" : "1F4B4",
+        "description" : "엔화 지폐"
+    },
+    {
+        "emoji" : "💵",
+        "hexcode" : "1F4B5",
+        "description" : "달러 지폐"
+    },
+    {
+        "emoji" : "💶",
+        "hexcode" : "1F4B6",
+        "description" : "유로 지폐"
+    },
+    {
+        "emoji" : "💷",
+        "hexcode" : "1F4B7",
+        "description" : "파운드 지폐"
+    },
+    {
+        "emoji" : "💸",
+        "hexcode" : "1F4B8",
+        "description" : "날개 달린 돈"
+    },
+    {
+        "emoji" : "💳",
+        "hexcode" : "1F4B3",
+        "description" : "신용카드"
+    },
+    {
+        "emoji" : "🧾",
+        "hexcode" : "1F9FE",
+        "description" : "영수증"
+    },
+    {
+        "emoji" : "💹",
+        "hexcode" : "1F4B9",
+        "description" : "엔에 따라 증가하는 차트"
+    },
+    {
+        "emoji" : "✉",
+        "hexcode" : "2709",
+        "description" : "우편 봉투"
+    },
+    {
+        "emoji" : "📧",
+        "hexcode" : "1F4E7",
+        "description" : "전자우편"
+    },
+    {
+        "emoji" : "📨",
+        "hexcode" : "1F4E8",
+        "description" : "착신 봉투"
+    },
+    {
+        "emoji" : "📩",
+        "hexcode" : "1F4E9",
+        "description" : "화살표 봉투"
+    },
+    {
+        "emoji" : "📤",
+        "hexcode" : "1F4E4",
+        "description" : "보낸 편지함 트레이"
+    },
+    {
+        "emoji" : "📥",
+        "hexcode" : "1F4E5",
+        "description" : "받은 편지함 트레이"
+    },
+    {
+        "emoji" : "📦",
+        "hexcode" : "1F4E6",
+        "description" : "상자"
+    },
+    {
+        "emoji" : "📫",
+        "hexcode" : "1F4EB",
+        "description" : "깃발을 올린 닫힌 편지함"
+    },
+    {
+        "emoji" : "📪",
+        "hexcode" : "1F4EA",
+        "description" : "깃발을 내린 닫힌 편지함"
+    },
+    {
+        "emoji" : "📬",
+        "hexcode" : "1F4EC",
+        "description" : "깃발을 올린 열린 편지함"
+    },
+    {
+        "emoji" : "📭",
+        "hexcode" : "1F4ED",
+        "description" : "깃발을 내린 열린 편지함"
+    },
+    {
+        "emoji" : "📮",
+        "hexcode" : "1F4EE",
+        "description" : "우체통"
+    },
+    {
+        "emoji" : "🗳",
+        "hexcode" : "1F5F3",
+        "description" : "투표용지가 붙은 투표함"
+    },
+    {
+        "emoji" : "✏",
+        "hexcode" : "270F",
+        "description" : "연필"
+    },
+    {
+        "emoji" : "✒",
+        "hexcode" : "2712",
+        "description" : "펜촉"
+    },
+    {
+        "emoji" : "🖋",
+        "hexcode" : "1F58B",
+        "description" : "만년필"
+    },
+    {
+        "emoji" : "🖊",
+        "hexcode" : "1F58A",
+        "description" : "펜"
+    },
+    {
+        "emoji" : "🖌",
+        "hexcode" : "1F58C",
+        "description" : "붓"
+    },
+    {
+        "emoji" : "🖍",
+        "hexcode" : "1F58D",
+        "description" : "크레파스"
+    },
+    {
+        "emoji" : "📝",
+        "hexcode" : "1F4DD",
+        "description" : "메모"
+    },
+    {
+        "emoji" : "💼",
+        "hexcode" : "1F4BC",
+        "description" : "서류 가방"
+    },
+    {
+        "emoji" : "📁",
+        "hexcode" : "1F4C1",
+        "description" : "파일 폴더"
+    },
+    {
+        "emoji" : "📂",
+        "hexcode" : "1F4C2",
+        "description" : "열린 파일 폴더"
+    },
+    {
+        "emoji" : "🗂",
+        "hexcode" : "1F5C2",
+        "description" : "카드 인덱스 분할 폴더"
+    },
+    {
+        "emoji" : "📅",
+        "hexcode" : "1F4C5",
+        "description" : "달력"
+    },
+    {
+        "emoji" : "📆",
+        "hexcode" : "1F4C6",
+        "description" : "찢어진 달력"
+    },
+    {
+        "emoji" : "🗒",
+        "hexcode" : "1F5D2",
+        "description" : "메모장"
+    },
+    {
+        "emoji" : "🗓",
+        "hexcode" : "1F5D3",
+        "description" : "달력"
+    },
+    {
+        "emoji" : "📇",
+        "hexcode" : "1F4C7",
+        "description" : "카드 인덱스"
+    },
+    {
+        "emoji" : "📈",
+        "hexcode" : "1F4C7",
+        "description" : "차트 증가"
+    },
+    {
+        "emoji" : "📉",
+        "hexcode" : "1F4C9",
+        "description" : "차트 감소"
+    },
+    {
+        "emoji" : "📊",
+        "hexcode" : "1F4CA",
+        "description" : "막대 차트"
+    },
+    {
+        "emoji" : "📋",
+        "hexcode" : "1F4CB",
+        "description" : "클립보드"
+    },
+    {
+        "emoji" : "📌",
+        "hexcode" : "1F4CC",
+        "description" : "푸쉬핀"
+    },
+    {
+        "emoji" : "📍",
+        "hexcode" : "1F4CD",
+        "description" : "둥근 푸쉬핀"
+    },
+    {
+        "emoji" : "📎",
+        "hexcode" : "1F4CE",
+        "description" : "종이 클립"
+    },
+    {
+        "emoji" : "🖇",
+        "hexcode" : "1F4CF",
+        "description" : "연결된 종이 클립"
+    },
+    {
+        "emoji" : "📏",
+        "hexcode" : "1F4CF",
+        "description" : "자"
+    },
+    {
+        "emoji" : "📐",
+        "hexcode" : "1F4D0",
+        "description" : "삼각자"
+    },
+    {
+        "emoji" : "✂",
+        "hexcode" : "2702",
+        "description" : "가위"
+    },
+    {
+        "emoji" : "🗃",
+        "hexcode" : "1F5C3",
+        "description" : "카드 파일 박스"
+    },
+    {
+        "emoji" : "🗄",
+        "hexcode" : "1F5C4",
+        "description" : "파일 캐비닛"
+    },
+    {
+        "emoji" : "🗑",
+        "hexcode" : "1F5D1",
+        "description" : "쓰레기통"
+    },
+    {
+        "emoji" : "🔒",
+        "hexcode" : "1F512",
+        "description" : "자물쇠가 채워진"
+    },
+    {
+        "emoji" : "🔓",
+        "hexcode" : "1F513",
+        "description" : "잠금 해제된"
+    },
+    {
+        "emoji" : "🔏",
+        "hexcode" : "1F50F",
+        "description" : "펜으로 잠근"
+    },
+    {
+        "emoji" : "🔐",
+        "hexcode" : "1F510",
+        "description" : "열쇠로 잠근"
+    },
+    {
+        "emoji" : "🔑",
+        "hexcode" : "1F511",
+        "description" : "열쇠"
+    },
+    {
+        "emoji" : "🗝",
+        "hexcode" : "1F5DD",
+        "description" : "옛날 열쇠"
+    },
+    {
+        "emoji" : "🔨",
+        "hexcode" : "1F528",
+        "description" : "망치"
+    },
+    {
+        "emoji" : "🪓",
+        "hexcode" : "1FA93",
+        "description" : "도끼"
+    },
+    {
+        "emoji" : "⛏",
+        "hexcode" : "26CF",
+        "description" : "곡갱이"
+    },
+    {
+        "emoji" : "⚒",
+        "hexcode" : "2692",
+        "description" : "망치와 곡괭이"
+    },
+    {
+        "emoji" : "🛠",
+        "hexcode" : "1F6E0",
+        "description" : "망치와 렌치"
+    },
+    {
+        "emoji" : "🗡",
+        "hexcode" : "1F5E1",
+        "description" : "단검"
+    },
+    {
+        "emoji" : "⚔",
+        "hexcode" : "2694",
+        "description" : "엇갈린 칼"
+    },
+    {
+        "emoji" : "💣",
+        "hexcode" : "1F4A3",
+        "description" : "폭탄"
+    },
+    {
+        "emoji" : "🪃",
+        "hexcode" : "1FA83",
+        "description" : "부메랑"
+    },
+    {
+        "emoji" : "🏹",
+        "hexcode" : "1F3F9",
+        "description" : "활과 화살"
+    },
+    {
+        "emoji" : "🛡",
+        "hexcode" : "1F6E1",
+        "description" : "방패"
+    },
+    {
+        "emoji" : "🪚",
+        "hexcode" : "1FA9A",
+        "description" : "목공톱"
+    },
+    {
+        "emoji" : "🔧",
+        "hexcode" : "1F527",
+        "description" : "렌치"
+    },
+    {
+        "emoji" : "🪛",
+        "hexcode" : "1FA9B",
+        "description" : "드라이버"
+    },
+    {
+        "emoji" : "🔩",
+        "hexcode" : "1F529",
+        "description" : "볼트와 너트"
+    },
+    {
+        "emoji" : "⚙",
+        "hexcode" : "2699",
+        "description" : "기어"
+    },
+    {
+        "emoji" : "🗜",
+        "hexcode" : "1F5DC",
+        "description" : "집게를 끼우다"
+    },
+    {
+        "emoji" : "⚖",
+        "hexcode" : "2696",
+        "description" : "저울"
+    },
+    {
+        "emoji" : "🦯",
+        "hexcode" : "1F9AF",
+        "description" : "흰 지팡이"
+    },
+    {
+        "emoji" : "🔗",
+        "hexcode" : "1F517",
+        "description" : "링크"
+    },
+    {
+        "emoji" : "⛓",
+        "hexcode" : "26D3",
+        "description" : "쇠사슬"
+    },
+    {
+        "emoji" : "🪝",
+        "hexcode" : "1FA9D",
+        "description" : "갈고리"
+    },
+    {
+        "emoji" : "🧰",
+        "hexcode" : "1F9F0",
+        "description" : "공구함"
+    },
+    {
+        "emoji" : "🧲",
+        "hexcode" : "1F9F2",
+        "description" : "자석"
+    },
+    {
+        "emoji" : "🪜",
+        "hexcode" : "1FA9C",
+        "description" : "사다리"
+    },
+    {
+        "emoji" : "⚗",
+        "hexcode" : "2697",
+        "description" : "원형 비커"
+    },
+    {
+        "emoji" : "🧪",
+        "hexcode" : "1F9EA",
+        "description" : "시험관"
+    },
+    {
+        "emoji" : "🧫",
+        "hexcode" : "1F9EB",
+        "description" : "페트리 접시"
+    },
+    {
+        "emoji" : "🧬",
+        "hexcode" : "1F9EC",
+        "description" : "DNA"
+    },
+    {
+        "emoji" : "🔬",
+        "hexcode" : "1F52C",
+        "description" : "현미경"
+    },
+    {
+        "emoji" : "🔭",
+        "hexcode" : "1F52D",
+        "description" : "망원경"
+    },
+    {
+        "emoji" : "📡",
+        "hexcode" : "1F4E1",
+        "description" : "위성 안테나"
+    },
+    {
+        "emoji" : "💉",
+        "hexcode" : "1F489",
+        "description" : "주사기"
+    },
+    {
+        "emoji" : "🩸",
+        "hexcode" : "1FA78",
+        "description" : "피 한 방울"
+    },
+    {
+        "emoji" : "💊",
+        "hexcode" : "1F48A",
+        "description" : "알약"
+    },
+    {
+        "emoji" : "🩹",
+        "hexcode" : "1FA79",
+        "description" : "접착 붕대"
+    },
+    {
+        "emoji" : "🩼",
+        "hexcode" : "1FA7C",
+        "description" : "목발"
+    },
+    {
+        "emoji" : "🩺",
+        "hexcode" : "1FA7A",
+        "description" : "청진기"
+    },
+    {
+        "emoji" : "🩻",
+        "hexcode" : "1FA7B",
+        "description" : "엑스레이"
+    },
+    {
+        "emoji" : "🚪",
+        "hexcode" : "1F6AA",
+        "description" : "문"
+    },
+    {
+        "emoji" : "🛗",
+        "hexcode" : "1F6D7",
+        "description" : "엘레베이터"
+    },
+    {
+        "emoji" : "🪞",
+        "hexcode" : "1FA9E",
+        "description" : "거울"
+    },
+    {
+        "emoji" : "🪟",
+        "hexcode" : "1FA9F",
+        "description" : "창문"
+    },
+    {
+        "emoji" : "🛏",
+        "hexcode" : "1F6CF",
+        "description" : "침대"
+    },
+    {
+        "emoji" : "🛋",
+        "hexcode" : "1F6CB",
+        "description" : "소파와 램프"
+    },
+    {
+        "emoji" : "🪑",
+        "hexcode" : "1FA91",
+        "description" : "의자"
+    },
+    {
+        "emoji" : "🚽",
+        "hexcode" : "1F6BD",
+        "description" : "변기"
+    },
+    {
+        "emoji" : "🪠",
+        "hexcode" : "1FAA0",
+        "description" : "변기 플런저"
+    },
+    {
+        "emoji" : "🚿",
+        "hexcode" : "1F6BF",
+        "description" : "샤워"
+    },
+    {
+        "emoji" : "🛁",
+        "hexcode" : "1F6C1",
+        "description" : "욕조"
+    },
+    {
+        "emoji" : "🪤",
+        "hexcode" : "1FAA4",
+        "description" : "쥐 트랩"
+    },
+    {
+        "emoji" : "🪒",
+        "hexcode" : "1FA92",
+        "description" : "면도기"
+    },
+    {
+        "emoji" : "🧴",
+        "hexcode" : "1F9F4",
+        "description" : "로션 병"
+    },
+    {
+        "emoji" : "🧷",
+        "hexcode" : "1F9F7",
+        "description" : "안전핀"
+    },
+    {
+        "emoji" : "🧹",
+        "hexcode" : "1F9F9",
+        "description" : "빗자루"
+    },
+    {
+        "emoji" : "🧺",
+        "hexcode" : "1F9FA",
+        "description" : "바구니"
+    },
+    {
+        "emoji" : "🧻",
+        "hexcode" : "1F9FB",
+        "description" : "두루마리 휴지"
+    },
+    {
+        "emoji" : "🪣",
+        "hexcode" : "1FAA3",
+        "description" : "양동이"
+    },
+    {
+        "emoji" : "🧼",
+        "hexcode" : "1F9FC",
+        "description" : "비누"
+    },
+    {
+        "emoji" : "🫧",
+        "hexcode" : "1FAE7",
+        "description" : "비눗방울"
+    },
+    {
+        "emoji" : "🪥",
+        "hexcode" : "1FAA5",
+        "description" : "칫솔"
+    },
+    {
+        "emoji" : "🧽",
+        "hexcode" : "1F9FD",
+        "description" : "스펀지"
+    },
+    {
+        "emoji" : "🧯",
+        "hexcode" : "1F9EF",
+        "description" : "소화기"
+    },
+    {
+        "emoji" : "🛒",
+        "hexcode" : "1F6D2",
+        "description" : "장바구니 카트"
+    },
+    {
+        "emoji" : "🚬",
+        "hexcode" : "1F6AC",
+        "description" : "담배"
+    },
+    {
+        "emoji" : "⚰",
+        "hexcode" : "26B0",
+        "description" : "관"
+    },
+    {
+        "emoji" : "🪦",
+        "hexcode" : "1FAA6",
+        "description" : "머릿돌"
+    },
+    {
+        "emoji" : "⚱",
+        "hexcode" : "26B1",
+        "description" : "장례식장"
+    },
+    {
+        "emoji" : "🧿",
+        "hexcode" : "1F9FF",
+        "description" : "나자르 본주우"
+    },
+    {
+        "emoji" : "🪬",
+        "hexcode" : "1FAAC",
+        "description" : "함사"
+    },
+    {
+        "emoji" : "🗿",
+        "hexcode" : "1F5FF",
+        "description" : "모아이 석상"
+    },
+    {
+        "emoji" : "🪧",
+        "hexcode" : "1FAA7",
+        "description" : "플래카드"
+    },
+    {
+        "emoji" : "🪪",
+        "hexcode" : "1FAAA",
+        "description" : "신분증"
+    },
+    {
+        "emoji" : "🏧",
+        "hexcode" : "1F3E7",
+        "description" : "ATM 표지"
+    },
+    {
+        "emoji" : "🚮",
+        "hexcode" : "1F6AE",
+        "description" : "쓰레기를 버림 표지"
+    },
+    {
+        "emoji" : "🚰",
+        "hexcode" : "1F6AE",
+        "description" : "음용수 표지"
+    },
+    {
+        "emoji" : "♿",
+        "hexcode" : "267F",
+        "description" : "휠체어 기호"
+    },
+    {
+        "emoji" : "🚹",
+        "hexcode" : "1F6B9",
+        "description" : "남자 화장실"
+    },
+    {
+        "emoji" : "🚺",
+        "hexcode" : "1F6BA",
+        "description" : "여자 화장실"
+    },
+    {
+        "emoji" : "🚻",
+        "hexcode" : "1F6BB",
+        "description" : "화장실"
+    },
+    {
+        "emoji" : "🚼",
+        "hexcode" : "1F6BC",
+        "description" : "아기 기호"
+    },
+    {
+        "emoji" : "🚾",
+        "hexcode" : "16BEF",
+        "description" : "화장실 표지"
+    },
+    {
+        "emoji" : "🛂",
+        "hexcode" : "1F6C2",
+        "description" : "여권 관리 표지"
+    },
+    {
+        "emoji" : "🛃",
+        "hexcode" : "1F6C3",
+        "description" : "세관 표지"
+    },
+    {
+        "emoji" : "🛄",
+        "hexcode" : "1F6C4",
+        "description" : "수하물 찾는 곳 표지"
+    },
+    {
+        "emoji" : "🛅",
+        "hexcode" : "1F6C5",
+        "description" : "남은 짐 표지"
+    },
+    {
+        "emoji" : "⚠",
+        "hexcode" : "26A0",
+        "description" : "경고문"
+    },
+    {
+        "emoji" : "🚸",
+        "hexcode" : "1F6B8",
+        "description" : "어린이 보호"
+    },
+    {
+        "emoji" : "⛔",
+        "hexcode" : "26D4",
+        "description" : "출입 금지"
+    },
+    {
+        "emoji" : "🚫",
+        "hexcode" : "1F6AB",
+        "description" : "금지 표지"
+    },
+    {
+        "emoji" : "🚳",
+        "hexcode" : "1F6B3",
+        "description" : "자전거 금지 표지"
+    },
+    {
+        "emoji" : "🚭",
+        "hexcode" : "1F6AD",
+        "description" : "흡연금지"
+    },
+    {
+        "emoji" : "🚯",
+        "hexcode" : "1F6AF",
+        "description" : "쓰레기 투기 금지"
+    },
+    {
+        "emoji" : "🚱",
+        "hexcode" : "1F6B1",
+        "description" : "식수 금지"
+    },
+    {
+        "emoji" : "🚷",
+        "hexcode" : "1F6B7",
+        "description" : "횡단 금지"
+    },
+    {
+        "emoji" : "📵",
+        "hexcode" : "1F4F5",
+        "description" : "휴대전화 금지"
+    },
+    {
+        "emoji" : "🔞",
+        "hexcode" : "1F51E",
+        "description" : "18세 미만 금지"
+    },
+    {
+        "emoji" : "☢",
+        "hexcode" : "2622",
+        "description" : "방사성의"
+    },
+    {
+        "emoji" : "☣",
+        "hexcode" : "2623",
+        "description" : "생물학적 유해성"
+    },
+    {
+        "emoji" : "⬆",
+        "hexcode" : "2B06",
+        "description" : "위 방향 화살표"
+    },
+    {
+        "emoji" : "↗",
+        "hexcode" : "2197",
+        "description" : "오른쪽 위의 화살표"
+    },
+    {
+        "emoji" : "➡",
+        "hexcode" : "27A1",
+        "description" : "오른쪽 화살표"
+    },
+    {
+        "emoji" : "↘",
+        "hexcode" : "2198",
+        "description" : "오른쪽 아래 화살표"
+    },
+    {
+        "emoji" : "⬇",
+        "hexcode" : "2B07",
+        "description" : "아래쪽 화살표"
+    },
+    {
+        "emoji" : "↙",
+        "hexcode" : "2199",
+        "description" : "왼쪽 아래 화살표"
+    },
+    {
+        "emoji" : "⬅",
+        "hexcode" : "2B05",
+        "description" : "왼쪽 화살표"
+    },
+    {
+        "emoji" : "↖",
+        "hexcode" : "2196",
+        "description" : "왼쪽 위 화살표"
+    },
+    {
+        "emoji" : "↕",
+        "hexcode" : "2195",
+        "description" : "위아래 화살표"
+    },
+    {
+        "emoji" : "↔",
+        "hexcode" : "2194",
+        "description" : "좌우 화살표"
+    },
+    {
+        "emoji" : "↩",
+        "hexcode" : "21A9",
+        "description" : "오른쪽 화살표 곡선 왼쪽"
+    },
+    {
+        "emoji" : "↪",
+        "hexcode" : "21AA",
+        "description" : "왼쪽 화살표 곡선 오른쪽"
+    },
+    {
+        "emoji" : "🔃",
+        "hexcode" : "1F503",
+        "description" : "시계방향 세로 화살표"
+    },
+    {
+        "emoji" : "🔄",
+        "hexcode" : "1F504",
+        "description" : "반시계 방향 화살표"
+    },
+    {
+        "emoji" : "🔙",
+        "hexcode" : "1F519",
+        "description" : "뒤로 화살표"
+    },
+    {
+        "emoji" : "🔚",
+        "hexcode" : "1F51A",
+        "description" : "끝 화살표"
+    },
+    {
+        "emoji" : "🔛",
+        "hexcode" : "1F51B",
+        "description" : "ON! 화살표"
+    },
+    {
+        "emoji" : "🔜",
+        "hexcode" : "1F51C",
+        "description" : "SOON 화살표"
+    },
+    {
+        "emoji" : "🔝",
+        "hexcode" : "1F51D",
+        "description" : "상단 화살표"
+    },
+    {
+        "emoji" : "🛐",
+        "hexcode" : "1F6D0",
+        "description" : "예배 장소"
+    },
+    {
+        "emoji" : "⚛",
+        "hexcode" : "269B",
+        "description" : "원자 기호"
+    },
+    {
+        "emoji" : "🕉",
+        "hexcode" : "1F549",
+        "description" : "om"
+    },
+    {
+        "emoji" : "✡",
+        "hexcode" : "2721",
+        "description" : "다윗의 별"
+    },
+    {
+        "emoji" : "☸",
+        "hexcode" : "2638",
+        "description" : "법륜"
+    },
+    {
+        "emoji" : "☯",
+        "hexcode" : "271D",
+        "description" : "음양"
+    },
+    {
+        "emoji" : "✝",
+        "hexcode" : "271D",
+        "description" : "라틴 십자가"
+    },
+    {
+        "emoji" : "☦",
+        "hexcode" : "2626",
+        "description" : "정통 십자가"
+    },
+    {
+        "emoji" : "☪",
+        "hexcode" : "262A",
+        "description" : "별과 초승달"
+    },
+    {
+        "emoji" : "☮",
+        "hexcode" : "262E",
+        "description" : "평화의 상징"
+    },
+    {
+        "emoji" : "🕎",
+        "hexcode" : "1F52F",
+        "description" : "메노라"
+    },
+    {
+        "emoji" : "🔯",
+        "hexcode" : "1F52F",
+        "description" : "6개의 꼭짓점이 있는 별"
+    },
+    {
+        "emoji" : "🪯",
+        "hexcode" : "1FAAF",
+        "description" : "칸다"
+    },
+    {
+        "emoji" : "♈",
+        "hexcode" : "2648",
+        "description" : "양자리"
+    },
+    {
+        "emoji" : "♉",
+        "hexcode" : "2649",
+        "description" : "황소자리"
+    },
+    {
+        "emoji" : "♊",
+        "hexcode" : "264A",
+        "description" : "쌍둥이자리"
+    },
+    {
+        "emoji" : "♋",
+        "hexcode" : "264B",
+        "description" : "게자리"
+    },
+    {
+        "emoji" : "♌",
+        "hexcode" : "264C",
+        "description" : "사자자리"
+    },
+    {
+        "emoji" : "♍",
+        "hexcode" : "264D",
+        "description" : "처녀자리"
+    },
+    {
+        "emoji" : "♎",
+        "hexcode" : "264E",
+        "description" : "천칭자리"
+    },
+    {
+        "emoji" : "♏",
+        "hexcode" : "264F",
+        "description" : "전갈자리"
+    },
+    {
+        "emoji" : "♐",
+        "hexcode" : "2650",
+        "description" : "궁수자리"
+    },
+    {
+        "emoji" : "♑",
+        "hexcode" : "2651",
+        "description" : "염소자리"
+    },
+    {
+        "emoji" : "♒",
+        "hexcode" : "2652",
+        "description" : "물병자리"
+    },
+    {
+        "emoji" : "♓",
+        "hexcode" : "2653",
+        "description" : "물고기자리"
+    },
+    {
+        "emoji" : "⛎",
+        "hexcode" : "26CE",
+        "description" : "뱀주인자리"
+    },
+    {
+        "emoji" : "🔀",
+        "hexcode" : "1F500",
+        "description" : "셔플 버튼"
+    },
+    {
+        "emoji" : "🔁",
+        "hexcode" : "1F501",
+        "description" : "반복 버튼"
+    },
+    {
+        "emoji" : "🔂",
+        "hexcode" : "1F502",
+        "description" : "단일 버튼 반복"
+    },
+    {
+        "emoji" : "▶",
+        "hexcode" : "25B6",
+        "description" : "재생 버튼"
+    },
+    {
+        "emoji" : "⏩",
+        "hexcode" : "23E9",
+        "description" : "속전버튼"
+    },
+    {
+        "emoji" : "⏭",
+        "hexcode" : "23ED",
+        "description" : "다음 트랙 버튼"
+    },
+    {
+        "emoji" : "⏯",
+        "hexcode" : "23EF",
+        "description" : "재생 또는 일시 중지 버튼"
+    },
+    {
+        "emoji" : "◀",
+        "hexcode" : "25C0",
+        "description" : "역버튼"
+    },
+    {
+        "emoji" : "⏪",
+        "hexcode" : "23EA",
+        "description" : "빠른 역방향 버튼"
+    },
+    {
+        "emoji" : "⏮",
+        "hexcode" : "23EE",
+        "description" : "마지막 트랙 버튼"
+    },
+    {
+        "emoji" : "🔼",
+        "hexcode" : "1F53C",
+        "description" : "위쪽 버튼"
+    },
+    {
+        "emoji" : "⏫",
+        "hexcode" : "23EB",
+        "description" : "위쪽 빠른 버튼"
+    },
+    {
+        "emoji" : "🔽",
+        "hexcode" : "1F53D",
+        "description" : "아래쪽 버튼"
+    },
+    {
+        "emoji" : "⏬",
+        "hexcode" : "23EC",
+        "description" : "아래쪽 속단 버튼"
+    },
+    {
+        "emoji" : "⏸",
+        "hexcode" : "23F8",
+        "description" : "일시 중지 버튼"
+    },
+    {
+        "emoji" : "⏹",
+        "hexcode" : "23F9",
+        "description" : "정지 버튼"
+    },
+    {
+        "emoji" : "⏺",
+        "hexcode" : "23FA",
+        "description" : "녹음 버튼"
+    },
+    {
+        "emoji" : "⏏",
+        "hexcode" : "23CF",
+        "description" : "배출 버튼"
+    },
+    {
+        "emoji" : "🎦",
+        "hexcode" : "1F3A6",
+        "description" : "영화"
+    },
+    {
+        "emoji" : "🔅",
+        "hexcode" : "1F505",
+        "description" : "희미한 불빛 버튼"
+    },
+    {
+        "emoji" : "🔆",
+        "hexcode" : "1F506",
+        "description" : "밝은 불빛 버튼"
+    },
+    {
+        "emoji" : "📶",
+        "hexcode" : "1F4F6",
+        "description" : "안테나 바"
+    },
+    {
+        "emoji" : "🛜",
+        "hexcode" : "1F6DC",
+        "description" : "무선"
+    },
+    {
+        "emoji" : "📳",
+        "hexcode" : "1F4F3",
+        "description" : "진동 모드"
+    },
+    {
+        "emoji" : "📴",
+        "hexcode" : "1F4F4",
+        "description" : "휴대전화 꺼짐"
+    },
+    {
+        "emoji" : "♀",
+        "hexcode" : "2640",
+        "description" : "여성 부호"
+    },
+    {
+        "emoji" : "♂",
+        "hexcode" : "2642",
+        "description" : "남성 부호"
+    },
+    {
+        "emoji" : "⚧",
+        "hexcode" : "26A7",
+        "description" : "트랜스젠더 기호"
+    },
+    {
+        "emoji" : "✖",
+        "hexcode" : "2716",
+        "description" : "곱셈"
+    },
+    {
+        "emoji" : "➕",
+        "hexcode" : "2795",
+        "description" : "덧셈"
+    },
+    {
+        "emoji" : "➖",
+        "hexcode" : "2796",
+        "description" : "뺄셈"
+    },
+    {
+        "emoji" : "➗",
+        "hexcode" : "2797",
+        "description" : "나눗셋"
+    },
+    {
+        "emoji" : "🟰",
+        "hexcode" : "1F7F0",
+        "description" : "등호"
+    },
+    {
+        "emoji" : "♾",
+        "hexcode" : "267E",
+        "description" : "무한대"
+    },
+    {
+        "emoji" : "‼",
+        "hexcode" : "203C",
+        "description" : "이중 느낌표"
+    },
+    {
+        "emoji" : "⁉",
+        "hexcode" : "2049",
+        "description" : "느낌표 물음표"
+    },
+    {
+        "emoji" : "❓",
+        "hexcode" : "2753",
+        "description" : "빨간 물음표"
+    },
+    {
+        "emoji" : "❔",
+        "hexcode" : "2754",
+        "description" : "흰 물음표"
+    },
+    {
+        "emoji" : "❕",
+        "hexcode" : "2755",
+        "description" : "흰 느낌표"
+    },
+    {
+        "emoji" : "❗",
+        "hexcode" : "2757",
+        "description" : "붉은 느낌표"
+    },
+    {
+        "emoji" : "〰",
+        "hexcode" : "3030",
+        "description" : "물결치는 대쉬"
+    },
+    {
+        "emoji" : "💱",
+        "hexcode" : "1F4B1",
+        "description" : "환전"
+    },
+    {
+        "emoji" : "💲",
+        "hexcode" : "1F4B2",
+        "description" : "무거운 달러 표시"
+    },
+    {
+        "emoji" : "⚕",
+        "hexcode" : "2695",
+        "description" : "의학적 기호"
+    },
+    {
+        "emoji" : "♻",
+        "hexcode" : "267B",
+        "description" : "재활용 기호"
+    },
+    {
+        "emoji" : "⚜",
+        "hexcode" : "269C",
+        "description" : "플뢰르 드 리"
+    },
+    {
+        "emoji" : "🔱",
+        "hexcode" : "1F531",
+        "description" : "삼지창 엠블럼"
+    },
+    {
+        "emoji" : "📛",
+        "hexcode" : "1F4DB",
+        "description" : "이름배지"
+    },
+    {
+        "emoji" : "🔰",
+        "hexcode" : "1F530",
+        "description" : "초급을 뜻하는 일본어 기호"
+    },
+    {
+        "emoji" : "⭕",
+        "hexcode" : "2B55",
+        "description" : "속이 빈 붉은 원"
+    },
+    {
+        "emoji" : "✅",
+        "hexcode" : "2705",
+        "description" : "체크 표시 버튼"
+    },
+    {
+        "emoji" : "☑",
+        "hexcode" : "2611",
+        "description" : "체크박스가 있는 체크박스"
+    },
+    {
+        "emoji" : "✔",
+        "hexcode" : "2714",
+        "description" : "체크 마크"
+    },
+    {
+        "emoji" : "❌",
+        "hexcode" : "274C",
+        "description" : "엑스 표시"
+    },
+    {
+        "emoji" : "❎",
+        "hexcode" : "274E",
+        "description" : "엑스 표시 버튼"
+    },
+    {
+        "emoji" : "➰",
+        "hexcode" : "27B0",
+        "description" : "꼬불꼬불한 고리"
+    },
+    {
+        "emoji" : "➿",
+        "hexcode" : "27BF",
+        "description" : "더블 컬 루프"
+    },
+    {
+        "emoji" : "〽",
+        "hexcode" : "303D",
+        "description" : "부품 교대 표시"
+    },
+    {
+        "emoji" : "✳",
+        "hexcode" : "2733",
+        "description" : "여덟 스포크의 별표"
+    },
+    {
+        "emoji" : "✴",
+        "hexcode" : "2734",
+        "description" : "여덟 포인트의 별"
+    },
+    {
+        "emoji" : "❇",
+        "hexcode" : "2747",
+        "description" : "반짝반짝 빛나다"
+    },
+    {
+        "emoji" : "©",
+        "hexcode" : "00A9",
+        "description" : "저작권"
+    },
+    {
+        "emoji" : "®",
+        "hexcode" : "00AE",
+        "description" : "등록표시"
+    },
+    {
+        "emoji" : "™",
+        "hexcode" : "2122",
+        "description" : "상표"
+    },
+    {
+        "emoji" : "🔟",
+        "hexcode" : "1F51F",
+        "description" : "키캡: 10"
+    },
+    {
+        "emoji" : "🔠",
+        "hexcode" : "1F520",
+        "description" : "라틴 대문자 입력"
+    },
+    {
+        "emoji" : "🔡",
+        "hexcode" : "1F521",
+        "description" : "라틴 소문자 입력"
+    },
+    {
+        "emoji" : "🔢",
+        "hexcode" : "1F522",
+        "description" : "입력 번호"
+    },
+    {
+        "emoji" : "🔣",
+        "hexcode" : "1F523",
+        "description" : "입력 기호"
+    },
+    {
+        "emoji" : "🔤",
+        "hexcode" : "1F524",
+        "description" : "라틴 문자 입력"
+    },
+    {
+        "emoji" : "🅰",
+        "hexcode" : "1F170",
+        "description" : "A버튼(혈액형)"
+    },
+    {
+        "emoji" : "🆎",
+        "hexcode" : "1F18E",
+        "description" : "AB버튼(혈액형)"
+    },
+    {
+        "emoji" : "🅱",
+        "hexcode" : "1F171",
+        "description" : "B버튼(혈액형)"
+    },
+    {
+        "emoji" : "🆑",
+        "hexcode" : "1F191",
+        "description" : "CL버튼"
+    },
+    {
+        "emoji" : "🆒",
+        "hexcode" : "1F192",
+        "description" : "COOL 버튼"
+    },
+    {
+        "emoji" : "🆓",
+        "hexcode" : "1F193",
+        "description" : "FREE 버튼"
+    },
+    {
+        "emoji" : "ℹ",
+        "hexcode" : "2139",
+        "description" : "정보"
+    },
+    {
+        "emoji" : "🆔",
+        "hexcode" : "1F194",
+        "description" : "아이디버튼"
+    },
+    {
+        "emoji" : "Ⓜ",
+        "hexcode" : "24C2",
+        "description" : "동그라미가 쳐진 M"
+    },
+    {
+        "emoji" : "🆕",
+        "hexcode" : "1F195",
+        "description" : "NEW 버튼"
+    },
+    {
+        "emoji" : "🆖",
+        "hexcode" : "1F196",
+        "description" : "NG버튼"
+    },
+    {
+        "emoji" : "🅾",
+        "hexcode" : "1F17E",
+        "description" : "O버튼(혈액형)"
+    },
+    {
+        "emoji" : "🆗",
+        "hexcode" : "1F197",
+        "description" : "OK버튼"
+    },
+    {
+        "emoji" : "🅿",
+        "hexcode" : "1F17F",
+        "description" : "P버튼"
+    },
+    {
+        "emoji" : "🆘",
+        "hexcode" : "1F198",
+        "description" : "SOS버튼"
+    },
+    {
+        "emoji" : "🆙",
+        "hexcode" : "1F199",
+        "description" : "UP! 버튼"
+    },
+    {
+        "emoji" : "🆚",
+        "hexcode" : "1F19A",
+        "description" : "VS 버튼"
+    },
+    {
+        "emoji" : "🔴",
+        "hexcode" : "1F534",
+        "description" : "붉은 원"
+    },
+    {
+        "emoji" : "🟠",
+        "hexcode" : "1F7E0",
+        "description" : "오렌지색 원"
+    },
+    {
+        "emoji" : "🟡",
+        "hexcode" : "1F7E1",
+        "description" : "노란색 원"
+    },
+    {
+        "emoji" : "🟢",
+        "hexcode" : "1F7E2",
+        "description" : "초록색 원"
+    },
+    {
+        "emoji" : "🔵",
+        "hexcode" : "1F535",
+        "description" : "파란색 원"
+    },
+    {
+        "emoji" : "⚫",
+        "hexcode" : "26AB",
+        "description" : "검은색 원"
+    },
+    {
+        "emoji" : "🏳",
+        "hexcode" : "1F3F3",
+        "description" : "백기"
+    }
+]

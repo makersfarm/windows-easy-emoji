@@ -1,0 +1,60 @@
+{
+  "source": "Unicode Emoji data files",
+  "source_url": "https://unicode.org/Public/emoji/latest/",
+  "ucd_emoji_url": "https://www.unicode.org/Public/17.0.0/ucd/emoji/",
+  "retrieved_at": "2026-05-11",
+  "version": "17.0",
+  "date": "2025-08-04, 20:55:31 GMT",
+  "license": "Unicode Terms of Use / Unicode License",
+  "files": {
+    "emoji-test.txt": {
+      "bytes": 669326
+    },
+    "emoji-sequences.txt": {
+      "bytes": 194868
+    },
+    "emoji-zwj-sequences.txt": {
+      "bytes": 277215
+    },
+    "emoji-data.txt": {
+      "bytes": 107324
+    },
+    "emoji-variation-sequences.txt": {
+      "bytes": 38315
+    }
+  },
+  "stats": {
+    "emoji_test_status_counts": {
+      "fully-qualified": 3944,
+      "unqualified": 243,
+      "minimally-qualified": 1029,
+      "component": 9
+    },
+    "fully_qualified_count": 3944,
+    "group_counts_fully_qualified": {
+      "Smileys & Emotion": 171,
+      "People & Body": 2418,
+      "Animals & Nature": 160,
+      "Food & Drink": 131,
+      "Travel & Places": 219,
+      "Activities": 85,
+      "Objects": 266,
+      "Symbols": 224,
+      "Flags": 270
+    },
+    "subgroup_count": 98,
+    "emoji_data_property_range_counts": {
+      "Emoji": 418,
+      "Emoji_Presentation": 296,
+      "Emoji_Modifier": 1,
+      "Emoji_Modifier_Base": 50,
+      "Emoji_Component": 10,
+      "Extended_Pictographic": 451
+    },
+    "emoji_variation_sequence_counts": {
+      "text style": 371,
+      "emoji style": 371
+    }
+  },
+  "integration_policy": "Use as authoritative Unicode 17.0 sequence/property source. Prefer emoji-test.txt CLDR order for keyboard ordering."
+}

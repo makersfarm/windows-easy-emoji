@@ -1,0 +1,115 @@
+{
+  "source": "Unicode CLDR Korean annotations",
+  "source_url": "https://github.com/unicode-org/cldr-json",
+  "package_urls": [
+    "https://www.npmjs.com/package/cldr-annotations-full",
+    "https://www.npmjs.com/package/cldr-annotations-derived-full"
+  ],
+  "retrieved_at": "2026-05-11",
+  "versions": {
+    "cldr-annotations-full": "48.2.0",
+    "cldr-annotations-derived-full": "48.2.0"
+  },
+  "license": "Unicode-3.0",
+  "files": {
+    "annotations-ko.json": {
+      "entries": 1966,
+      "default_terms": 10596,
+      "tts_terms": 1966
+    },
+    "annotations-derived-ko.json": {
+      "entries": 2376,
+      "default_terms": 19870,
+      "tts_terms": 2376
+    }
+  },
+  "examples": {
+    "😀": {
+      "default": [
+        "미소",
+        "발랄함",
+        "스마일",
+        "얼굴",
+        "웃음",
+        "치아",
+        "행복",
+        "환호",
+        "활짝 웃는 얼굴"
+      ],
+      "tts": [
+        "활짝 웃는 얼굴"
+      ]
+    },
+    "❤": {
+      "default": [
+        "감정",
+        "마음",
+        "빨간색 하트",
+        "사랑",
+        "하트"
+      ],
+      "tts": [
+        "빨간색 하트"
+      ]
+    },
+    "🔥": {
+      "default": [
+        "도구",
+        "뜨거운",
+        "불",
+        "불꽃",
+        "화끈한",
+        "화재"
+      ],
+      "tts": [
+        "불"
+      ]
+    },
+    "😂": {
+      "default": [
+        "기쁨의 눈물을 흘리는 얼굴",
+        "너무 웃겨서 눈물",
+        "너무 웃기는",
+        "눈물",
+        "스마일",
+        "얼굴",
+        "울면서 웃음",
+        "웃음",
+        "ㅎㅎ",
+        "하하",
+        "행복",
+        "헤헤"
+      ],
+      "tts": [
+        "기쁨의 눈물을 흘리는 얼굴"
+      ]
+    },
+    "🇰🇷": {
+      "default": [
+        "깃발"
+      ],
+      "tts": [
+        "깃발: 대한민국"
+      ]
+    },
+    "👋🏻": {
+      "default": [
+        "거기 있어?",
+        "나중에 봐",
+        "똑똑",
+        "바이",
+        "안녕",
+        "이따가 봐",
+        "잘가",
+        "펼친 손",
+        "하얀 피부",
+        "헤이",
+        "흔드는 손"
+      ],
+      "tts": [
+        "흔드는 손: 하얀 피부"
+      ]
+    }
+  },
+  "integration_policy": "Use as primary Korean keyword/TTS source. Merge by exact emoji sequence after canonical identity is established from Unicode/muan."
+}

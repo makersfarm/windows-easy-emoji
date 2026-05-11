@@ -35,6 +35,7 @@ public sealed class TrayAppHost : IDisposable
     }
 
     public event EventHandler<AppSettings>? SettingsChangeRequested;
+    public event EventHandler? SettingsWindowRequested;
 
     public void Start()
     {
@@ -72,6 +73,8 @@ public sealed class TrayAppHost : IDisposable
     {
         var menu = new ContextMenuStrip();
         menu.Items.Add("Emoji Search 열기", null, (_, _) => ShowOverlay());
+        menu.Items.Add("설정...", null, (_, _) => SettingsWindowRequested?.Invoke(this, EventArgs.Empty));
+        menu.Items.Add(new ToolStripSeparator());
         menu.Items.Add(CreateToggleItem(
             "Win + . 대체",
             settings.ReplaceWinPeriod,

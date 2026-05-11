@@ -77,6 +77,20 @@ public partial class MainWindow : Window
 
     private void SearchBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
     {
+        if (e.Key == Key.Enter && ResultsList.SelectedItem is SearchResult result)
+        {
+            PasteResult(result);
+            e.Handled = true;
+            return;
+        }
+
+        if (e.Key == Key.Escape)
+        {
+            Hide();
+            e.Handled = true;
+            return;
+        }
+
         if (e.Key is not (Key.Up or Key.Down) || ResultsList.Items.Count == 0)
         {
             return;
@@ -116,10 +130,17 @@ public partial class MainWindow : Window
 
     private void PasteResult(SearchResult result)
     {
-        DiagnosticLog.Write($"main-window.paste-result begin target={DiagnosticLog.Handle(targetWindowHandle)} emojiId={result.Record.Id}");
+        var target = targetWindowHandle;
+        var emoji = result.Record.Emoji;
+        var options = pasteOptions;
+        DiagnosticLog.Write($"main-window.paste-result begin target={DiagnosticLog.Handle(target)} emojiId={result.Record.Id}");
+
         Hide();
-        var pasteResult = pasteCoordinator.PasteToTarget(targetWindowHandle, result.Record.Emoji, pasteOptions);
-        DiagnosticLog.Write($"main-window.paste-result complete pasted={pasteResult.Pasted} targetActivated={pasteResult.TargetActivated}");
+        Dispatcher.BeginInvoke(() =>
+        {
+            var pasteResult = pasteCoordinator.PasteToTarget(target, emoji, options);
+            DiagnosticLog.Write($"main-window.paste-result complete pasted={pasteResult.Pasted} targetActivated={pasteResult.TargetActivated}");
+        });
     }
 
     private void UpdatePasteStatus()

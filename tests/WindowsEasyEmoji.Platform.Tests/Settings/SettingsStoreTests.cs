@@ -77,4 +77,45 @@ public sealed class SettingsStoreTests
             Environment.SetEnvironmentVariable("WINDOWS_EASY_EMOJI_SETTINGS_PATH", null);
         }
     }
+
+    [Fact]
+    public void Validator_accepts_default_settings()
+    {
+        var isValid = AppSettingsValidator.TryValidate(AppSettings.Default, out var errorMessage);
+
+        Assert.True(isValid);
+        Assert.Equal(string.Empty, errorMessage);
+    }
+
+    [Fact]
+    public void Validator_rejects_empty_fallback_hotkey()
+    {
+        var settings = AppSettings.Default with { FallbackHotkey = "   " };
+
+        var isValid = AppSettingsValidator.TryValidate(settings, out var errorMessage);
+
+        Assert.False(isValid);
+        Assert.Equal("Fallback hotkey를 입력하세요.", errorMessage);
+    }
+
+    [Fact]
+    public void Validator_rejects_unsupported_fallback_hotkey()
+    {
+        var settings = AppSettings.Default with { FallbackHotkey = "Ctrl+Alt+Hangul" };
+
+        var isValid = AppSettingsValidator.TryValidate(settings, out var errorMessage);
+
+        Assert.False(isValid);
+        Assert.Equal("지원하지 않는 fallback hotkey입니다.", errorMessage);
+    }
+
+    [Fact]
+    public void Validator_normalizes_fallback_hotkey_whitespace()
+    {
+        var settings = AppSettings.Default with { FallbackHotkey = "  Ctrl + Alt + E  " };
+
+        var normalized = AppSettingsValidator.Normalize(settings);
+
+        Assert.Equal("Ctrl+Alt+E", normalized.FallbackHotkey);
+    }
 }

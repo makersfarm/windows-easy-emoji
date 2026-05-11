@@ -14,7 +14,7 @@ Implemented so far:
 - Core emoji data schema
 - Korean text normalization and initial consonant matching
 - Rule-based local emoji search and ranking
-- JSON emoji data loader
+- JSON emoji data loader and external Korean description seed data
 - WPF search overlay skeleton
 - Windows tray app host
 - Clipboard paste into the previously active window

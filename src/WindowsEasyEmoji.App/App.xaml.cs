@@ -13,6 +13,7 @@ public partial class App : System.Windows.Application
     private SettingsStore? settingsStore;
     private AppSettings settings = AppSettings.Default;
     private MainWindow? overlayWindow;
+    private SettingsWindow? settingsWindow;
     private TrayAppHost? trayAppHost;
     private KeyboardHookService? keyboardHookService;
     private HotkeyService? hotkeyService;
@@ -54,6 +55,7 @@ public partial class App : System.Windows.Application
             settings,
             settingsStore.SettingsPath);
         trayAppHost.SettingsChangeRequested += (_, nextSettings) => ApplySettings(nextSettings);
+        trayAppHost.SettingsWindowRequested += (_, _) => ShowSettingsWindow();
         trayAppHost.Start();
 
         ConfigureShortcuts(settings);
@@ -73,13 +75,36 @@ public partial class App : System.Windows.Application
 
     private void ApplySettings(AppSettings nextSettings)
     {
-        settings = nextSettings;
+        settings = AppSettingsValidator.Normalize(nextSettings);
         DiagnosticLog.Write(
             $"app.apply-settings replaceWinPeriod={settings.ReplaceWinPeriod} autoPaste={settings.AutoPaste} fallback={settings.RegisterFallbackHotkey} restore={settings.RestoreClipboardAfterPaste} fallbackHotkey={settings.FallbackHotkey}");
         settingsStore?.Save(settings);
         overlayWindow?.UpdatePasteOptions(CreatePasteOptions(settings));
         trayAppHost?.UpdateSettings(settings);
         ConfigureShortcuts(settings);
+    }
+
+    private void ShowSettingsWindow()
+    {
+        if (settingsStore is null)
+        {
+            return;
+        }
+
+        if (settingsWindow is { IsVisible: true })
+        {
+            settingsWindow.Activate();
+            return;
+        }
+
+        settingsWindow = new SettingsWindow(settings, settingsStore.SettingsPath);
+        var result = settingsWindow.ShowDialog();
+        if (result == true)
+        {
+            ApplySettings(settingsWindow.Settings);
+        }
+
+        settingsWindow = null;
     }
 
     private void ConfigureShortcuts(AppSettings settings)

@@ -1,0 +1,157 @@
+{
+  "source": "muan/unicode-emoji-json",
+  "source_url": "https://github.com/muan/unicode-emoji-json",
+  "package_name": "unicode-emoji-json",
+  "package_version": "0.7.0",
+  "retrieved_at": "2026-05-11",
+  "license": {
+    "package": "MIT",
+    "upstream_data": "Unicode License Agreement",
+    "upstream_data_url": "https://www.unicode.org/license.html"
+  },
+  "files": {
+    "data-by-emoji.json": {
+      "count": 1914,
+      "shape": "emoji => metadata"
+    },
+    "data-by-group.json": {
+      "count": 9,
+      "shape": "group list with emoji arrays"
+    },
+    "data-ordered-emoji.json": {
+      "count": 1914,
+      "shape": "ordered emoji list"
+    },
+    "data-emoji-components.json": {
+      "count": 9,
+      "shape": "component slug => character"
+    }
+  },
+  "stats": {
+    "rgi_base_emoji_count": 1914,
+    "ordered_matches_by_emoji": true,
+    "group_count": 9,
+    "component_count": 9,
+    "skin_tone_supported_base_count": 330,
+    "multi_codepoint_count": 730,
+    "zwj_sequence_count": 249,
+    "regional_flag_count": 259,
+    "variation_selector_count": 365,
+    "groups": [
+      {
+        "name": "Smileys & Emotion",
+        "slug": "smileys_emotion",
+        "count": 171
+      },
+      {
+        "name": "People & Body",
+        "slug": "people_body",
+        "count": 388
+      },
+      {
+        "name": "Animals & Nature",
+        "slug": "animals_nature",
+        "count": 160
+      },
+      {
+        "name": "Food & Drink",
+        "slug": "food_drink",
+        "count": 131
+      },
+      {
+        "name": "Travel & Places",
+        "slug": "travel_places",
+        "count": 219
+      },
+      {
+        "name": "Activities",
+        "slug": "activities",
+        "count": 85
+      },
+      {
+        "name": "Objects",
+        "slug": "objects",
+        "count": 266
+      },
+      {
+        "name": "Symbols",
+        "slug": "symbols",
+        "count": 224
+      },
+      {
+        "name": "Flags",
+        "slug": "flags",
+        "count": 270
+      }
+    ],
+    "top_emoji_versions": [
+      [
+        "0.6",
+        719
+      ],
+      [
+        "2.0",
+        271
+      ],
+      [
+        "1.0",
+        170
+      ],
+      [
+        "0.7",
+        139
+      ],
+      [
+        "4.0",
+        113
+      ],
+      [
+        "5.0",
+        79
+      ],
+      [
+        "11.0",
+        77
+      ],
+      [
+        "12.0",
+        75
+      ]
+    ],
+    "top_unicode_versions": [
+      [
+        "0.6",
+        719
+      ],
+      [
+        "2.0",
+        271
+      ],
+      [
+        "1.0",
+        170
+      ],
+      [
+        "0.7",
+        139
+      ],
+      [
+        "4.0",
+        113
+      ],
+      [
+        "5.0",
+        79
+      ],
+      [
+        "11.0",
+        77
+      ],
+      [
+        "12.0",
+        75
+      ]
+    ]
+  },
+  "integration_policy": "Use as canonical RGI ordering/group/version backbone. Do not treat it as Korean search data; merge Korean labels and aliases from separate sources."
+}
