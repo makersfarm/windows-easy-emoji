@@ -3,8 +3,8 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$RunnerToken,
 
-    [string]$RepoUrl = "https://github.com/makersfarm/windows-easy-emoji",
-    [string]$RunnerRoot = "C:\actions-runner\windows-easy-emoji",
+    [string]$RepoUrl = "https://github.com/makersfarm",
+    [string]$RunnerRoot = "C:\actions-runner",
     [string]$RunnerName = "$env:COMPUTERNAME-ui-e2e",
     [string]$Labels = "self-hosted,windows,ui-e2e,cloudpc"
 )

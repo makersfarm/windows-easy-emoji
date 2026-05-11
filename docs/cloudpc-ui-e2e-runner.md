@@ -21,13 +21,21 @@ whoami /groups
 
 정상적인 초기 설정 PowerShell이면 `BUILTIN\Administrators`가 `Enabled group`이고 integrity level이 `High Mandatory Level`이어야 한다. `Administrators`가 `Group used for deny only`이고 `Medium Mandatory Level`이면 elevated shell이 아니다. 이 경우 관리자 권한 PowerShell로 다시 열거나, Windows 365 admin center에서 해당 Cloud PC 사용자를 Local Administrator로 설정해야 한다.
 
-4. GitHub repo에서 runner 등록 token을 만든다.
+4. GitHub org 또는 repo에서 runner 등록 token을 만든다.
 
 ```text
 Repo Settings -> Actions -> Runners -> New self-hosted runner -> Windows x64
 ```
 
-화면에 나온 token만 복사한다. token은 커밋하거나 로그에 남기지 않는다.
+또는 org-level runner를 쓰는 경우:
+
+```text
+Organization Settings -> Actions -> Runners -> New self-hosted runner -> Windows x64
+```
+
+GitHub 화면에 `config.cmd --url https://github.com/makersfarm --token ...`처럼 org URL이 나오면 org-level runner token이다. 이 경우 runner group에서 `makersfarm/windows-easy-emoji` repo가 이 runner를 사용할 수 있게 허용되어 있어야 한다.
+
+화면에 나온 token만 복사한다. token은 커밋하거나 로그에 남기지 않는다. token을 채팅이나 로그에 붙여넣었다면 폐기하고 새 token을 만든다.
 
 ## Runner 설치
 
@@ -44,6 +52,25 @@ runner를 구성한다.
 
 ```powershell
 .\scripts\setup-cloudpc-ui-e2e-runner.ps1 -RunnerToken "<github-runner-token>"
+```
+
+GitHub가 repo URL이 아니라 org URL을 보여준 경우에도 위 명령 그대로 쓴다. 이 스크립트의 기본 `RepoUrl`은 `https://github.com/makersfarm`이다. repo-level token을 쓰려면 아래처럼 명시한다.
+
+```powershell
+.\scripts\setup-cloudpc-ui-e2e-runner.ps1 `
+  -RepoUrl "https://github.com/makersfarm/windows-easy-emoji" `
+  -RunnerToken "<github-runner-token>"
+```
+
+GitHub 화면의 기본 명령을 직접 쓰는 경우에는 우리 workflow가 요구하는 label을 반드시 붙인다.
+
+```powershell
+.\config.cmd `
+  --url https://github.com/makersfarm `
+  --token "<github-runner-token>" `
+  --labels "self-hosted,windows,ui-e2e,cloudpc" `
+  --work "_work" `
+  --replace
 ```
 
 구성이 끝나면 로그인된 Cloud PC 데스크톱 세션에서 runner를 시작한다.

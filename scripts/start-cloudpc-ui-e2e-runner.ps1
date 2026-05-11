@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$RunnerRoot = "C:\actions-runner\windows-easy-emoji"
+    [string]$RunnerRoot = "C:\actions-runner"
 )
 
 Set-StrictMode -Version Latest
