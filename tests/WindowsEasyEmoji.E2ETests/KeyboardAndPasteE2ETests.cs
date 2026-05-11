@@ -58,7 +58,7 @@ public sealed class KeyboardAndPasteE2ETests
         var overlayHandle = session.WaitForOverlayWindow();
 
         Assert.NotEqual(IntPtr.Zero, overlayHandle);
-        Assert.Contains("app.shortcut-dispatch sender=HotkeyService", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+        Assert.Contains("app.shortcut-dispatch sender=HotkeyService", session.ReadAppLog());
     }
 
     [UiE2EFact]
@@ -75,7 +75,7 @@ public sealed class KeyboardAndPasteE2ETests
         var pastedText = session.WaitForTargetText("😂");
 
         Assert.Equal("😂", pastedText);
-        Assert.Contains("emojiId=face_with_tears_of_joy", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+        Assert.Contains("emojiId=face_with_tears_of_joy", session.ReadAppLog());
     }
 
     [UiE2EFact]
@@ -92,7 +92,7 @@ public sealed class KeyboardAndPasteE2ETests
         var pastedText = session.WaitForTargetText("👍");
 
         Assert.Equal("👍", pastedText);
-        Assert.Contains("emojiId=thumbs_up", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+        Assert.Contains("emojiId=thumbs_up", session.ReadAppLog());
     }
 
     [UiE2EFact]
@@ -125,7 +125,7 @@ public sealed class KeyboardAndPasteE2ETests
 
         Assert.Equal("❤️", clipboardText);
         session.AssertTargetTextRemainsEmpty(TimeSpan.FromMilliseconds(750));
-        Assert.Contains("paste.copy-only", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+        Assert.Contains("paste.copy-only", session.ReadAppLog());
     }
 
     [UiE2EFact]
@@ -147,7 +147,7 @@ public sealed class KeyboardAndPasteE2ETests
 
         Assert.Equal("❤️", pastedText);
         Assert.Equal(originalClipboardText, clipboardText);
-        Assert.Contains("clipboard.restore complete", File.ReadAllText(session.AppLogPath, Encoding.UTF8));
+        Assert.Contains("clipboard.restore complete", session.ReadAppLog());
     }
 
     private sealed record E2ESettings(
@@ -190,6 +190,7 @@ public sealed class KeyboardAndPasteE2ETests
         private readonly string textFile;
         private readonly string targetLogPath;
         private readonly string appLogPath;
+        private readonly E2ESettings settings;
         private readonly Process appProcess;
         private readonly Process targetProcess;
         private bool disposed;
@@ -203,6 +204,7 @@ public sealed class KeyboardAndPasteE2ETests
             string targetLogPath,
             string appLogPath,
             string driverLogPath,
+            E2ESettings settings,
             Process appProcess,
             Process targetProcess)
         {
@@ -213,6 +215,7 @@ public sealed class KeyboardAndPasteE2ETests
             this.textFile = textFile;
             this.targetLogPath = targetLogPath;
             this.appLogPath = appLogPath;
+            this.settings = settings;
             DriverLogPath = driverLogPath;
             this.appProcess = appProcess;
             this.targetProcess = targetProcess;
@@ -257,10 +260,12 @@ public sealed class KeyboardAndPasteE2ETests
             var driverLogPath = Path.Combine(tempDirectory, "driver.log");
             var appLogPath = Path.Combine(tempDirectory, "app.log");
             var settingsPath = Path.Combine(tempDirectory, "settings.json");
-            WriteSettings(settingsPath, settings ?? E2ESettings.Default);
+            var effectiveSettings = settings ?? E2ESettings.Default;
+            WriteSettings(settingsPath, effectiveSettings);
 
-            var targetExe = Path.Combine(root, "tests", "WindowsEasyEmoji.E2ETarget", "bin", "Debug", "net8.0-windows", "WindowsEasyEmoji.E2ETarget.exe");
-            var appExe = Path.Combine(root, "src", "WindowsEasyEmoji.App", "bin", "Debug", "net8.0-windows", "WindowsEasyEmoji.App.exe");
+            var configuration = GetCurrentBuildConfiguration();
+            var targetExe = Path.Combine(root, "tests", "WindowsEasyEmoji.E2ETarget", "bin", configuration, "net8.0-windows", "WindowsEasyEmoji.E2ETarget.exe");
+            var appExe = Path.Combine(root, "src", "WindowsEasyEmoji.App", "bin", configuration, "net8.0-windows", "WindowsEasyEmoji.App.exe");
 
             var appProcess = StartProcess(
                 appExe,
@@ -272,7 +277,7 @@ public sealed class KeyboardAndPasteE2ETests
                 });
 
             WaitUntil(
-                () => File.Exists(appLogPath) && File.ReadAllText(appLogPath, Encoding.UTF8).Contains("keyboard-hook.start", StringComparison.Ordinal),
+                () => ReadTextFileShared(appLogPath).Contains("keyboard-hook.start", StringComparison.Ordinal),
                 TimeSpan.FromSeconds(10),
                 "app keyboard hook did not start");
 
@@ -298,6 +303,7 @@ public sealed class KeyboardAndPasteE2ETests
                 targetLogPath,
                 appLogPath,
                 driverLogPath,
+                effectiveSettings,
                 appProcess,
                 targetProcess);
 
@@ -337,14 +343,8 @@ public sealed class KeyboardAndPasteE2ETests
 
         public void SendFallbackHotkey()
         {
-            Log("send-fallback-hotkey");
-            SendKeyboardInputs(
-                KeyInput(VkControl, 0),
-                KeyInput(VkMenu, 0),
-                KeyInput(VkSpace, 0),
-                KeyInput(VkSpace, KeyEventFKeyUp),
-                KeyInput(VkMenu, KeyEventFKeyUp),
-                KeyInput(VkControl, KeyEventFKeyUp));
+            Log($"send-fallback-hotkey:{settings.FallbackHotkey}");
+            SendHotkey(settings.FallbackHotkey);
         }
 
         public void SendEnter()
@@ -412,7 +412,7 @@ public sealed class KeyboardAndPasteE2ETests
             WaitUntil(
                 () =>
                 {
-                    actual = File.Exists(textFile) ? File.ReadAllText(textFile, Encoding.UTF8) : string.Empty;
+                    actual = ReadTargetText();
                     return actual == expected;
                 },
                 TimeSpan.FromSeconds(10),
@@ -458,9 +458,14 @@ public sealed class KeyboardAndPasteE2ETests
         public void WaitForAppLogContains(string expected, TimeSpan timeout)
         {
             WaitUntil(
-                () => File.Exists(appLogPath) && File.ReadAllText(appLogPath, Encoding.UTF8).Contains(expected, StringComparison.Ordinal),
+                () => ReadAppLog().Contains(expected, StringComparison.Ordinal),
                 timeout,
                 $"app log did not contain '{expected}'");
+        }
+
+        public string ReadAppLog()
+        {
+            return ReadTextFileShared(appLogPath);
         }
 
         public void Dispose()
@@ -479,7 +484,7 @@ public sealed class KeyboardAndPasteE2ETests
                 if (File.Exists(path))
                 {
                     output.WriteLine($"{Path.GetFileName(path)}:");
-                    output.WriteLine(File.ReadAllText(path, Encoding.UTF8));
+                    output.WriteLine(ReadTextFileShared(path));
                 }
             }
         }
@@ -518,6 +523,27 @@ public sealed class KeyboardAndPasteE2ETests
         {
             Directory.CreateDirectory(Path.GetDirectoryName(settingsPath)!);
             File.WriteAllText(settingsPath, JsonSerializer.Serialize(settings, SettingsJsonOptions), Encoding.UTF8);
+        }
+
+        private static string GetCurrentBuildConfiguration()
+        {
+            var directory = new DirectoryInfo(AppContext.BaseDirectory);
+            while (directory is not null)
+            {
+                if (string.Equals(directory.Name, "Debug", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(directory.Name, "Release", StringComparison.OrdinalIgnoreCase))
+                {
+                    return directory.Name;
+                }
+
+                directory = directory.Parent;
+            }
+
+#if DEBUG
+            return "Debug";
+#else
+            return "Release";
+#endif
         }
 
         private static void StopExistingAppProcesses()
@@ -587,7 +613,30 @@ public sealed class KeyboardAndPasteE2ETests
 
         private string ReadTargetText()
         {
-            return File.Exists(textFile) ? File.ReadAllText(textFile, Encoding.UTF8) : string.Empty;
+            return ReadTextFileShared(textFile);
+        }
+
+        private static string ReadTextFileShared(string path)
+        {
+            if (!File.Exists(path))
+            {
+                return string.Empty;
+            }
+
+            try
+            {
+                using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using var reader = new StreamReader(stream, Encoding.UTF8);
+                return reader.ReadToEnd();
+            }
+            catch (IOException)
+            {
+                return string.Empty;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return string.Empty;
+            }
         }
 
         private static void Kill(Process process)
@@ -711,6 +760,49 @@ public sealed class KeyboardAndPasteE2ETests
                         ExtraInfo = UIntPtr.Zero
                     }
                 }
+            };
+        }
+
+        private static void SendHotkey(string hotkey)
+        {
+            var parts = hotkey
+                .Split('+', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length == 0)
+            {
+                throw new ArgumentException("Fallback hotkey must include at least one key.", nameof(hotkey));
+            }
+
+            var modifierKeys = new List<ushort>();
+            for (var index = 0; index < parts.Length - 1; index++)
+            {
+                modifierKeys.Add(ParseVirtualKey(parts[index]));
+            }
+
+            var key = ParseVirtualKey(parts[^1]);
+            var inputs = new List<Input>();
+            inputs.AddRange(modifierKeys.Select(modifier => KeyInput(modifier, 0)));
+            inputs.Add(KeyInput(key, 0));
+            inputs.Add(KeyInput(key, KeyEventFKeyUp));
+
+            for (var index = modifierKeys.Count - 1; index >= 0; index--)
+            {
+                inputs.Add(KeyInput(modifierKeys[index], KeyEventFKeyUp));
+            }
+
+            SendKeyboardInputs(inputs.ToArray());
+        }
+
+        private static ushort ParseVirtualKey(string key)
+        {
+            return key.ToUpperInvariant() switch
+            {
+                "CTRL" or "CONTROL" => VkControl,
+                "ALT" => VkMenu,
+                "WIN" or "WINDOWS" => VkLeftWin,
+                "SPACE" => VkSpace,
+                { Length: 1 } value when value[0] is >= 'A' and <= 'Z' => value[0],
+                { Length: 1 } value when value[0] is >= '0' and <= '9' => value[0],
+                _ => throw new NotSupportedException($"Unsupported E2E hotkey key: {key}")
             };
         }
 
