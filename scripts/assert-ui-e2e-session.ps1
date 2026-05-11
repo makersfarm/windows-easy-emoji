@@ -24,6 +24,10 @@ Write-Host "administrator=$isAdministrator"
 try {
     Write-Host "query user:"
     query user
+    $queryUserExitCode = $LASTEXITCODE
+    if ($queryUserExitCode -ne 0) {
+        Write-Warning "query user exited with code $queryUserExitCode. Continuing because the managed session checks passed independently."
+    }
 }
 catch {
     Write-Warning "query user failed: $($_.Exception.Message)"
@@ -42,3 +46,4 @@ if ($identity.Name -match "^(NT AUTHORITY\\SYSTEM|LocalSystem)$") {
 }
 
 Write-Host "UI E2E session looks usable."
+$global:LASTEXITCODE = 0
