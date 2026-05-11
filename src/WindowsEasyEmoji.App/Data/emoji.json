@@ -1,0 +1,152 @@
+[
+  {
+    "id": "red_heart",
+    "emoji": "❤️",
+    "baseEmoji": "❤",
+    "unicode": ["2764", "FE0F"],
+    "version": "0.6",
+    "category": "Smileys & Emotion",
+    "group": "heart",
+    "order": 120,
+    "name": { "en": "red heart", "ko": "빨간 하트" },
+    "keywords": {
+      "en": ["heart", "love", "red"],
+      "ko": ["하트", "사랑", "빨강", "마음"]
+    },
+    "aliases": [":heart:", "heart", "red_heart"],
+    "koAliases": ["하트", "빨간하트", "사랑"],
+    "chosung": ["ㅎㅌ", "ㅃㄱㅎㅌ", "ㅅㄹ"],
+    "searchText": "red heart heart love red 빨간 하트 하트 사랑 빨강 마음 :heart: ㅎㅌ",
+    "variant": {
+      "type": "emoji_presentation",
+      "parentId": null,
+      "skinTone": null,
+      "default": true
+    },
+    "flags": {
+      "supportsSkinTone": false,
+      "isVariant": false,
+      "hiddenByDefault": false
+    }
+  },
+  {
+    "id": "face_with_tears_of_joy",
+    "emoji": "😂",
+    "baseEmoji": "😂",
+    "unicode": ["1F602"],
+    "version": "0.6",
+    "category": "Smileys & Emotion",
+    "group": "face-positive",
+    "order": 20,
+    "name": { "en": "face with tears of joy", "ko": "기쁨의 눈물을 흘리는 얼굴" },
+    "keywords": {
+      "en": ["face", "tears", "joy", "laugh"],
+      "ko": ["얼굴", "눈물", "기쁨", "웃음"]
+    },
+    "aliases": [":joy:", "joy", "lol"],
+    "koAliases": ["웃음", "ㅋㅋ", "개웃김", "눈물웃음"],
+    "chosung": ["ㅇㅇ", "ㅋㅋ", "ㄱㅇㄱ", "ㄴㅁㅇㅇ"],
+    "searchText": "face with tears of joy laugh 웃음 ㅋㅋ 개웃김 눈물웃음",
+    "variant": {
+      "type": "emoji_presentation",
+      "parentId": null,
+      "skinTone": null,
+      "default": true
+    },
+    "flags": {
+      "supportsSkinTone": false,
+      "isVariant": false,
+      "hiddenByDefault": false
+    }
+  },
+  {
+    "id": "thumbs_up",
+    "emoji": "👍",
+    "baseEmoji": "👍",
+    "unicode": ["1F44D"],
+    "version": "0.6",
+    "category": "People & Body",
+    "group": "hand-fingers-closed",
+    "order": 210,
+    "name": { "en": "thumbs up", "ko": "엄지척" },
+    "keywords": {
+      "en": ["thumb", "up", "like", "yes"],
+      "ko": ["엄지", "좋아요", "긍정", "찬성"]
+    },
+    "aliases": [":thumbsup:", "thumbsup", "+1"],
+    "koAliases": ["따봉", "굿", "좋아요", "엄지척"],
+    "chosung": ["ㄸㅂ", "ㄱ", "ㅈㅇㅇ", "ㅇㅈㅊ"],
+    "searchText": "thumbs up like yes 따봉 굿 좋아요 엄지척",
+    "variant": {
+      "type": "emoji_presentation",
+      "parentId": null,
+      "skinTone": null,
+      "default": true
+    },
+    "flags": {
+      "supportsSkinTone": true,
+      "isVariant": false,
+      "hiddenByDefault": false
+    }
+  },
+  {
+    "id": "fire",
+    "emoji": "🔥",
+    "baseEmoji": "🔥",
+    "unicode": ["1F525"],
+    "version": "0.6",
+    "category": "Travel & Places",
+    "group": "sky & weather",
+    "order": 500,
+    "name": { "en": "fire", "ko": "불" },
+    "keywords": {
+      "en": ["fire", "flame", "hot"],
+      "ko": ["불", "화염", "뜨거움"]
+    },
+    "aliases": [":fire:", "fire"],
+    "koAliases": ["불", "불타", "핫함", "쩐다"],
+    "chosung": ["ㅂ", "ㅂㅌ", "ㅎㅎ", "ㅉㄷ"],
+    "searchText": "fire flame hot 불 화염 뜨거움 불타 핫함 쩐다",
+    "variant": {
+      "type": "emoji_presentation",
+      "parentId": null,
+      "skinTone": null,
+      "default": true
+    },
+    "flags": {
+      "supportsSkinTone": false,
+      "isVariant": false,
+      "hiddenByDefault": false
+    }
+  },
+  {
+    "id": "loudly_crying_face",
+    "emoji": "😭",
+    "baseEmoji": "😭",
+    "unicode": ["1F62D"],
+    "version": "0.6",
+    "category": "Smileys & Emotion",
+    "group": "face-concerned",
+    "order": 80,
+    "name": { "en": "loudly crying face", "ko": "엉엉 우는 얼굴" },
+    "keywords": {
+      "en": ["cry", "sad", "tear"],
+      "ko": ["울음", "눈물", "슬픔"]
+    },
+    "aliases": [":sob:", "sob", "cry"],
+    "koAliases": ["눈물", "울음", "ㅠㅠ", "슬픔"],
+    "chosung": ["ㄴㅁ", "ㅇㅇ", "ㅠㅠ", "ㅅㅍ"],
+    "searchText": "loudly crying face cry sad tear 눈물 울음 ㅠㅠ 슬픔",
+    "variant": {
+      "type": "emoji_presentation",
+      "parentId": null,
+      "skinTone": null,
+      "default": true
+    },
+    "flags": {
+      "supportsSkinTone": false,
+      "isVariant": false,
+      "hiddenByDefault": false
+    }
+  }
+]
