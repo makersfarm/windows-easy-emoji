@@ -1,4 +1,6 @@
 using WindowsEasyEmoji.App.Tray;
+using WindowsEasyEmoji.Platform.Clipboard;
+using WindowsEasyEmoji.Platform.Windows;
 
 namespace WindowsEasyEmoji.App;
 
@@ -12,8 +14,12 @@ public partial class App : System.Windows.Application
 
         ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
 
-        var overlayWindow = new MainWindow();
-        trayAppHost = new TrayAppHost(this, overlayWindow);
+        var foregroundWindowService = new ForegroundWindowService();
+        var pasteCoordinator = new PasteCoordinator(foregroundWindowService, new ClipboardPasteService());
+        var initialTargetWindowHandle = foregroundWindowService.GetForegroundWindowHandle();
+        var overlayWindow = new MainWindow(pasteCoordinator);
+        overlayWindow.RememberTargetWindow(initialTargetWindowHandle);
+        trayAppHost = new TrayAppHost(this, overlayWindow, foregroundWindowService);
         trayAppHost.Start();
 
         overlayWindow.Show();

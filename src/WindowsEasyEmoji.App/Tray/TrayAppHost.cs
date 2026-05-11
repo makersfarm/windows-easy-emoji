@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using WindowsEasyEmoji.Platform.Windows;
 using WpfApplication = System.Windows.Application;
 
 namespace WindowsEasyEmoji.App.Tray;
@@ -7,12 +8,17 @@ public sealed class TrayAppHost : IDisposable
 {
     private readonly WpfApplication application;
     private readonly MainWindow overlayWindow;
+    private readonly IForegroundWindowService foregroundWindowService;
     private NotifyIcon? notifyIcon;
 
-    public TrayAppHost(WpfApplication application, MainWindow overlayWindow)
+    public TrayAppHost(
+        WpfApplication application,
+        MainWindow overlayWindow,
+        IForegroundWindowService foregroundWindowService)
     {
         this.application = application;
         this.overlayWindow = overlayWindow;
+        this.foregroundWindowService = foregroundWindowService;
     }
 
     public void Start()
@@ -54,6 +60,9 @@ public sealed class TrayAppHost : IDisposable
 
     private void ShowOverlay()
     {
+        var targetWindowHandle = foregroundWindowService.GetForegroundWindowHandle();
+        overlayWindow.RememberTargetWindow(targetWindowHandle);
+
         if (!overlayWindow.IsVisible)
         {
             overlayWindow.Show();

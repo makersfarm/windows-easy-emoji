@@ -10,11 +10,13 @@ namespace WindowsEasyEmoji.App;
 public partial class MainWindow : Window
 {
     private readonly EmojiSearchService searchService;
-    private readonly ClipboardPasteService pasteService = new();
+    private readonly PasteCoordinator pasteCoordinator;
+    private IntPtr targetWindowHandle;
 
-    public MainWindow()
+    public MainWindow(PasteCoordinator pasteCoordinator)
     {
         InitializeComponent();
+        this.pasteCoordinator = pasteCoordinator;
 
         var dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "emoji.json");
         var records = File.Exists(dataPath)
@@ -30,6 +32,11 @@ public partial class MainWindow : Window
     {
         SearchBox.Focus();
         SearchBox.SelectAll();
+    }
+
+    public void RememberTargetWindow(IntPtr windowHandle)
+    {
+        targetWindowHandle = windowHandle;
     }
 
     private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -48,12 +55,8 @@ public partial class MainWindow : Window
 
         if (e.Key == Key.Enter && ResultsList.SelectedItem is SearchResult result)
         {
-            if (!pasteService.PasteText(result.Record.Emoji))
-            {
-                pasteService.CopyText(result.Record.Emoji);
-            }
-
             Hide();
+            pasteCoordinator.PasteToTarget(targetWindowHandle, result.Record.Emoji);
             e.Handled = true;
         }
     }

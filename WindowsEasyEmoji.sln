@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{396C8FBB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsEasyEmoji.Core.Tests", "tests\WindowsEasyEmoji.Core.Tests\WindowsEasyEmoji.Core.Tests.csproj", "{DD9A8779-1960-49A5-A07C-999F16292BBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsEasyEmoji.Platform.Tests", "tests\WindowsEasyEmoji.Platform.Tests\WindowsEasyEmoji.Platform.Tests.csproj", "{7B1230F2-02F9-4195-9CAB-E15919B78BBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,11 +42,16 @@ Global
 		{DD9A8779-1960-49A5-A07C-999F16292BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD9A8779-1960-49A5-A07C-999F16292BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD9A8779-1960-49A5-A07C-999F16292BBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1230F2-02F9-4195-9CAB-E15919B78BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1230F2-02F9-4195-9CAB-E15919B78BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1230F2-02F9-4195-9CAB-E15919B78BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1230F2-02F9-4195-9CAB-E15919B78BBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E799362B-C943-4846-8354-CF41746D3ADB} = {150D8334-D8A8-484D-99AC-16532FB27CB1}
 		{348AC810-5828-4201-88C8-CAD4B8CFDAAD} = {150D8334-D8A8-484D-99AC-16532FB27CB1}
 		{BCAB918B-0BD7-4DFF-8B5E-AC5FFACBF540} = {150D8334-D8A8-484D-99AC-16532FB27CB1}
 		{DD9A8779-1960-49A5-A07C-999F16292BBC} = {396C8FBB-8DCF-443F-9EA3-368E7BFB906F}
+		{7B1230F2-02F9-4195-9CAB-E15919B78BBE} = {396C8FBB-8DCF-443F-9EA3-368E7BFB906F}
 	EndGlobalSection
 EndGlobal

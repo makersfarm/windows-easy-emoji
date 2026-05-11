@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 
 namespace WindowsEasyEmoji.Platform.Clipboard;
 
-public sealed class ClipboardPasteService
+public sealed class ClipboardPasteService : IClipboardPasteService
 {
     public bool PasteText(string text)
     {

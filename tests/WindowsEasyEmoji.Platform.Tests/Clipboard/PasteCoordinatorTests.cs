@@ -1,0 +1,97 @@
+using WindowsEasyEmoji.Platform.Clipboard;
+using WindowsEasyEmoji.Platform.Windows;
+
+namespace WindowsEasyEmoji.Platform.Tests.Clipboard;
+
+public sealed class PasteCoordinatorTests
+{
+    [Fact]
+    public void PasteToTarget_activates_target_window_before_pasting_text()
+    {
+        var events = new List<string>();
+        var foreground = new RecordingForegroundWindowService(events);
+        var clipboard = new RecordingClipboardPasteService(events, pasteResult: true);
+        var coordinator = new PasteCoordinator(foreground, clipboard);
+        var target = new IntPtr(1234);
+
+        var result = coordinator.PasteToTarget(target, "❤️");
+
+        Assert.True(result.Pasted);
+        Assert.True(result.TargetActivated);
+        Assert.Equal(["activate:1234", "paste:❤️"], events);
+    }
+
+    [Fact]
+    public void PasteToTarget_skips_activation_for_empty_target_window()
+    {
+        var events = new List<string>();
+        var foreground = new RecordingForegroundWindowService(events);
+        var clipboard = new RecordingClipboardPasteService(events, pasteResult: true);
+        var coordinator = new PasteCoordinator(foreground, clipboard);
+
+        var result = coordinator.PasteToTarget(IntPtr.Zero, "😂");
+
+        Assert.True(result.Pasted);
+        Assert.False(result.TargetActivated);
+        Assert.Equal(["paste:😂"], events);
+    }
+
+    [Fact]
+    public void PasteToTarget_copies_text_when_send_input_paste_fails()
+    {
+        var events = new List<string>();
+        var foreground = new RecordingForegroundWindowService(events);
+        var clipboard = new RecordingClipboardPasteService(events, pasteResult: false);
+        var coordinator = new PasteCoordinator(foreground, clipboard);
+
+        var result = coordinator.PasteToTarget(new IntPtr(99), "🔥");
+
+        Assert.False(result.Pasted);
+        Assert.True(result.TargetActivated);
+        Assert.Equal(["activate:99", "paste:🔥", "copy:🔥"], events);
+    }
+
+    private sealed class RecordingForegroundWindowService : IForegroundWindowService
+    {
+        private readonly List<string> events;
+
+        public RecordingForegroundWindowService(List<string> events)
+        {
+            this.events = events;
+        }
+
+        public IntPtr GetForegroundWindowHandle()
+        {
+            return new IntPtr(42);
+        }
+
+        public bool TryActivateWindow(IntPtr windowHandle)
+        {
+            events.Add($"activate:{windowHandle}");
+            return true;
+        }
+    }
+
+    private sealed class RecordingClipboardPasteService : IClipboardPasteService
+    {
+        private readonly List<string> events;
+        private readonly bool pasteResult;
+
+        public RecordingClipboardPasteService(List<string> events, bool pasteResult)
+        {
+            this.events = events;
+            this.pasteResult = pasteResult;
+        }
+
+        public bool PasteText(string text)
+        {
+            events.Add($"paste:{text}");
+            return pasteResult;
+        }
+
+        public void CopyText(string text)
+        {
+            events.Add($"copy:{text}");
+        }
+    }
+}
