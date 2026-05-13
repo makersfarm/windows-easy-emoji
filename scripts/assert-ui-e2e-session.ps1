@@ -10,6 +10,51 @@ function Get-IsAdministrator {
     return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+function Invoke-QueryUser {
+    try {
+        $output = query user 2>&1
+        return [pscustomobject]@{
+            Output = @($output)
+            ExitCode = $LASTEXITCODE
+        }
+    }
+    catch {
+        return [pscustomobject]@{
+            Output = @($_.Exception.Message)
+            ExitCode = -1
+        }
+    }
+}
+
+function Get-QueryUserSessionState([string[]]$Output, [int]$SessionId) {
+    foreach ($line in $Output) {
+        $normalized = ($line -replace "^\s*>", "").Trim()
+        if ($normalized -match "\s+$SessionId\s+(?<state>\S+)\s+") {
+            return $Matches["state"]
+        }
+    }
+
+    return $null
+}
+
+function Invoke-TsconToConsole([int]$SessionId) {
+    $tsconPath = Join-Path $env:WINDIR "System32\tscon.exe"
+    if (-not (Test-Path $tsconPath)) {
+        Write-Warning "tscon.exe was not found at $tsconPath."
+        return
+    }
+
+    Write-Host "tsconAttempt=sessionId=$SessionId dest=console"
+    $output = & $tsconPath $SessionId /dest:console 2>&1
+    $exitCode = $LASTEXITCODE
+    foreach ($line in @($output)) {
+        Write-Host "tscon: $line"
+    }
+
+    Write-Host "tsconExitCode=$exitCode"
+    Start-Sleep -Seconds 3
+}
+
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $sessionId = [Diagnostics.Process]::GetCurrentProcess().SessionId
 $isInteractive = [Environment]::UserInteractive
@@ -21,16 +66,19 @@ Write-Host "sessionId=$sessionId"
 Write-Host "userInteractive=$isInteractive"
 Write-Host "administrator=$isAdministrator"
 
-try {
-    Write-Host "query user:"
-    query user
-    $queryUserExitCode = $LASTEXITCODE
-    if ($queryUserExitCode -ne 0) {
-        Write-Warning "query user exited with code $queryUserExitCode. Continuing because the managed session checks passed independently."
-    }
+$queryUserResult = Invoke-QueryUser
+Write-Host "query user:"
+foreach ($line in $queryUserResult.Output) {
+    Write-Host $line
 }
-catch {
-    Write-Warning "query user failed: $($_.Exception.Message)"
+
+if ($queryUserResult.ExitCode -ne 0) {
+    Write-Warning "query user exited with code $($queryUserResult.ExitCode). Continuing because the managed session checks passed independently."
+}
+
+$queryUserSessionState = Get-QueryUserSessionState $queryUserResult.Output $sessionId
+if (-not [string]::IsNullOrWhiteSpace($queryUserSessionState)) {
+    Write-Host "queryUserCurrentSessionState=$queryUserSessionState"
 }
 
 if (-not $isInteractive) {
@@ -43,6 +91,15 @@ if ($sessionId -eq 0) {
 
 if ($identity.Name -match "^(NT AUTHORITY\\SYSTEM|LocalSystem)$") {
     throw "GitHub runner is running as LocalSystem. UI E2E must run as the logged-in desktop user."
+}
+
+if ($queryUserSessionState -eq "Disc") {
+    if ($isAdministrator) {
+        Invoke-TsconToConsole $sessionId
+    }
+    else {
+        Write-Warning "Current session is disconnected and runner is not administrator, so tscon recovery cannot be attempted."
+    }
 }
 
 $artifactRoot = $env:WINDOWS_EASY_EMOJI_E2E_ARTIFACT_DIR
