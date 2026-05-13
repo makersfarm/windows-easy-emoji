@@ -7,5 +7,14 @@
         <SolidColorBrush x:Key="TextPrimaryBrush" Color="#FAFAFA" />
         <SolidColorBrush x:Key="TextSecondaryBrush" Color="#A1A1AA" />
         <SolidColorBrush x:Key="AccentBrush" Color="#3B82F6" />
+
+        <Style x:Key="EmojiTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI Emoji, Segoe UI Symbol" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="FontStretch" Value="Normal" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+        </Style>
     </Application.Resources>
 </Application>

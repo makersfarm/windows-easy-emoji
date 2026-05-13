@@ -63,7 +63,11 @@
                     <DataTemplate>
                         <Border Background="{StaticResource PanelBrush}" BorderBrush="#3F3F46" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,0,8">
                             <DockPanel>
-                                <TextBlock Text="{Binding Record.Emoji}" FontSize="30" Width="44" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Record.Emoji}"
+                                           Style="{StaticResource EmojiTextBlockStyle}"
+                                           FontSize="32"
+                                           Width="48"
+                                           VerticalAlignment="Center" />
                                 <StackPanel>
                                     <TextBlock Text="{Binding Record.Name.Ko}" FontSize="14" FontWeight="SemiBold" />
                                     <TextBlock Text="{Binding MatchType}" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" />
