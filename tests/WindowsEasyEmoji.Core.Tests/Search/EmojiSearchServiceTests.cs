@@ -105,6 +105,36 @@ public sealed class EmojiSearchServiceTests
     }
 
     [Fact]
+    public void Empty_search_orders_favorites_before_non_favorite_recent_usage()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("red_heart", "❤️", order: 1),
+            Emoji("fire", "🔥", order: 2)
+        ],
+        new Dictionary<string, UserEmojiState>
+        {
+            ["red_heart"] = new(
+                EmojiId: "red_heart",
+                LastUsedAt: null,
+                UseCount: 0,
+                Favorite: true,
+                CustomAliases: []),
+            ["fire"] = new(
+                EmojiId: "fire",
+                LastUsedAt: new DateTimeOffset(2026, 5, 13, 0, 0, 0, TimeSpan.Zero),
+                UseCount: 50,
+                Favorite: false,
+                CustomAliases: [])
+        });
+
+        var results = service.Search("").ToArray();
+
+        Assert.Equal("red_heart", results[0].Record.Id);
+        Assert.True(results[0].Score > results[1].Score);
+    }
+
+    [Fact]
     public void Search_matches_custom_aliases_from_user_state()
     {
         var service = new EmojiSearchService(

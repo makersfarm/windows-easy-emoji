@@ -15,6 +15,9 @@ public sealed class EmojiSearchService
     private const int PrefixScore = 500;
     private const int ContainsScore = 300;
     private const int FuzzyScore = 100;
+    private const int FavoriteBoost = 160;
+    private const int RecentUseBoost = 60;
+    private const int MaxUseCountBoost = 50;
 
     private static readonly IReadOnlyDictionary<string, IReadOnlySet<string>> CuratedQueryBoosts =
         CreateCuratedQueryBoosts();
@@ -76,15 +79,15 @@ public sealed class EmojiSearchService
         {
             if (state.Favorite)
             {
-                score += 80;
+                score += FavoriteBoost;
             }
 
             if (state.LastUsedAt is not null)
             {
-                score += 60;
+                score += RecentUseBoost;
             }
 
-            score += Math.Min(50, Math.Max(0, state.UseCount));
+            score += Math.Min(MaxUseCountBoost, Math.Max(0, state.UseCount));
         }
 
         if (record.Flags.HiddenByDefault)

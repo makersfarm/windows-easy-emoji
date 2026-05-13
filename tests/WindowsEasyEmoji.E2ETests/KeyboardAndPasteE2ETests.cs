@@ -296,6 +296,29 @@ public sealed class KeyboardAndPasteE2ETests
     }
 
     [UiE2EFact]
+    public async Task Empty_search_uses_favorite_before_non_favorite_recent_usage()
+    {
+        using var session = await E2ESession.StartAsync(
+            output,
+            userState:
+            [
+                E2EUserEmojiState.Create("fire", useCount: 50, lastUsedAt: new DateTimeOffset(2026, 5, 13, 0, 0, 0, TimeSpan.Zero)),
+                E2EUserEmojiState.Create("red_heart", favorite: true)
+            ]);
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+        session.WaitForSearchTopResult("red_heart");
+        session.SendEnter();
+
+        var pastedText = session.WaitForTargetText("❤️");
+
+        Assert.Equal("❤️", pastedText);
+        Assert.Contains("emojiId=red_heart", session.ReadAppLog());
+    }
+
+    [UiE2EFact]
     public async Task Custom_alias_from_user_state_can_drive_search()
     {
         using var session = await E2ESession.StartAsync(
