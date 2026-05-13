@@ -3,8 +3,10 @@ using System.Windows;
 using System.Windows.Input;
 using WindowsEasyEmoji.Core.Emoji;
 using WindowsEasyEmoji.Core.Search;
+using WindowsEasyEmoji.Core.User;
 using WindowsEasyEmoji.Platform.Clipboard;
 using WindowsEasyEmoji.Platform.Diagnostics;
+using WindowsEasyEmoji.Platform.UserState;
 
 namespace WindowsEasyEmoji.App;
 
@@ -12,14 +14,22 @@ public partial class MainWindow : Window
 {
     private readonly EmojiSearchService searchService;
     private readonly PasteCoordinator pasteCoordinator;
+    private readonly Dictionary<string, UserEmojiState> userStateByEmojiId;
+    private readonly UserEmojiStateStore userEmojiStateStore;
     private PasteOptions pasteOptions;
     private IntPtr targetWindowHandle;
 
-    public MainWindow(PasteCoordinator pasteCoordinator, PasteOptions pasteOptions)
+    public MainWindow(
+        PasteCoordinator pasteCoordinator,
+        PasteOptions pasteOptions,
+        Dictionary<string, UserEmojiState> userStateByEmojiId,
+        UserEmojiStateStore userEmojiStateStore)
     {
         InitializeComponent();
         this.pasteCoordinator = pasteCoordinator;
         this.pasteOptions = pasteOptions;
+        this.userStateByEmojiId = userStateByEmojiId;
+        this.userEmojiStateStore = userEmojiStateStore;
         UpdatePasteStatus();
 
         var dataPath = Path.Combine(AppContext.BaseDirectory, "Data", "emoji.json");
@@ -28,8 +38,8 @@ public partial class MainWindow : Window
             : [];
         DiagnosticLog.Write($"main-window.init dataPath={dataPath} recordCount={records.Count}");
 
-        searchService = new EmojiSearchService(records);
-        SearchBox.Text = "하트";
+        searchService = new EmojiSearchService(records, userStateByEmojiId);
+        SearchBox.Text = string.Empty;
         RefreshResults();
     }
 
@@ -134,6 +144,7 @@ public partial class MainWindow : Window
         var emoji = result.Record.Emoji;
         var options = pasteOptions;
         DiagnosticLog.Write($"main-window.paste-result begin target={DiagnosticLog.Handle(target)} emojiId={result.Record.Id}");
+        RecordSelection(result.Record.Id);
 
         Hide();
         Dispatcher.BeginInvoke(() =>
@@ -148,5 +159,28 @@ public partial class MainWindow : Window
         PasteStatusText.Text = pasteOptions.AutoPaste
             ? pasteOptions.RestoreOriginalClipboard ? "붙여넣기 · 클립보드 복원" : "자동 붙여넣기"
             : "클립보드에 복사";
+    }
+
+    private void RecordSelection(string emojiId)
+    {
+        userStateByEmojiId.TryGetValue(emojiId, out var currentState);
+        userStateByEmojiId[emojiId] = UserEmojiStateUpdater.RecordUse(
+            currentState,
+            emojiId,
+            DateTimeOffset.Now);
+
+        try
+        {
+            userEmojiStateStore.Save(userStateByEmojiId);
+            DiagnosticLog.Write($"main-window.user-state saved emojiId={emojiId} stateCount={userStateByEmojiId.Count}");
+        }
+        catch (IOException exception)
+        {
+            DiagnosticLog.Write($"main-window.user-state save-failed type={exception.GetType().Name} message={exception.Message}");
+        }
+        catch (UnauthorizedAccessException exception)
+        {
+            DiagnosticLog.Write($"main-window.user-state save-failed type={exception.GetType().Name} message={exception.Message}");
+        }
     }
 }

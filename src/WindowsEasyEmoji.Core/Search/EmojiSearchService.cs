@@ -26,6 +26,7 @@ public sealed class EmojiSearchService
             return records
                 .Select(record => ToResult(record, SearchMatchType.None, 0))
                 .OrderByDescending(result => result.Score)
+                .ThenByDescending(result => GetLastUsedAt(result.Record.Id))
                 .ThenBy(result => result.Record.Order)
                 .ThenBy(result => result.Record.Id, StringComparer.Ordinal)
                 .Take(limit)
@@ -44,7 +45,8 @@ public sealed class EmojiSearchService
 
     private SearchResult Score(EmojiRecord record, string normalizedQuery, string compactQuery)
     {
-        var (matchType, baseScore) = GetBaseMatch(record, normalizedQuery, compactQuery);
+        userStateByEmojiId.TryGetValue(record.Id, out var userState);
+        var (matchType, baseScore) = GetBaseMatch(record, userState, normalizedQuery, compactQuery);
         if (matchType is SearchMatchType.None)
         {
             return new SearchResult(record, 0, SearchMatchType.None);
@@ -81,9 +83,15 @@ public sealed class EmojiSearchService
 
     private static (SearchMatchType MatchType, int Score) GetBaseMatch(
         EmojiRecord record,
+        UserEmojiState? userState,
         string normalizedQuery,
         string compactQuery)
     {
+        if (ContainsExact(userState?.CustomAliases ?? [], normalizedQuery, compactQuery))
+        {
+            return (SearchMatchType.KoreanAliasExact, 1000);
+        }
+
         if (ContainsExact(record.KoAliases, normalizedQuery, compactQuery))
         {
             return (SearchMatchType.KoreanAliasExact, 1000);
@@ -131,6 +139,13 @@ public sealed class EmojiSearchService
         }
 
         return (SearchMatchType.None, 0);
+    }
+
+    private DateTimeOffset? GetLastUsedAt(string emojiId)
+    {
+        return userStateByEmojiId.TryGetValue(emojiId, out var state)
+            ? state.LastUsedAt
+            : null;
     }
 
     private static IEnumerable<string> GetSearchableValues(EmojiRecord record)

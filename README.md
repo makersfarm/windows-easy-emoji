@@ -38,6 +38,12 @@ The app creates a local settings file at:
 %APPDATA%\WindowsEasyEmoji\settings.json
 ```
 
+The app also stores local usage state at:
+
+```text
+%APPDATA%\WindowsEasyEmoji\user-state.json
+```
+
 Current MVP settings:
 
 - `ReplaceWinPeriod`: enables the `Win + .` replacement hook.
@@ -45,6 +51,8 @@ Current MVP settings:
 - `FallbackHotkey`: defaults to `Ctrl+Alt+Space`.
 - `AutoPaste`: pastes the selected emoji into the previously active app. If disabled, selection copies only.
 - `RestoreClipboardAfterPaste`: restores the previous text clipboard after paste. It defaults to `false` because some apps read the clipboard asynchronously.
+
+User state tracks recent usage, use count, favorites, and custom aliases. Empty search results are ranked with this local state so frequently used emoji appear first.
 
 ## Development
 

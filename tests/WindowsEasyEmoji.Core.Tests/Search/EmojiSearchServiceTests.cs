@@ -76,6 +76,59 @@ public sealed class EmojiSearchServiceTests
     }
 
     [Fact]
+    public void Empty_search_orders_recent_usage_before_default_order()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("red_heart", "❤️", order: 1),
+            Emoji("fire", "🔥", order: 2)
+        ],
+        new Dictionary<string, UserEmojiState>
+        {
+            ["red_heart"] = new(
+                EmojiId: "red_heart",
+                LastUsedAt: new DateTimeOffset(2026, 5, 12, 0, 0, 0, TimeSpan.Zero),
+                UseCount: 1,
+                Favorite: false,
+                CustomAliases: []),
+            ["fire"] = new(
+                EmojiId: "fire",
+                LastUsedAt: new DateTimeOffset(2026, 5, 13, 0, 0, 0, TimeSpan.Zero),
+                UseCount: 1,
+                Favorite: false,
+                CustomAliases: [])
+        });
+
+        var results = service.Search("").ToArray();
+
+        Assert.Equal("fire", results[0].Record.Id);
+    }
+
+    [Fact]
+    public void Search_matches_custom_aliases_from_user_state()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("red_heart", "❤️", koAliases: ["하트"]),
+            Emoji("fire", "🔥", koAliases: ["불"])
+        ],
+        new Dictionary<string, UserEmojiState>
+        {
+            ["fire"] = new(
+                EmojiId: "fire",
+                LastUsedAt: null,
+                UseCount: 0,
+                Favorite: false,
+                CustomAliases: ["내최애"])
+        });
+
+        var results = service.Search("내최애").ToArray();
+
+        Assert.Equal("fire", results[0].Record.Id);
+        Assert.Equal(SearchMatchType.KoreanAliasExact, results[0].MatchType);
+    }
+
+    [Fact]
     public void Search_penalizes_hidden_variants()
     {
         var service = new EmojiSearchService(

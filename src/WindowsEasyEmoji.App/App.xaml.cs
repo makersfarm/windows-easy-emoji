@@ -3,6 +3,7 @@ using WindowsEasyEmoji.Platform.Clipboard;
 using WindowsEasyEmoji.Platform.Diagnostics;
 using WindowsEasyEmoji.Platform.Keyboard;
 using WindowsEasyEmoji.Platform.Settings;
+using WindowsEasyEmoji.Platform.UserState;
 using WindowsEasyEmoji.Platform.Windows;
 
 namespace WindowsEasyEmoji.App;
@@ -11,6 +12,7 @@ public partial class App : System.Windows.Application
 {
     private Mutex? singleInstanceMutex;
     private SettingsStore? settingsStore;
+    private UserEmojiStateStore? userEmojiStateStore;
     private AppSettings settings = AppSettings.Default;
     private MainWindow? overlayWindow;
     private SettingsWindow? settingsWindow;
@@ -41,13 +43,20 @@ public partial class App : System.Windows.Application
         settingsStore = SettingsStore.CreateDefault();
         settings = settingsStore.Load();
         settingsStore.Save(settings);
+        userEmojiStateStore = UserEmojiStateStore.CreateDefault();
+        var userEmojiStateById = userEmojiStateStore.Load();
         DiagnosticLog.Write(
             $"app.settings replaceWinPeriod={settings.ReplaceWinPeriod} autoPaste={settings.AutoPaste} fallback={settings.RegisterFallbackHotkey} restore={settings.RestoreClipboardAfterPaste} fallbackHotkey={settings.FallbackHotkey}");
+        DiagnosticLog.Write($"app.user-state loaded count={userEmojiStateById.Count} path={userEmojiStateStore.StatePath}");
 
         var foregroundWindowService = new ForegroundWindowService();
         var pasteCoordinator = new PasteCoordinator(foregroundWindowService, new ClipboardPasteService());
 
-        overlayWindow = new MainWindow(pasteCoordinator, CreatePasteOptions(settings));
+        overlayWindow = new MainWindow(
+            pasteCoordinator,
+            CreatePasteOptions(settings),
+            userEmojiStateById,
+            userEmojiStateStore);
         trayAppHost = new TrayAppHost(
             this,
             overlayWindow,
