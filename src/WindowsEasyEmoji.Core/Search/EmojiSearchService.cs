@@ -106,11 +106,6 @@ public sealed class EmojiSearchService
             return (SearchMatchType.KoreanAliasExact, CustomAliasExactScore);
         }
 
-        if (ContainsCuratedQueryBoost(record.Id, normalizedQuery, compactQuery))
-        {
-            return (SearchMatchType.CuratedAliasExact, CuratedAliasExactScore);
-        }
-
         if (ContainsExact(record.KoAliases, normalizedQuery, compactQuery))
         {
             return (SearchMatchType.KoreanAliasExact, KoreanAliasExactScore);
@@ -124,6 +119,11 @@ public sealed class EmojiSearchService
         if (ContainsExact(record.Aliases, normalizedQuery, compactQuery))
         {
             return (SearchMatchType.AliasExact, AliasExactScore);
+        }
+
+        if (ContainsCuratedQueryBoost(record.Id, normalizedQuery, compactQuery))
+        {
+            return (SearchMatchType.CuratedAliasExact, CuratedAliasExactScore);
         }
 
         if (ContainsExact(GetKeywordList(record, "ko").Append(record.Name.Ko), normalizedQuery, compactQuery))

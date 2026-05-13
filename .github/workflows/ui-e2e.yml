@@ -42,7 +42,7 @@ jobs:
           --configuration Debug
           --no-build
           --filter "FullyQualifiedName!~WindowsEasyEmoji.E2ETests"
-          --logger "trx;LogFileName=non-ui-tests.trx"
+          --logger "trx;LogFilePrefix=non-ui-tests"
           --results-directory artifacts\TestResults
 
       - name: Publish installed app
