@@ -36,6 +36,15 @@ jobs:
       - name: Build debug binaries
         run: dotnet build WindowsEasyEmoji.sln --configuration Debug --no-restore
 
+      - name: Run non-UI tests
+        run: >
+          dotnet test WindowsEasyEmoji.sln
+          --configuration Debug
+          --no-build
+          --filter "FullyQualifiedName!~WindowsEasyEmoji.E2ETests"
+          --logger "trx;LogFileName=non-ui-tests.trx"
+          --results-directory artifacts\TestResults
+
       - name: Publish installed app
         run: >
           dotnet publish src\WindowsEasyEmoji.App\WindowsEasyEmoji.App.csproj
