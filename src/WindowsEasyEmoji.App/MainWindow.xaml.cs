@@ -9,6 +9,8 @@ using WindowsEasyEmoji.Core.User;
 using WindowsEasyEmoji.Platform.Clipboard;
 using WindowsEasyEmoji.Platform.Diagnostics;
 using WindowsEasyEmoji.Platform.UserState;
+using WpfImage = System.Windows.Controls.Image;
+using WpfPanel = System.Windows.Controls.Panel;
 
 namespace WindowsEasyEmoji.App;
 
@@ -280,13 +282,13 @@ public partial class MainWindow : Window
 
     private void EmojiImage_ImageFailed(object sender, ExceptionRoutedEventArgs e)
     {
-        if (sender is not Image image)
+        if (sender is not WpfImage image)
         {
             return;
         }
 
         image.Visibility = Visibility.Collapsed;
-        if (VisualTreeHelper.GetParent(image) is Panel panel)
+        if (VisualTreeHelper.GetParent(image) is WpfPanel panel)
         {
             foreach (var child in panel.Children.OfType<TextBlock>().Where(child => child.Tag as string == "EmojiFallback"))
             {
