@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Interop;
+using System.Windows.Media;
 using WindowsEasyEmoji.Platform.Diagnostics;
 using WindowsEasyEmoji.Platform.Settings;
 using WindowsEasyEmoji.Platform.Windows;
@@ -16,6 +17,7 @@ public sealed class TrayAppHost : IDisposable
     private readonly WpfApplication application;
     private readonly MainWindow overlayWindow;
     private readonly IForegroundWindowService foregroundWindowService;
+    private readonly ITextInputAnchorService textInputAnchorService;
     private readonly string settingsPath;
     private AppSettings settings;
     private NotifyIcon? notifyIcon;
@@ -24,12 +26,14 @@ public sealed class TrayAppHost : IDisposable
         WpfApplication application,
         MainWindow overlayWindow,
         IForegroundWindowService foregroundWindowService,
+        ITextInputAnchorService textInputAnchorService,
         AppSettings settings,
         string settingsPath)
     {
         this.application = application;
         this.overlayWindow = overlayWindow;
         this.foregroundWindowService = foregroundWindowService;
+        this.textInputAnchorService = textInputAnchorService;
         this.settings = settings;
         this.settingsPath = settingsPath;
     }
@@ -103,6 +107,7 @@ public sealed class TrayAppHost : IDisposable
         var targetWindowHandle = foregroundWindowService.GetForegroundWindowHandle();
         overlayWindow.RememberTargetWindow(targetWindowHandle);
         DiagnosticLog.Write($"tray.show-overlay target={DiagnosticLog.Handle(targetWindowHandle)}");
+        PositionOverlayNearTarget(targetWindowHandle);
 
         if (!overlayWindow.IsVisible)
         {
@@ -114,6 +119,52 @@ public sealed class TrayAppHost : IDisposable
         DiagnosticLog.Write($"tray.show-overlay activate-result={activated}");
         overlayWindow.FocusSearchBox();
         DiagnosticLog.Write("tray.show-overlay complete");
+    }
+
+    private void PositionOverlayNearTarget(IntPtr targetWindowHandle)
+    {
+        var overlayHandle = new WindowInteropHelper(overlayWindow).EnsureHandle();
+        var transformFromDevice = HwndSource.FromHwnd(overlayHandle)?.CompositionTarget?.TransformFromDevice ?? Matrix.Identity;
+        var anchor = ToDeviceIndependent(textInputAnchorService.GetAnchorRectangle(targetWindowHandle), transformFromDevice);
+        var workArea = ToDeviceIndependent(GetScreenWorkArea(targetWindowHandle, anchor), transformFromDevice);
+        var overlaySize = new ScreenSize(GetOverlayWidth(), GetOverlayHeight());
+        var placement = OverlayPlacementCalculator.Calculate(anchor, overlaySize, workArea, gap: 8);
+
+        overlayWindow.Left = placement.Left;
+        overlayWindow.Top = placement.Top;
+        DiagnosticLog.Write(
+            $"tray.place-overlay side={placement.Side} left={placement.Left:0} top={placement.Top:0} anchor={Format(anchor)} workArea={Format(workArea)} overlay={overlaySize.Width:0}x{overlaySize.Height:0}");
+    }
+
+    private double GetOverlayWidth()
+    {
+        return overlayWindow.ActualWidth > 0 ? overlayWindow.ActualWidth : overlayWindow.Width;
+    }
+
+    private double GetOverlayHeight()
+    {
+        return overlayWindow.ActualHeight > 0 ? overlayWindow.ActualHeight : overlayWindow.Height;
+    }
+
+    private static ScreenRectangle GetScreenWorkArea(IntPtr targetWindowHandle, ScreenRectangle fallbackAnchor)
+    {
+        var screen = targetWindowHandle != IntPtr.Zero
+            ? Screen.FromHandle(targetWindowHandle)
+            : Screen.FromPoint(new System.Drawing.Point((int)fallbackAnchor.Left, (int)fallbackAnchor.Top));
+        var area = screen.WorkingArea;
+        return new ScreenRectangle(area.Left, area.Top, area.Right, area.Bottom);
+    }
+
+    private static ScreenRectangle ToDeviceIndependent(ScreenRectangle rectangle, Matrix transformFromDevice)
+    {
+        var topLeft = transformFromDevice.Transform(new System.Windows.Point(rectangle.Left, rectangle.Top));
+        var bottomRight = transformFromDevice.Transform(new System.Windows.Point(rectangle.Right, rectangle.Bottom));
+        return new ScreenRectangle(topLeft.X, topLeft.Y, bottomRight.X, bottomRight.Y);
+    }
+
+    private static string Format(ScreenRectangle rectangle)
+    {
+        return $"{rectangle.Left:0},{rectangle.Top:0},{rectangle.Right:0},{rectangle.Bottom:0}";
     }
 
     private ToolStripMenuItem CreateToggleItem(

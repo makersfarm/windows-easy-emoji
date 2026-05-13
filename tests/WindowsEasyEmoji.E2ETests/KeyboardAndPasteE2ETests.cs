@@ -434,7 +434,7 @@ public sealed class KeyboardAndPasteE2ETests
 
         session.AssertTargetTextRemainsEmpty(TimeSpan.FromMilliseconds(750));
         Assert.Equal(originalClipboardText, E2ESession.GetClipboardText());
-        Assert.Contains("main-window.refresh queryLength=3 resultCount=0 selectedIndex=-1", session.ReadAppLog());
+        Assert.Contains("main-window.refresh layout=grid queryLength=3 resultCount=0 selectedIndex=-1", session.ReadAppLog());
         Assert.Contains("noResults=True", session.ReadAppLog());
         Assert.DoesNotContain("main-window.paste-result begin", session.ReadAppLog());
     }
@@ -485,6 +485,64 @@ public sealed class KeyboardAndPasteE2ETests
         Assert.DoesNotContain("main-window.paste-result begin", session.ReadAppLog());
     }
 
+    [UiE2EFact]
+    public async Task Search_overlay_uses_grid_layout()
+    {
+        using var session = await E2ESession.StartAsync(output);
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+
+        session.WaitForAppLogContains("main-window.refresh layout=grid", TimeSpan.FromSeconds(5));
+    }
+
+    [UiE2EFact]
+    public async Task Overlay_opens_above_target_when_input_is_near_bottom()
+    {
+        var workArea = E2ESession.GetPrimaryWorkingArea();
+        using var session = await E2ESession.StartAsync(
+            output,
+            targetBounds: new E2ETargetBounds(
+                Left: workArea.Left + 120,
+                Top: workArea.Bottom - 170,
+                Width: 640,
+                Height: 140));
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+
+        var overlay = session.GetOverlayWindowRectangle();
+
+        session.WaitForAppLogContains("tray.place-overlay side=Above", TimeSpan.FromSeconds(5));
+        Assert.True(overlay.Top >= workArea.Top, $"overlay top {overlay.Top} should stay inside work area {workArea.Top}");
+        Assert.True(overlay.Bottom <= workArea.Bottom, $"overlay bottom {overlay.Bottom} should stay inside work area {workArea.Bottom}");
+    }
+
+    [UiE2EFact]
+    public async Task Overlay_opens_below_target_when_input_is_near_top()
+    {
+        var workArea = E2ESession.GetPrimaryWorkingArea();
+        using var session = await E2ESession.StartAsync(
+            output,
+            targetBounds: new E2ETargetBounds(
+                Left: workArea.Left + 120,
+                Top: workArea.Top + 40,
+                Width: 640,
+                Height: 140));
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+
+        var overlay = session.GetOverlayWindowRectangle();
+
+        session.WaitForAppLogContains("tray.place-overlay side=Below", TimeSpan.FromSeconds(5));
+        Assert.True(overlay.Top >= workArea.Top, $"overlay top {overlay.Top} should stay inside work area {workArea.Top}");
+        Assert.True(overlay.Bottom <= workArea.Bottom, $"overlay bottom {overlay.Bottom} should stay inside work area {workArea.Bottom}");
+    }
+
     private async Task AssertQueryPastesEmojiAsync(string query, string expectedEmoji, string expectedEmojiId)
     {
         using var session = await E2ESession.StartAsync(output);
@@ -502,6 +560,10 @@ public sealed class KeyboardAndPasteE2ETests
     }
 
     private sealed record SearchTopCase(string Query, string ExpectedEmojiId);
+
+    private sealed record E2ETargetBounds(int Left, int Top, int Width, int Height);
+
+    private sealed record E2EScreenRectangle(int Left, int Top, int Right, int Bottom);
 
     private sealed record E2ESettings(
         bool ReplaceWinPeriod,
@@ -631,7 +693,8 @@ public sealed class KeyboardAndPasteE2ETests
         public static async Task<E2ESession> StartAsync(
             ITestOutputHelper output,
             E2ESettings? settings = null,
-            IReadOnlyList<E2EUserEmojiState>? userState = null)
+            IReadOnlyList<E2EUserEmojiState>? userState = null,
+            E2ETargetBounds? targetBounds = null)
         {
             AssertInteractiveDesktop();
 
@@ -693,14 +756,27 @@ public sealed class KeyboardAndPasteE2ETests
 
                 WaitForAppStartup(output, driverLogPath, appLogPath, appProcess, TimeSpan.FromSeconds(30));
 
+                var targetArguments = new List<string>
+                {
+                    "--title", targetTitle,
+                    "--ready-file", readyFile,
+                    "--text-file", textFile,
+                    "--log-file", targetLogPath
+                };
+                if (targetBounds is not null)
+                {
+                    targetArguments.AddRange(
+                    [
+                        "--left", targetBounds.Left.ToString(),
+                        "--top", targetBounds.Top.ToString(),
+                        "--width", targetBounds.Width.ToString(),
+                        "--height", targetBounds.Height.ToString()
+                    ]);
+                }
+
                 targetProcess = StartProcess(
                     targetExe,
-                    [
-                        "--title", targetTitle,
-                        "--ready-file", readyFile,
-                        "--text-file", textFile,
-                        "--log-file", targetLogPath
-                    ],
+                    targetArguments,
                     environment: null);
                 LogStartup(output, driverLogPath, $"started-target pid:{targetProcess.Id}");
 
@@ -826,7 +902,7 @@ public sealed class KeyboardAndPasteE2ETests
                     UnicodeInput(character, KeyEventFUnicode | KeyEventFKeyUp));
             }
 
-            WaitForAppLogContains($"main-window.refresh queryLength={text.Length}", TimeSpan.FromSeconds(5));
+            WaitForAppLogContains($"queryLength={text.Length}", TimeSpan.FromSeconds(5));
             EnsureOverlayForeground();
         }
 
@@ -851,6 +927,28 @@ public sealed class KeyboardAndPasteE2ETests
             Log($"foreground-after-overlay:{DescribeWindow(GetForegroundWindow())}");
             WaitForAppLogContains("main-window.focus-search-box", TimeSpan.FromSeconds(5));
             return handle;
+        }
+
+        public E2EScreenRectangle GetOverlayWindowRectangle()
+        {
+            if (overlayWindowHandle == IntPtr.Zero)
+            {
+                WaitForOverlayWindow();
+            }
+
+            if (!GetWindowRect(overlayWindowHandle, out var rectangle))
+            {
+                throw new InvalidOperationException("Could not read overlay window rectangle.");
+            }
+
+            Log($"overlay-rect:{rectangle.Left},{rectangle.Top},{rectangle.Right},{rectangle.Bottom}");
+            return new E2EScreenRectangle(rectangle.Left, rectangle.Top, rectangle.Right, rectangle.Bottom);
+        }
+
+        public static E2EScreenRectangle GetPrimaryWorkingArea()
+        {
+            var area = System.Windows.Forms.Screen.PrimaryScreen!.WorkingArea;
+            return new E2EScreenRectangle(area.Left, area.Top, area.Right, area.Bottom);
         }
 
         private void EnsureOverlayForeground()

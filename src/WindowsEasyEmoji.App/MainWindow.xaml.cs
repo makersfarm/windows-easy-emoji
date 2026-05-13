@@ -1,6 +1,8 @@
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using WindowsEasyEmoji.Core.Emoji;
 using WindowsEasyEmoji.Core.Search;
 using WindowsEasyEmoji.Core.User;
@@ -118,12 +120,19 @@ public partial class MainWindow : Window
             return;
         }
 
-        if (e.Key is not (Key.Up or Key.Down) || ResultsList.Items.Count == 0)
+        if (e.Key is not (Key.Up or Key.Down or Key.Left or Key.Right) || ResultsList.Items.Count == 0)
         {
             return;
         }
 
-        var direction = e.Key == Key.Down ? 1 : -1;
+        var columnCount = GetGridColumnCount();
+        var direction = e.Key switch
+        {
+            Key.Down => columnCount,
+            Key.Up => -columnCount,
+            Key.Right => 1,
+            _ => -1
+        };
         var nextIndex = ResultsList.SelectedIndex + direction;
         if (nextIndex < 0)
         {
@@ -137,6 +146,12 @@ public partial class MainWindow : Window
         ResultsList.SelectedIndex = nextIndex;
         ResultsList.ScrollIntoView(ResultsList.SelectedItem);
         e.Handled = true;
+    }
+
+    private int GetGridColumnCount()
+    {
+        const double tileWidth = 84;
+        return Math.Max(1, (int)Math.Floor(ResultsList.ActualWidth / tileWidth));
     }
 
     private void ResultsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -164,7 +179,7 @@ public partial class MainWindow : Window
         var topResultId = selectedResult?.Record.Id ?? "none";
         var topMatchType = selectedResult?.MatchType.ToString() ?? "None";
         var topScore = selectedResult?.Result.Score ?? 0;
-        DiagnosticLog.Write($"main-window.refresh queryLength={SearchBox.Text.Length} resultCount={results.Length} selectedIndex={ResultsList.SelectedIndex} topResult={topResultId} topMatch={topMatchType} topScore={topScore} noResults={noResults}");
+        DiagnosticLog.Write($"main-window.refresh layout=grid queryLength={SearchBox.Text.Length} resultCount={results.Length} selectedIndex={ResultsList.SelectedIndex} topResult={topResultId} topMatch={topMatchType} topScore={topScore} noResults={noResults}");
     }
 
     private static int GetSelectedIndex(IReadOnlyList<EmojiResultItem> results, string? preferredEmojiId)
@@ -263,6 +278,23 @@ public partial class MainWindow : Window
         }
     }
 
+    private void EmojiImage_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+    {
+        if (sender is not Image image)
+        {
+            return;
+        }
+
+        image.Visibility = Visibility.Collapsed;
+        if (VisualTreeHelper.GetParent(image) is Panel panel)
+        {
+            foreach (var child in panel.Children.OfType<TextBlock>().Where(child => child.Tag as string == "EmojiFallback"))
+            {
+                child.Visibility = Visibility.Visible;
+            }
+        }
+    }
+
     public sealed record EmojiResultItem(SearchResult Result, bool Favorite)
     {
         public EmojiRecord Record => Result.Record;
@@ -270,5 +302,7 @@ public partial class MainWindow : Window
         public SearchMatchType MatchType => Result.MatchType;
 
         public string FavoriteMarker => Favorite ? "★" : string.Empty;
+
+        public string? EmojiImageUri => EmojiAssetUriBuilder.GetTwemojiPngUri(Record.Emoji);
     }
 }

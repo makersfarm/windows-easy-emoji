@@ -23,8 +23,14 @@ internal sealed class TargetForm : Form
     {
         this.options = options;
         Text = options.Title;
-        Width = 640;
-        Height = 320;
+        Width = options.Width ?? 640;
+        Height = options.Height ?? 320;
+        if (options.Left is not null && options.Top is not null)
+        {
+            StartPosition = FormStartPosition.Manual;
+            Left = options.Left.Value;
+            Top = options.Top.Value;
+        }
         Controls.Add(textBox);
 
         Shown += (_, _) =>
@@ -70,7 +76,11 @@ internal sealed record TargetOptions(
     string Title,
     string ReadyFile,
     string TextFile,
-    string LogFile)
+    string LogFile,
+    int? Left,
+    int? Top,
+    int? Width,
+    int? Height)
 {
     public static TargetOptions Parse(string[] args)
     {
@@ -84,7 +94,11 @@ internal sealed record TargetOptions(
             Read(values, "--title"),
             Read(values, "--ready-file"),
             Read(values, "--text-file"),
-            values.GetValueOrDefault("--log-file", string.Empty));
+            values.GetValueOrDefault("--log-file", string.Empty),
+            ReadOptionalInt(values, "--left"),
+            ReadOptionalInt(values, "--top"),
+            ReadOptionalInt(values, "--width"),
+            ReadOptionalInt(values, "--height"));
     }
 
     private static string Read(Dictionary<string, string> values, string key)
@@ -92,5 +106,12 @@ internal sealed record TargetOptions(
         return values.TryGetValue(key, out var value) && !string.IsNullOrWhiteSpace(value)
             ? value
             : throw new ArgumentException($"Missing required argument {key}.");
+    }
+
+    private static int? ReadOptionalInt(Dictionary<string, string> values, string key)
+    {
+        return values.TryGetValue(key, out var value) && int.TryParse(value, out var parsedValue)
+            ? parsedValue
+            : null;
     }
 }
