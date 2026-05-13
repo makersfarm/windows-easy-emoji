@@ -543,7 +543,6 @@ public sealed class KeyboardAndPasteE2ETests
             IReadOnlyList<E2EUserEmojiState>? userState = null)
         {
             AssertInteractiveDesktop();
-            StopExistingAppProcesses();
 
             var root = FindRepositoryRoot();
             var artifactRoot = Environment.GetEnvironmentVariable("WINDOWS_EASY_EMOJI_E2E_ARTIFACT_DIR");
@@ -563,6 +562,11 @@ public sealed class KeyboardAndPasteE2ETests
             var appLogPath = Path.Combine(tempDirectory, "app.log");
             var settingsPath = Path.Combine(tempDirectory, "settings.json");
             var userStatePath = Path.Combine(tempDirectory, "user-state.json");
+            LogStartup(output, driverLogPath, $"start-session temp:{tempDirectory}");
+            LogStartup(output, driverLogPath, $"session-id:{Process.GetCurrentProcess().SessionId}");
+            LogStartup(output, driverLogPath, $"user-interactive:{Environment.UserInteractive}");
+            StopExistingAppProcesses(output, driverLogPath);
+
             var effectiveSettings = settings ?? E2ESettings.Default;
             WriteSettings(settingsPath, effectiveSettings);
             WriteUserState(userStatePath, userState ?? []);
@@ -575,58 +579,76 @@ public sealed class KeyboardAndPasteE2ETests
                 appExe = Path.Combine(root, "src", "WindowsEasyEmoji.App", "bin", configuration, "net8.0-windows", "WindowsEasyEmoji.App.exe");
             }
 
-            var appProcess = StartProcess(
-                appExe,
-                [],
-                new Dictionary<string, string>
+            LogStartup(output, driverLogPath, $"root:{root}");
+            LogStartup(output, driverLogPath, $"target-exe:{targetExe}");
+            LogStartup(output, driverLogPath, $"app-exe:{appExe}");
+            LogStartup(output, driverLogPath, $"app-exe-source:{(Environment.GetEnvironmentVariable("WINDOWS_EASY_EMOJI_E2E_APP_EXE") is null ? "build-output" : "installed-app")}");
+            LogStartup(output, driverLogPath, $"user-state:{userStatePath}");
+
+            Process? appProcess = null;
+            Process? targetProcess = null;
+            try
+            {
+                appProcess = StartProcess(
+                    appExe,
+                    [],
+                    new Dictionary<string, string>
+                    {
+                        ["WINDOWS_EASY_EMOJI_E2E_LOG"] = appLogPath,
+                        ["WINDOWS_EASY_EMOJI_SETTINGS_PATH"] = settingsPath,
+                        ["WINDOWS_EASY_EMOJI_USER_STATE_PATH"] = userStatePath
+                    });
+                LogStartup(output, driverLogPath, $"started-app pid:{appProcess.Id}");
+
+                WaitForAppStartup(output, driverLogPath, appLogPath, appProcess, TimeSpan.FromSeconds(30));
+
+                targetProcess = StartProcess(
+                    targetExe,
+                    [
+                        "--title", targetTitle,
+                        "--ready-file", readyFile,
+                        "--text-file", textFile,
+                        "--log-file", targetLogPath
+                    ],
+                    environment: null);
+                LogStartup(output, driverLogPath, $"started-target pid:{targetProcess.Id}");
+
+                targetProcess.WaitForInputIdle(5_000);
+                WaitUntil(() => File.Exists(readyFile), TimeSpan.FromSeconds(10), "target window did not become ready");
+
+                var session = new E2ESession(
+                    output,
+                    tempDirectory,
+                    targetTitle,
+                    readyFile,
+                    textFile,
+                    targetLogPath,
+                    appLogPath,
+                    userStatePath,
+                    driverLogPath,
+                    effectiveSettings,
+                    appProcess,
+                    targetProcess);
+
+                await Task.Delay(500);
+                return session;
+            }
+            catch
+            {
+                LogStartup(output, driverLogPath, "start-session failed; cleaning launched processes");
+                if (targetProcess is not null)
                 {
-                    ["WINDOWS_EASY_EMOJI_E2E_LOG"] = appLogPath,
-                    ["WINDOWS_EASY_EMOJI_SETTINGS_PATH"] = settingsPath,
-                    ["WINDOWS_EASY_EMOJI_USER_STATE_PATH"] = userStatePath
-                });
+                    Kill(targetProcess);
+                }
 
-            WaitUntil(
-                () => ReadTextFileShared(appLogPath).Contains("app.startup complete", StringComparison.Ordinal),
-                TimeSpan.FromSeconds(10),
-                "app did not complete startup");
+                if (appProcess is not null)
+                {
+                    Kill(appProcess);
+                }
 
-            var targetProcess = StartProcess(
-                targetExe,
-                [
-                    "--title", targetTitle,
-                    "--ready-file", readyFile,
-                    "--text-file", textFile,
-                    "--log-file", targetLogPath
-                ],
-                environment: null);
-
-            targetProcess.WaitForInputIdle(5_000);
-            WaitUntil(() => File.Exists(readyFile), TimeSpan.FromSeconds(10), "target window did not become ready");
-
-            var session = new E2ESession(
-                output,
-                tempDirectory,
-                targetTitle,
-                readyFile,
-                textFile,
-                targetLogPath,
-                appLogPath,
-                userStatePath,
-                driverLogPath,
-                effectiveSettings,
-                appProcess,
-                targetProcess);
-
-            session.Log($"root:{root}");
-            session.Log($"target-exe:{targetExe}");
-            session.Log($"app-exe:{appExe}");
-            session.Log($"app-exe-source:{(Environment.GetEnvironmentVariable("WINDOWS_EASY_EMOJI_E2E_APP_EXE") is null ? "build-output" : "installed-app")}");
-            session.Log($"temp:{tempDirectory}");
-            session.Log($"user-state:{userStatePath}");
-            session.Log($"session-id:{Process.GetCurrentProcess().SessionId}");
-            session.Log($"user-interactive:{Environment.UserInteractive}");
-            await Task.Delay(500);
-            return session;
+                CaptureDesktopScreenshot(Path.Combine(tempDirectory, "desktop-startup-failure.png"));
+                throw;
+            }
         }
 
         public void FocusTargetWindow()
@@ -924,12 +946,26 @@ public sealed class KeyboardAndPasteE2ETests
 #endif
         }
 
-        private static void StopExistingAppProcesses()
+        private static void StopExistingAppProcesses(ITestOutputHelper output, string driverLogPath)
         {
-            foreach (var process in Process.GetProcessesByName("WindowsEasyEmoji.App"))
+            var existingProcesses = Process.GetProcessesByName("WindowsEasyEmoji.App");
+            if (existingProcesses.Length == 0)
             {
+                LogStartup(output, driverLogPath, "stop-existing-app-processes:none");
+                return;
+            }
+
+            foreach (var process in existingProcesses)
+            {
+                LogStartup(output, driverLogPath, $"stop-existing-app-process pid:{process.Id} session:{SafeSessionId(process)} exited:{SafeHasExited(process)}");
                 Kill(process);
             }
+
+            WaitUntil(
+                () => Process.GetProcessesByName("WindowsEasyEmoji.App").All(process => SafeHasExited(process)),
+                TimeSpan.FromSeconds(10),
+                "existing WindowsEasyEmoji.App processes did not exit");
+            LogStartup(output, driverLogPath, "stop-existing-app-processes:complete");
         }
 
         private static void AssertInteractiveDesktop()
@@ -1070,6 +1106,119 @@ public sealed class KeyboardAndPasteE2ETests
             }
             catch (System.ComponentModel.Win32Exception)
             {
+            }
+        }
+
+        private static void WaitForAppStartup(
+            ITestOutputHelper output,
+            string driverLogPath,
+            string appLogPath,
+            Process appProcess,
+            TimeSpan timeout)
+        {
+            var deadline = Stopwatch.StartNew();
+            while (deadline.Elapsed < timeout)
+            {
+                var appLog = ReadTextFileShared(appLogPath);
+                if (appLog.Contains("app.startup complete", StringComparison.Ordinal))
+                {
+                    LogStartup(output, driverLogPath, $"app-startup-complete elapsed:{deadline.Elapsed}");
+                    return;
+                }
+
+                if (SafeHasExited(appProcess))
+                {
+                    throw new InvalidOperationException(
+                        $"app exited before startup completed. pid:{SafeProcessId(appProcess)} exit-code:{SafeExitCode(appProcess)} app-log:{TrimForLog(appLog)}");
+                }
+
+                Thread.Sleep(100);
+            }
+
+            throw new TimeoutException(
+                $"app did not complete startup. pid:{SafeProcessId(appProcess)} exited:{SafeHasExited(appProcess)} foreground:{DescribeWindow(GetForegroundWindow())} running-app-processes:{DescribeRunningAppProcesses()} app-log:{TrimForLog(ReadTextFileShared(appLogPath))}");
+        }
+
+        private static void LogStartup(ITestOutputHelper output, string driverLogPath, string message)
+        {
+            var line = $"{DateTimeOffset.Now:O} {message}{Environment.NewLine}";
+            File.AppendAllText(driverLogPath, line, Encoding.UTF8);
+            output.WriteLine(message);
+        }
+
+        private static string DescribeRunningAppProcesses()
+        {
+            var processes = Process.GetProcessesByName("WindowsEasyEmoji.App");
+            if (processes.Length == 0)
+            {
+                return "none";
+            }
+
+            return string.Join(
+                ",",
+                processes.Select(process => $"pid={SafeProcessId(process)}:session={SafeSessionId(process)}:exited={SafeHasExited(process)}"));
+        }
+
+        private static string TrimForLog(string value)
+        {
+            const int maxLength = 4000;
+            if (value.Length <= maxLength)
+            {
+                return value.ReplaceLineEndings("\\n");
+            }
+
+            return value[^maxLength..].ReplaceLineEndings("\\n");
+        }
+
+        private static int SafeProcessId(Process process)
+        {
+            try
+            {
+                return process.Id;
+            }
+            catch (InvalidOperationException)
+            {
+                return -1;
+            }
+        }
+
+        private static int SafeSessionId(Process process)
+        {
+            try
+            {
+                return process.SessionId;
+            }
+            catch (InvalidOperationException)
+            {
+                return -1;
+            }
+            catch (System.ComponentModel.Win32Exception)
+            {
+                return -1;
+            }
+        }
+
+        private static bool SafeHasExited(Process process)
+        {
+            try
+            {
+                return process.HasExited;
+            }
+            catch (InvalidOperationException)
+            {
+                return true;
+            }
+        }
+
+        private static int? SafeExitCode(Process process)
+        {
+            try
+            {
+                return process.HasExited ? process.ExitCode : null;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
             }
         }
 
