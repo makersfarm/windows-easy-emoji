@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows;
 using WindowsEasyEmoji.Platform.Settings;
 
@@ -7,11 +8,13 @@ namespace WindowsEasyEmoji.App;
 public partial class SettingsWindow : Window
 {
     private readonly string settingsPath;
+    private readonly int emojiRecordCount;
 
-    public SettingsWindow(AppSettings settings, string settingsPath)
+    public SettingsWindow(AppSettings settings, string settingsPath, int emojiRecordCount)
     {
         InitializeComponent();
         this.settingsPath = settingsPath;
+        this.emojiRecordCount = emojiRecordCount;
         Settings = settings;
         LoadSettings(settings);
     }
@@ -25,6 +28,7 @@ public partial class SettingsWindow : Window
         FallbackHotkeyTextBox.Text = settings.FallbackHotkey;
         AutoPasteCheckBox.IsChecked = settings.AutoPaste;
         RestoreClipboardCheckBox.IsChecked = settings.RestoreClipboardAfterPaste;
+        InfoText.Text = $"버전 {GetAppVersion()} · 이모지 {emojiRecordCount:N0}개";
         RefreshControlStates();
         ErrorText.Text = string.Empty;
     }
@@ -87,5 +91,13 @@ public partial class SettingsWindow : Window
     {
         FallbackHotkeyTextBox.IsEnabled = FallbackHotkeyEnabledCheckBox.IsChecked == true;
         RestoreClipboardCheckBox.IsEnabled = AutoPasteCheckBox.IsChecked == true;
+    }
+
+    private static string GetAppVersion()
+    {
+        var version = Assembly.GetExecutingAssembly().GetName().Version;
+        return version is null
+            ? "0.0.0"
+            : $"{version.Major}.{version.Minor}.{version.Build}";
     }
 }

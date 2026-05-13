@@ -395,6 +395,7 @@ public sealed class KeyboardAndPasteE2ETests
         session.AssertTargetTextRemainsEmpty(TimeSpan.FromMilliseconds(750));
         Assert.Equal(originalClipboardText, E2ESession.GetClipboardText());
         Assert.Contains("main-window.refresh queryLength=3 resultCount=0 selectedIndex=-1", session.ReadAppLog());
+        Assert.Contains("noResults=True", session.ReadAppLog());
         Assert.DoesNotContain("main-window.paste-result begin", session.ReadAppLog());
     }
 

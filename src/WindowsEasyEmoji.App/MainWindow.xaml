@@ -52,31 +52,51 @@
                        FontSize="12"
                        Margin="2,12,0,12" />
 
-            <ListBox x:Name="ResultsList"
-                     Grid.Row="3"
-                     Background="Transparent"
-                     BorderThickness="0"
-                     Foreground="{StaticResource TextPrimaryBrush}"
-                     SelectionMode="Single"
-                     MouseDoubleClick="ResultsList_MouseDoubleClick">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border Background="{StaticResource PanelBrush}" BorderBrush="#3F3F46" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,0,8">
-                            <DockPanel>
-                                <TextBlock Text="{Binding Record.Emoji}"
-                                           Style="{StaticResource EmojiTextBlockStyle}"
-                                           FontSize="32"
-                                           Width="48"
-                                           VerticalAlignment="Center" />
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Record.Name.Ko}" FontSize="14" FontWeight="SemiBold" />
-                                    <TextBlock Text="{Binding MatchType}" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" />
-                                </StackPanel>
-                            </DockPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <Grid Grid.Row="3">
+                <ListBox x:Name="ResultsList"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Foreground="{StaticResource TextPrimaryBrush}"
+                         SelectionMode="Single"
+                         MouseDoubleClick="ResultsList_MouseDoubleClick">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource PanelBrush}" BorderBrush="#3F3F46" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,0,0,8">
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Record.Emoji}"
+                                               Style="{StaticResource EmojiTextBlockStyle}"
+                                               FontSize="32"
+                                               Width="48"
+                                               VerticalAlignment="Center" />
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Record.Name.Ko}" FontSize="14" FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding MatchType}" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" />
+                                    </StackPanel>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Border x:Name="NoResultsPanel"
+                        Background="{StaticResource PanelBrush}"
+                        BorderBrush="#3F3F46"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Padding="18"
+                        VerticalAlignment="Top"
+                        Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock Text="검색 결과 없음"
+                                   FontSize="15"
+                                   FontWeight="SemiBold" />
+                        <TextBlock Text="일치하는 이모지가 없습니다"
+                                   Foreground="{StaticResource TextSecondaryBrush}"
+                                   FontSize="12"
+                                   Margin="0,6,0,0" />
+                    </StackPanel>
+                </Border>
+            </Grid>
 
             <DockPanel Grid.Row="4" Margin="2,12,0,0">
                 <TextBlock x:Name="PasteStatusText" DockPanel.Dock="Right" Foreground="#86EFAC" FontSize="12" />

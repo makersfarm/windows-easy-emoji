@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Windows Easy Emoji 설정"
         Width="460"
-        Height="430"
+        Height="464"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource AppBackgroundBrush}"
@@ -72,6 +72,23 @@
                         HorizontalAlignment="Left"
                         Padding="10,6"
                         Click="OpenSettingsFileButton_Click" />
+
+                <Border Background="{StaticResource PanelBrush}"
+                        BorderBrush="#3F3F46"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Padding="12"
+                        Margin="0,16,0,0">
+                    <StackPanel>
+                        <TextBlock Text="앱 정보"
+                                   FontSize="13"
+                                   FontWeight="SemiBold" />
+                        <TextBlock x:Name="InfoText"
+                                   Foreground="{StaticResource TextSecondaryBrush}"
+                                   FontSize="12"
+                                   Margin="0,6,0,0" />
+                    </StackPanel>
+                </Border>
 
                 <TextBlock x:Name="ErrorText"
                            Foreground="#FCA5A5"

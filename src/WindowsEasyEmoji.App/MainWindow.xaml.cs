@@ -39,9 +39,12 @@ public partial class MainWindow : Window
         DiagnosticLog.Write($"main-window.init dataPath={dataPath} recordCount={records.Count}");
 
         searchService = new EmojiSearchService(records, userStateByEmojiId);
+        EmojiRecordCount = records.Count;
         SearchBox.Text = string.Empty;
         RefreshResults();
     }
+
+    public int EmojiRecordCount { get; }
 
     public void FocusSearchBox()
     {
@@ -135,7 +138,10 @@ public partial class MainWindow : Window
         var results = searchService.Search(SearchBox.Text);
         ResultsList.ItemsSource = results;
         ResultsList.SelectedIndex = results.Count > 0 ? 0 : -1;
-        DiagnosticLog.Write($"main-window.refresh queryLength={SearchBox.Text.Length} resultCount={results.Count} selectedIndex={ResultsList.SelectedIndex}");
+        var noResults = SearchBox.Text.Length > 0 && results.Count == 0;
+        ResultsList.Visibility = noResults ? Visibility.Collapsed : Visibility.Visible;
+        NoResultsPanel.Visibility = noResults ? Visibility.Visible : Visibility.Collapsed;
+        DiagnosticLog.Write($"main-window.refresh queryLength={SearchBox.Text.Length} resultCount={results.Count} selectedIndex={ResultsList.SelectedIndex} noResults={noResults}");
     }
 
     private void PasteResult(SearchResult result)

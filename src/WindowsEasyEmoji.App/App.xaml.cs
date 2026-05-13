@@ -106,7 +106,10 @@ public partial class App : System.Windows.Application
             return;
         }
 
-        settingsWindow = new SettingsWindow(settings, settingsStore.SettingsPath);
+        settingsWindow = new SettingsWindow(
+            settings,
+            settingsStore.SettingsPath,
+            overlayWindow?.EmojiRecordCount ?? 0);
         var result = settingsWindow.ShowDialog();
         if (result == true)
         {
