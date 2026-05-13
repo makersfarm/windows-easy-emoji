@@ -24,6 +24,8 @@ Implemented so far:
 - Runtime tray toggles for shortcut and paste settings
 - Optional original clipboard restore after paste
 - Single-instance app guard
+- Grid-based search results
+- Color emoji image rendering with Twemoji PNG assets and text fallback
 
 Not implemented yet:
 
@@ -53,6 +55,10 @@ Current MVP settings:
 - `RestoreClipboardAfterPaste`: restores the previous text clipboard after paste. It defaults to `false` because some apps read the clipboard asynchronously.
 
 User state tracks recent usage, use count, favorites, and custom aliases. Empty search results are ranked with this local state so frequently used emoji appear first.
+
+## Emoji Rendering
+
+The WPF overlay renders result emoji with Twemoji PNG assets instead of relying only on WPF color-font fallback. If image loading fails, the tile falls back to the system emoji text font. Twemoji graphics are licensed under CC BY 4.0 and the upstream code is MIT licensed.
 
 ## Development
 

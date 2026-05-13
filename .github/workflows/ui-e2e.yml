@@ -16,13 +16,11 @@ jobs:
     env:
       WINDOWS_EASY_EMOJI_RUN_UI_E2E: "1"
       WINDOWS_EASY_EMOJI_E2E_ARTIFACT_DIR: ${{ github.workspace }}\artifacts\ui-e2e
+      WINDOWS_EASY_EMOJI_E2E_APP_EXE: ${{ github.workspace }}\artifacts\installed-app\WindowsEasyEmoji.App.exe
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.2
-
-      - name: Verify interactive desktop session
-        run: .\scripts\assert-ui-e2e-session.ps1
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5.2.0
@@ -35,6 +33,25 @@ jobs:
       - name: Build debug binaries
         run: dotnet build WindowsEasyEmoji.sln --configuration Debug --no-restore
 
+      - name: Run non-UI tests
+        run: >
+          dotnet test WindowsEasyEmoji.sln
+          --configuration Debug
+          --no-build
+          --filter "FullyQualifiedName!~WindowsEasyEmoji.E2ETests"
+          --logger "trx;LogFilePrefix=non-ui-tests"
+          --results-directory artifacts\TestResults
+
+      - name: Publish installed app
+        run: >
+          dotnet publish src\WindowsEasyEmoji.App\WindowsEasyEmoji.App.csproj
+          --configuration Release
+          --no-restore
+          --output artifacts\installed-app
+
+      - name: Verify interactive desktop before UI E2E
+        run: .\scripts\assert-ui-e2e-session.ps1
+
       - name: Run UI E2E
         run: >
           dotnet test tests\WindowsEasyEmoji.E2ETests\WindowsEasyEmoji.E2ETests.csproj
@@ -45,10 +62,11 @@ jobs:
 
       - name: Upload UI E2E artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ui-e2e-${{ github.run_id }}-${{ github.run_attempt }}
           if-no-files-found: warn
           path: |
             artifacts/ui-e2e
             artifacts/TestResults
+            artifacts/installed-app

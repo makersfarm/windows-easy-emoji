@@ -5,6 +5,23 @@ namespace WindowsEasyEmoji.Core.Search;
 
 public sealed class EmojiSearchService
 {
+    private const int CustomAliasExactScore = 1500;
+    private const int CuratedAliasExactScore = 1300;
+    private const int KoreanAliasExactScore = 1000;
+    private const int AliasExactScore = 900;
+    private const int KoreanKeywordExactScore = 800;
+    private const int ChosungExactScore = 760;
+    private const int EnglishExactScore = 700;
+    private const int PrefixScore = 500;
+    private const int ContainsScore = 300;
+    private const int FuzzyScore = 100;
+    private const int FavoriteBoost = 160;
+    private const int RecentUseBoost = 60;
+    private const int MaxUseCountBoost = 50;
+
+    private static readonly IReadOnlyDictionary<string, IReadOnlySet<string>> CuratedQueryBoosts =
+        CreateCuratedQueryBoosts();
+
     private readonly IReadOnlyList<EmojiRecord> records;
     private readonly IReadOnlyDictionary<string, UserEmojiState> userStateByEmojiId;
 
@@ -62,15 +79,15 @@ public sealed class EmojiSearchService
         {
             if (state.Favorite)
             {
-                score += 80;
+                score += FavoriteBoost;
             }
 
             if (state.LastUsedAt is not null)
             {
-                score += 60;
+                score += RecentUseBoost;
             }
 
-            score += Math.Min(50, Math.Max(0, state.UseCount));
+            score += Math.Min(MaxUseCountBoost, Math.Max(0, state.UseCount));
         }
 
         if (record.Flags.HiddenByDefault)
@@ -89,53 +106,58 @@ public sealed class EmojiSearchService
     {
         if (ContainsExact(userState?.CustomAliases ?? [], normalizedQuery, compactQuery))
         {
-            return (SearchMatchType.KoreanAliasExact, 1000);
+            return (SearchMatchType.KoreanAliasExact, CustomAliasExactScore);
         }
 
         if (ContainsExact(record.KoAliases, normalizedQuery, compactQuery))
         {
-            return (SearchMatchType.KoreanAliasExact, 1000);
+            return (SearchMatchType.KoreanAliasExact, KoreanAliasExactScore);
         }
 
         if (ContainsChosungExact(record.KoAliases, compactQuery))
         {
-            return (SearchMatchType.KoreanAliasExact, 1000);
+            return (SearchMatchType.KoreanAliasExact, KoreanAliasExactScore);
         }
 
         if (ContainsExact(record.Aliases, normalizedQuery, compactQuery))
         {
-            return (SearchMatchType.AliasExact, 900);
+            return (SearchMatchType.AliasExact, AliasExactScore);
+        }
+
+        if (ContainsCuratedQueryBoost(record.Id, normalizedQuery, compactQuery))
+        {
+            return (SearchMatchType.CuratedAliasExact, CuratedAliasExactScore);
         }
 
         if (ContainsExact(GetKeywordList(record, "ko").Append(record.Name.Ko), normalizedQuery, compactQuery))
         {
-            return (SearchMatchType.KoreanKeywordExact, 800);
+            return (SearchMatchType.KoreanKeywordExact, KoreanKeywordExactScore);
         }
 
         if (ContainsExact(record.Chosung, normalizedQuery, compactQuery))
         {
-            return (SearchMatchType.ChosungExact, 760);
+            return (SearchMatchType.ChosungExact, ChosungExactScore);
         }
 
         if (ContainsExact(GetKeywordList(record, "en").Append(record.Name.En), normalizedQuery, compactQuery))
         {
-            return (SearchMatchType.EnglishExact, 700);
+            return (SearchMatchType.EnglishExact, EnglishExactScore);
         }
 
         var searchableValues = GetSearchableValues(record).ToArray();
         if (searchableValues.Any(value => IsPrefix(value, normalizedQuery, compactQuery)))
         {
-            return (SearchMatchType.Prefix, 500);
+            return (SearchMatchType.Prefix, PrefixScore);
         }
 
         if (searchableValues.Any(value => IsContains(value, normalizedQuery, compactQuery)))
         {
-            return (SearchMatchType.Contains, 300);
+            return (SearchMatchType.Contains, ContainsScore);
         }
 
         if (searchableValues.Any(value => IsSubsequence(compactQuery, KoreanTextNormalizer.ToCompactKey(value))))
         {
-            return (SearchMatchType.Fuzzy, 100);
+            return (SearchMatchType.Fuzzy, FuzzyScore);
         }
 
         return (SearchMatchType.None, 0);
@@ -183,6 +205,73 @@ public sealed class EmojiSearchService
     private static IReadOnlyList<string> GetKeywordList(EmojiRecord record, string locale)
     {
         return record.Keywords.TryGetValue(locale, out var values) ? values : [];
+    }
+
+    private static bool ContainsCuratedQueryBoost(string emojiId, string normalizedQuery, string compactQuery)
+    {
+        if (CuratedQueryBoosts.TryGetValue(normalizedQuery, out var normalizedMatches) && normalizedMatches.Contains(emojiId))
+        {
+            return true;
+        }
+
+        return !string.Equals(normalizedQuery, compactQuery, StringComparison.Ordinal) &&
+               CuratedQueryBoosts.TryGetValue(compactQuery, out var compactMatches) &&
+               compactMatches.Contains(emojiId);
+    }
+
+    private static IReadOnlyDictionary<string, IReadOnlySet<string>> CreateCuratedQueryBoosts()
+    {
+        var boosts = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+
+        Add("face_with_tears_of_joy", "ㅋㅋ", "ㅋㅋㅋ", "ㅎㅎ", "ㅎㅎㅎ", "웃음", "웃겨", "웃기다", "개웃김", "lol");
+        Add("crying_face", "슬픔", "슬퍼", "울음", "눈물");
+        Add("loudly_crying_face", "ㅠㅠ", "ㅜㅜ", "엉엉", "대성통곡");
+        Add("red_heart", "하트", "ㅎㅌ", "사랑", "빨간하트", "내사랑");
+        Add("fire", "불", "핫", "화재", "불타", "쩐다");
+        Add("flag_south_korea", "한국", "대한민국", "태극기", "korea", "kor");
+        Add("thumbs_up", "따봉", "좋아요", "굿", "굳", "최고", "ㅇㅋ", "오케이", "찬성");
+        Add("thumbs_down", "싫어요", "별로", "최악", "반대");
+        Add("folded_hands", "감사", "ㄱㅅ", "고마워", "제발", "부탁", "기도", "합장");
+        Add("party_popper", "축하", "ㅊㅋ", "추카", "축하해", "축하드립니다", "파티", "폭죽");
+        Add("birthday_cake", "생일", "생일축하", "생축", "ㅅㅊ", "케이크");
+        Add("check_mark_button", "체크", "확인", "완료", "완료됨", "체크표시");
+        Add("angry_face", "화남", "화나", "빡침", "분노", "짜증", "열받음");
+        Add("cross_mark", "엑스", "엑스표", "취소", "실패", "아니오", "거절");
+        Add("warning", "경고", "주의", "위험", "조심");
+        Add("sparkles", "반짝", "반짝임", "반짝반짝", "빛남", "꾸밈");
+        Add("thinking_face", "생각", "고민", "음", "흠", "생각중");
+        Add("rocket", "로켓", "출시", "발사", "성장", "런칭");
+        Add("money_bag", "돈", "현금", "돈주머니", "부자", "머니");
+
+        return boosts.ToDictionary(
+            pair => pair.Key,
+            pair => (IReadOnlySet<string>)pair.Value,
+            StringComparer.Ordinal);
+
+        void Add(string emojiId, params string[] queries)
+        {
+            foreach (var query in queries)
+            {
+                var normalizedQuery = KoreanTextNormalizer.NormalizeQuery(query);
+                AddQuery(normalizedQuery, emojiId);
+            }
+        }
+
+        void AddQuery(string query, string emojiId)
+        {
+            if (query.Length == 0)
+            {
+                return;
+            }
+
+            if (!boosts.TryGetValue(query, out var emojiIds))
+            {
+                emojiIds = new HashSet<string>(StringComparer.Ordinal);
+                boosts[query] = emojiIds;
+            }
+
+            emojiIds.Add(emojiId);
+        }
     }
 
     private static bool ContainsExact(IEnumerable<string> values, string normalizedQuery, string compactQuery)

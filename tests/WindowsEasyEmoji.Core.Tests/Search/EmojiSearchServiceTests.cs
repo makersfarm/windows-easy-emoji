@@ -105,6 +105,36 @@ public sealed class EmojiSearchServiceTests
     }
 
     [Fact]
+    public void Empty_search_orders_favorites_before_non_favorite_recent_usage()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("red_heart", "❤️", order: 1),
+            Emoji("fire", "🔥", order: 2)
+        ],
+        new Dictionary<string, UserEmojiState>
+        {
+            ["red_heart"] = new(
+                EmojiId: "red_heart",
+                LastUsedAt: null,
+                UseCount: 0,
+                Favorite: true,
+                CustomAliases: []),
+            ["fire"] = new(
+                EmojiId: "fire",
+                LastUsedAt: new DateTimeOffset(2026, 5, 13, 0, 0, 0, TimeSpan.Zero),
+                UseCount: 50,
+                Favorite: false,
+                CustomAliases: [])
+        });
+
+        var results = service.Search("").ToArray();
+
+        Assert.Equal("red_heart", results[0].Record.Id);
+        Assert.True(results[0].Score > results[1].Score);
+    }
+
+    [Fact]
     public void Search_matches_custom_aliases_from_user_state()
     {
         var service = new EmojiSearchService(
@@ -125,6 +155,45 @@ public sealed class EmojiSearchServiceTests
         var results = service.Search("내최애").ToArray();
 
         Assert.Equal("fire", results[0].Record.Id);
+        Assert.Equal(SearchMatchType.KoreanAliasExact, results[0].MatchType);
+    }
+
+    [Fact]
+    public void Search_applies_curated_korean_shortcut_boosts()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("check_mark_button", "✅", koAliases: ["체크"], chosung: ["ㅊㅋ"], order: 1),
+            Emoji("party_popper", "🎉", koAliases: ["축하"], order: 2)
+        ]);
+
+        var results = service.Search("ㅊㅋ").ToArray();
+
+        Assert.Equal("party_popper", results[0].Record.Id);
+        Assert.Equal(SearchMatchType.CuratedAliasExact, results[0].MatchType);
+    }
+
+    [Fact]
+    public void Search_ranks_user_custom_alias_above_curated_shortcut()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("check_mark_button", "✅", koAliases: ["체크"], order: 1),
+            Emoji("party_popper", "🎉", koAliases: ["축하"], order: 2)
+        ],
+        new Dictionary<string, UserEmojiState>
+        {
+            ["check_mark_button"] = new(
+                EmojiId: "check_mark_button",
+                LastUsedAt: null,
+                UseCount: 0,
+                Favorite: false,
+                CustomAliases: ["ㅊㅋ"])
+        });
+
+        var results = service.Search("ㅊㅋ").ToArray();
+
+        Assert.Equal("check_mark_button", results[0].Record.Id);
         Assert.Equal(SearchMatchType.KoreanAliasExact, results[0].MatchType);
     }
 

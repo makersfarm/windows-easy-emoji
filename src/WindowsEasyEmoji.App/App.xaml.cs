@@ -50,6 +50,7 @@ public partial class App : System.Windows.Application
         DiagnosticLog.Write($"app.user-state loaded count={userEmojiStateById.Count} path={userEmojiStateStore.StatePath}");
 
         var foregroundWindowService = new ForegroundWindowService();
+        var textInputAnchorService = new TextInputAnchorService();
         var pasteCoordinator = new PasteCoordinator(foregroundWindowService, new ClipboardPasteService());
 
         overlayWindow = new MainWindow(
@@ -61,6 +62,7 @@ public partial class App : System.Windows.Application
             this,
             overlayWindow,
             foregroundWindowService,
+            textInputAnchorService,
             settings,
             settingsStore.SettingsPath);
         trayAppHost.SettingsChangeRequested += (_, nextSettings) => ApplySettings(nextSettings);
@@ -106,7 +108,10 @@ public partial class App : System.Windows.Application
             return;
         }
 
-        settingsWindow = new SettingsWindow(settings, settingsStore.SettingsPath);
+        settingsWindow = new SettingsWindow(
+            settings,
+            settingsStore.SettingsPath,
+            overlayWindow?.EmojiRecordCount ?? 0);
         var result = settingsWindow.ShowDialog();
         if (result == true)
         {

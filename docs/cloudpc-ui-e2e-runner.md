@@ -7,6 +7,7 @@
 - runner는 GitHub Actions self-hosted runner를 사용한다. runner 소프트웨어 자체는 무료이고, 비용은 Cloud PC와 GitHub artifact/cache 사용량에서만 발생한다.
 - UI E2E runner는 Windows service로 설치하지 않는다. `run.cmd`를 로그인된 사용자 데스크톱 세션에서 직접 실행해야 `SendInput`, foreground window, tray UI, clipboard paste가 동작한다.
 - Cloud PC 세션은 잠기거나 절전으로 들어가면 안 된다.
+- Cloud PC 화면은 실제로 열린 상태여야 한다. RDP/Windows App 창을 닫거나 최소화하면 세션이 `Active`로 보여도 `GetForegroundWindow`가 `0`이거나 `SendInput`이 `ERROR_ACCESS_DENIED(5)`로 실패할 수 있다.
 - workflow는 `self-hosted`, `windows`, `ui-e2e` label이 있는 runner에서만 수동 실행된다.
 
 ## 사용자 준비
@@ -80,6 +81,8 @@ GitHub 화면의 기본 명령을 직접 쓰는 경우에는 우리 workflow가 
 ```
 
 이 PowerShell 창은 UI E2E 실행 중 계속 열어둔다. runner를 Windows service로 설치하지 않는다.
+
+workflow의 `Verify interactive desktop session` 단계는 foreground window와 `SendInput` smoke test를 먼저 확인한다. 이 단계가 실패하면 Cloud PC에 다시 접속하고 화면 잠금/최소화/절전 상태를 해제한 뒤 runner를 다시 실행한다.
 
 ## 실행
 
