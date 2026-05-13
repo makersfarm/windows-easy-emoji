@@ -52,6 +52,9 @@ jobs:
           --no-restore
           --output artifacts\installed-app
 
+      - name: Verify interactive desktop before UI E2E
+        run: .\scripts\assert-ui-e2e-session.ps1
+
       - name: Run UI E2E
         run: >
           dotnet test tests\WindowsEasyEmoji.E2ETests\WindowsEasyEmoji.E2ETests.csproj

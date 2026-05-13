@@ -676,6 +676,12 @@ public sealed class KeyboardAndPasteE2ETests
 
             var forcedForegroundResult = TryForceForegroundWindow(handle);
             Log($"focus-target force-foreground-result={forcedForegroundResult} after-force={DescribeWindow(GetForegroundWindow())}");
+            if (GetForegroundWindow() != handle)
+            {
+                var anchorResult = TrySeedForegroundAndFocusTarget(handle);
+                Log($"focus-target anchor-foreground-result={anchorResult} after-anchor={DescribeWindow(GetForegroundWindow())}");
+            }
+
             var setForegroundResult = SetForegroundWindow(handle);
             Log($"focus-target set-foreground-result={setForegroundResult} before-click={DescribeWindow(GetForegroundWindow())}");
 
@@ -1441,6 +1447,62 @@ public sealed class KeyboardAndPasteE2ETests
                 {
                     AttachThreadInput(currentThreadId, foregroundThreadId, attach: false);
                 }
+            }
+        }
+
+        private static bool TrySeedForegroundAndFocusTarget(IntPtr targetHandle)
+        {
+            if (targetHandle == IntPtr.Zero)
+            {
+                return false;
+            }
+
+            try
+            {
+                return RunOnStaThread(() =>
+                {
+                    using var anchor = new System.Windows.Forms.Form
+                    {
+                        Text = "Windows Easy Emoji E2E Focus Anchor",
+                        Width = 96,
+                        Height = 64,
+                        StartPosition = System.Windows.Forms.FormStartPosition.Manual,
+                        Left = 0,
+                        Top = 0,
+                        TopMost = true,
+                        ShowInTaskbar = false,
+                        FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+                    };
+
+                    anchor.Show();
+                    System.Windows.Forms.Application.DoEvents();
+
+                    var anchorHandle = anchor.Handle;
+                    SetWindowPos(anchorHandle, HwndTopMost, 0, 0, 0, 0, SwpNoMove | SwpNoSize | SwpShowWindow);
+                    ShowWindow(anchorHandle, SwRestore);
+                    BringWindowToTop(anchorHandle);
+                    SetForegroundWindow(anchorHandle);
+                    SetActiveWindow(anchorHandle);
+                    SetFocus(anchorHandle);
+                    System.Windows.Forms.Application.DoEvents();
+                    Thread.Sleep(100);
+
+                    SetWindowPos(targetHandle, HwndTopMost, 0, 0, 0, 0, SwpNoMove | SwpNoSize | SwpShowWindow);
+                    ShowWindow(targetHandle, SwRestore);
+                    BringWindowToTop(targetHandle);
+                    var targetForegroundResult = SetForegroundWindow(targetHandle);
+                    System.Windows.Forms.Application.DoEvents();
+                    Thread.Sleep(100);
+                    return targetForegroundResult || GetForegroundWindow() == targetHandle;
+                });
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+            catch (System.ComponentModel.Win32Exception)
+            {
+                return false;
             }
         }
 
