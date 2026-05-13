@@ -36,4 +36,34 @@ public sealed class UserEmojiStateUpdaterTests
         Assert.True(state.Favorite);
         Assert.Equal(["내하트"], state.CustomAliases);
     }
+
+    [Fact]
+    public void ToggleFavorite_creates_favorite_state_for_first_toggle()
+    {
+        var state = UserEmojiStateUpdater.ToggleFavorite(null, "fire");
+
+        Assert.Equal("fire", state.EmojiId);
+        Assert.True(state.Favorite);
+        Assert.Equal(0, state.UseCount);
+        Assert.Null(state.LastUsedAt);
+        Assert.Empty(state.CustomAliases);
+    }
+
+    [Fact]
+    public void ToggleFavorite_flips_favorite_and_preserves_usage_fields()
+    {
+        var current = new UserEmojiState(
+            EmojiId: "fire",
+            LastUsedAt: new DateTimeOffset(2026, 5, 13, 18, 0, 0, TimeSpan.Zero),
+            UseCount: 7,
+            Favorite: true,
+            CustomAliases: ["내불"]);
+
+        var state = UserEmojiStateUpdater.ToggleFavorite(current, "fire");
+
+        Assert.False(state.Favorite);
+        Assert.Equal(current.LastUsedAt, state.LastUsedAt);
+        Assert.Equal(7, state.UseCount);
+        Assert.Equal(["내불"], state.CustomAliases);
+    }
 }

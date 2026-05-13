@@ -318,6 +318,23 @@ public sealed class KeyboardAndPasteE2ETests
     }
 
     [UiE2EFact]
+    public async Task CtrlD_toggles_selected_emoji_favorite_and_persists()
+    {
+        using var session = await E2ESession.StartAsync(output);
+
+        session.FocusTargetWindow();
+        session.SendWinPeriod();
+        session.WaitForOverlayWindow();
+        session.TypeSearchText("불");
+        session.SendToggleFavoriteShortcut();
+
+        var state = session.WaitForUserFavorite("fire", expectedFavorite: true);
+
+        Assert.True(state.Favorite);
+        Assert.Contains("main-window.favorite toggled emojiId=fire favorite=True", session.ReadAppLog());
+    }
+
+    [UiE2EFact]
     public async Task User_state_records_selection_after_paste()
     {
         using var session = await E2ESession.StartAsync(output);
@@ -732,6 +749,17 @@ public sealed class KeyboardAndPasteE2ETests
                 KeyInput(VkEscape, KeyEventFKeyUp));
         }
 
+        public void SendToggleFavoriteShortcut()
+        {
+            EnsureOverlayForeground();
+            Log("send-toggle-favorite");
+            SendKeyboardInputs(
+                KeyInput(VkControl, 0),
+                KeyInput('D', 0),
+                KeyInput('D', KeyEventFKeyUp),
+                KeyInput(VkControl, KeyEventFKeyUp));
+        }
+
         public void TypeSearchText(string text)
         {
             EnsureOverlayForeground();
@@ -875,6 +903,24 @@ public sealed class KeyboardAndPasteE2ETests
                 $"user state for '{emojiId}' did not reach use count {expectedUseCount}");
 
             Log($"user-state:{emojiId}:use-count={actual!.UseCount}");
+            return actual;
+        }
+
+        public E2EUserEmojiState WaitForUserFavorite(string emojiId, bool expectedFavorite)
+        {
+            E2EUserEmojiState? actual = null;
+            WaitUntil(
+                () =>
+                {
+                    actual = ReadUserState().FirstOrDefault(state =>
+                        string.Equals(state.EmojiId, emojiId, StringComparison.Ordinal) &&
+                        state.Favorite == expectedFavorite);
+                    return actual is not null;
+                },
+                TimeSpan.FromSeconds(5),
+                $"user state for '{emojiId}' did not reach favorite={expectedFavorite}");
+
+            Log($"user-state:{emojiId}:favorite={actual!.Favorite}");
             return actual;
         }
 
