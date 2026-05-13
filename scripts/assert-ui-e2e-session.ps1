@@ -95,7 +95,21 @@ public static class UiE2ENative
     public struct INPUTUNION
     {
         [FieldOffset(0)]
+        public MOUSEINPUT mouse;
+
+        [FieldOffset(0)]
         public KEYBDINPUT keyboard;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MOUSEINPUT
+    {
+        public int dx;
+        public int dy;
+        public uint mouseData;
+        public uint flags;
+        public uint time;
+        public UIntPtr extraInfo;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -105,7 +119,7 @@ public static class UiE2ENative
         public ushort scanCode;
         public uint flags;
         public uint time;
-        public IntPtr extraInfo;
+        public UIntPtr extraInfo;
     }
 }
 "@
