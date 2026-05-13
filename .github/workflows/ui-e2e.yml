@@ -22,9 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6.0.2
 
-      - name: Verify interactive desktop session
-        run: .\scripts\assert-ui-e2e-session.ps1
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v5.2.0
         with:
