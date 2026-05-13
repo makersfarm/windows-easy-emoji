@@ -432,6 +432,36 @@ public sealed class KeyboardAndPasteE2ETests
         Assert.DoesNotContain("main-window.paste-result begin", session.ReadAppLog());
     }
 
+    [UiE2EFact]
+    public async Task Common_korean_intent_queries_select_expected_top_results()
+    {
+        using var session = await E2ESession.StartAsync(output);
+        var cases = new[]
+        {
+            new SearchTopCase("화남", "angry_face"),
+            new SearchTopCase("엑스", "cross_mark"),
+            new SearchTopCase("경고", "warning"),
+            new SearchTopCase("반짝", "sparkles"),
+            new SearchTopCase("생각", "thinking_face"),
+            new SearchTopCase("로켓", "rocket"),
+            new SearchTopCase("돈", "money_bag")
+        };
+
+        foreach (var searchCase in cases)
+        {
+            session.FocusTargetWindow();
+            session.SendWinPeriod();
+            var overlayHandle = session.WaitForOverlayWindow();
+            session.TypeSearchText(searchCase.Query);
+            session.WaitForSearchTopResult(searchCase.ExpectedEmojiId);
+            session.SendEscape();
+            session.WaitForOverlayHidden(overlayHandle);
+        }
+
+        session.AssertTargetTextRemainsEmpty(TimeSpan.FromMilliseconds(750));
+        Assert.DoesNotContain("main-window.paste-result begin", session.ReadAppLog());
+    }
+
     private async Task AssertQueryPastesEmojiAsync(string query, string expectedEmoji, string expectedEmojiId)
     {
         using var session = await E2ESession.StartAsync(output);
@@ -447,6 +477,8 @@ public sealed class KeyboardAndPasteE2ETests
         Assert.Equal(expectedEmoji, pastedText);
         Assert.Contains($"emojiId={expectedEmojiId}", session.ReadAppLog());
     }
+
+    private sealed record SearchTopCase(string Query, string ExpectedEmojiId);
 
     private sealed record E2ESettings(
         bool ReplaceWinPeriod,
@@ -881,6 +913,12 @@ public sealed class KeyboardAndPasteE2ETests
                 () => ReadAppLog().Contains(expected, StringComparison.Ordinal),
                 timeout,
                 $"app log did not contain '{expected}'");
+        }
+
+        public void WaitForSearchTopResult(string emojiId)
+        {
+            WaitForAppLogContains($"topResult={emojiId}", TimeSpan.FromSeconds(5));
+            Log($"search-top-result:{emojiId}");
         }
 
         public string ReadAppLog()

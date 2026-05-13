@@ -232,6 +232,13 @@ public sealed class EmojiSearchService
         Add("party_popper", "축하", "ㅊㅋ", "추카", "축하해", "축하드립니다", "파티", "폭죽");
         Add("birthday_cake", "생일", "생일축하", "생축", "ㅅㅊ", "케이크");
         Add("check_mark_button", "체크", "확인", "완료", "완료됨", "체크표시");
+        Add("angry_face", "화남", "화나", "빡침", "분노", "짜증", "열받음");
+        Add("cross_mark", "엑스", "엑스표", "취소", "실패", "아니오", "거절");
+        Add("warning", "경고", "주의", "위험", "조심");
+        Add("sparkles", "반짝", "반짝임", "반짝반짝", "빛남", "꾸밈");
+        Add("thinking_face", "생각", "고민", "음", "흠", "생각중");
+        Add("rocket", "로켓", "출시", "발사", "성장", "런칭");
+        Add("money_bag", "돈", "현금", "돈주머니", "부자", "머니");
 
         return boosts.ToDictionary(
             pair => pair.Key,

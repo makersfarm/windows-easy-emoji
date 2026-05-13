@@ -160,7 +160,11 @@ public partial class MainWindow : Window
         var noResults = SearchBox.Text.Length > 0 && results.Length == 0;
         ResultsList.Visibility = noResults ? Visibility.Collapsed : Visibility.Visible;
         NoResultsPanel.Visibility = noResults ? Visibility.Visible : Visibility.Collapsed;
-        DiagnosticLog.Write($"main-window.refresh queryLength={SearchBox.Text.Length} resultCount={results.Length} selectedIndex={ResultsList.SelectedIndex} noResults={noResults}");
+        var selectedResult = ResultsList.SelectedItem as EmojiResultItem;
+        var topResultId = selectedResult?.Record.Id ?? "none";
+        var topMatchType = selectedResult?.MatchType.ToString() ?? "None";
+        var topScore = selectedResult?.Result.Score ?? 0;
+        DiagnosticLog.Write($"main-window.refresh queryLength={SearchBox.Text.Length} resultCount={results.Length} selectedIndex={ResultsList.SelectedIndex} topResult={topResultId} topMatch={topMatchType} topScore={topScore} noResults={noResults}");
     }
 
     private static int GetSelectedIndex(IReadOnlyList<EmojiResultItem> results, string? preferredEmojiId)
