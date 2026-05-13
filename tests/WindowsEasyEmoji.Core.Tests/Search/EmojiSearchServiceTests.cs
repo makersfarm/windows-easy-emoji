@@ -33,7 +33,22 @@ public sealed class EmojiSearchServiceTests
         var results = service.Search("ㅃㄱㅎㅌ").ToArray();
 
         Assert.Equal("red_heart", results[0].Record.Id);
-        Assert.Equal(SearchMatchType.ChosungExact, results[0].MatchType);
+        Assert.Equal(SearchMatchType.KoreanAliasExact, results[0].MatchType);
+    }
+
+    [Fact]
+    public void Search_ranks_korean_alias_chosung_above_keyword_chosung()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("smiling_face_with_hearts", "🥰", koKeywords: ["하트"], chosung: ["ㅎㅌ"], order: 1),
+            Emoji("red_heart", "❤️", koAliases: ["하트"], chosung: ["ㅎㅌ"], order: 2)
+        ]);
+
+        var results = service.Search("ㅎㅌ").ToArray();
+
+        Assert.Equal("red_heart", results[0].Record.Id);
+        Assert.Equal(SearchMatchType.KoreanAliasExact, results[0].MatchType);
     }
 
     [Fact]

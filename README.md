@@ -58,12 +58,19 @@ dotnet build WindowsEasyEmoji.sln -c Release
 
 If `dotnet` is not installed locally, install the .NET 8 SDK from Microsoft.
 
+Regenerate bundled emoji data from staged external sources:
+
+```powershell
+dotnet run --project tools/WindowsEasyEmoji.DataBuilder/WindowsEasyEmoji.DataBuilder.csproj
+```
+
 ## Project Structure
 
 ```text
 src/WindowsEasyEmoji.Core      Search, schema, ranking, data loading
 src/WindowsEasyEmoji.Platform  Windows API integration boundary
 src/WindowsEasyEmoji.App       WPF tray app and search overlay
+tools/WindowsEasyEmoji.DataBuilder
 tests/WindowsEasyEmoji.Core.Tests
 docs/                          Planning and product/design decisions
 ```

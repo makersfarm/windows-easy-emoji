@@ -89,6 +89,11 @@ public sealed class EmojiSearchService
             return (SearchMatchType.KoreanAliasExact, 1000);
         }
 
+        if (ContainsChosungExact(record.KoAliases, compactQuery))
+        {
+            return (SearchMatchType.KoreanAliasExact, 1000);
+        }
+
         if (ContainsExact(record.Aliases, normalizedQuery, compactQuery))
         {
             return (SearchMatchType.AliasExact, 900);
@@ -173,6 +178,12 @@ public sealed class EmojiSearchService
             return normalizedValue == normalizedQuery ||
                    KoreanTextNormalizer.ToCompactKey(normalizedValue) == compactQuery;
         });
+    }
+
+    private static bool ContainsChosungExact(IEnumerable<string> values, string compactQuery)
+    {
+        return values.Any(value =>
+            KoreanTextNormalizer.ToCompactKey(KoreanTextNormalizer.ToChosung(value)) == compactQuery);
     }
 
     private static bool IsPrefix(string value, string normalizedQuery, string compactQuery)
