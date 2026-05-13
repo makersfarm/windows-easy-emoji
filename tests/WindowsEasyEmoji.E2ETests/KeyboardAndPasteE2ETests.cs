@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -567,7 +569,11 @@ public sealed class KeyboardAndPasteE2ETests
 
             var configuration = GetCurrentBuildConfiguration();
             var targetExe = Path.Combine(root, "tests", "WindowsEasyEmoji.E2ETarget", "bin", configuration, "net8.0-windows", "WindowsEasyEmoji.E2ETarget.exe");
-            var appExe = Path.Combine(root, "src", "WindowsEasyEmoji.App", "bin", configuration, "net8.0-windows", "WindowsEasyEmoji.App.exe");
+            var appExe = Environment.GetEnvironmentVariable("WINDOWS_EASY_EMOJI_E2E_APP_EXE");
+            if (string.IsNullOrWhiteSpace(appExe))
+            {
+                appExe = Path.Combine(root, "src", "WindowsEasyEmoji.App", "bin", configuration, "net8.0-windows", "WindowsEasyEmoji.App.exe");
+            }
 
             var appProcess = StartProcess(
                 appExe,
@@ -614,6 +620,7 @@ public sealed class KeyboardAndPasteE2ETests
             session.Log($"root:{root}");
             session.Log($"target-exe:{targetExe}");
             session.Log($"app-exe:{appExe}");
+            session.Log($"app-exe-source:{(Environment.GetEnvironmentVariable("WINDOWS_EASY_EMOJI_E2E_APP_EXE") is null ? "build-output" : "installed-app")}");
             session.Log($"temp:{tempDirectory}");
             session.Log($"user-state:{userStatePath}");
             session.Log($"session-id:{Process.GetCurrentProcess().SessionId}");
@@ -840,6 +847,7 @@ public sealed class KeyboardAndPasteE2ETests
             }
 
             disposed = true;
+            CaptureDesktopScreenshot(Path.Combine(tempDirectory, "desktop-final.png"));
             Kill(appProcess);
             Kill(targetProcess);
 
@@ -1266,6 +1274,28 @@ public sealed class KeyboardAndPasteE2ETests
                 {
                     AttachThreadInput(currentThreadId, foregroundThreadId, attach: false);
                 }
+            }
+        }
+
+        private static void CaptureDesktopScreenshot(string path)
+        {
+            try
+            {
+                var bounds = System.Windows.Forms.SystemInformation.VirtualScreen;
+                if (bounds.Width <= 0 || bounds.Height <= 0)
+                {
+                    return;
+                }
+
+                Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+                using var bitmap = new Bitmap(bounds.Width, bounds.Height);
+                using var graphics = Graphics.FromImage(bitmap);
+                graphics.CopyFromScreen(bounds.Left, bounds.Top, 0, 0, bounds.Size);
+                bitmap.Save(path, ImageFormat.Png);
+            }
+            catch (Exception exception) when (exception is ExternalException or InvalidOperationException or System.ComponentModel.Win32Exception)
+            {
+                File.WriteAllText(path + ".txt", exception.ToString(), Encoding.UTF8);
             }
         }
 

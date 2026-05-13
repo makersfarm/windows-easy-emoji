@@ -16,6 +16,7 @@ jobs:
     env:
       WINDOWS_EASY_EMOJI_RUN_UI_E2E: "1"
       WINDOWS_EASY_EMOJI_E2E_ARTIFACT_DIR: ${{ github.workspace }}\artifacts\ui-e2e
+      WINDOWS_EASY_EMOJI_E2E_APP_EXE: ${{ github.workspace }}\artifacts\installed-app\WindowsEasyEmoji.App.exe
 
     steps:
       - name: Checkout
@@ -35,6 +36,13 @@ jobs:
       - name: Build debug binaries
         run: dotnet build WindowsEasyEmoji.sln --configuration Debug --no-restore
 
+      - name: Publish installed app
+        run: >
+          dotnet publish src\WindowsEasyEmoji.App\WindowsEasyEmoji.App.csproj
+          --configuration Release
+          --no-restore
+          --output artifacts\installed-app
+
       - name: Run UI E2E
         run: >
           dotnet test tests\WindowsEasyEmoji.E2ETests\WindowsEasyEmoji.E2ETests.csproj
@@ -52,3 +60,4 @@ jobs:
           path: |
             artifacts/ui-e2e
             artifacts/TestResults
+            artifacts/installed-app
