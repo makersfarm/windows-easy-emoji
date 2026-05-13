@@ -129,6 +129,45 @@ public sealed class EmojiSearchServiceTests
     }
 
     [Fact]
+    public void Search_applies_curated_korean_shortcut_boosts()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("check_mark_button", "✅", koAliases: ["체크"], chosung: ["ㅊㅋ"], order: 1),
+            Emoji("party_popper", "🎉", koAliases: ["축하"], order: 2)
+        ]);
+
+        var results = service.Search("ㅊㅋ").ToArray();
+
+        Assert.Equal("party_popper", results[0].Record.Id);
+        Assert.Equal(SearchMatchType.CuratedAliasExact, results[0].MatchType);
+    }
+
+    [Fact]
+    public void Search_ranks_user_custom_alias_above_curated_shortcut()
+    {
+        var service = new EmojiSearchService(
+        [
+            Emoji("check_mark_button", "✅", koAliases: ["체크"], order: 1),
+            Emoji("party_popper", "🎉", koAliases: ["축하"], order: 2)
+        ],
+        new Dictionary<string, UserEmojiState>
+        {
+            ["check_mark_button"] = new(
+                EmojiId: "check_mark_button",
+                LastUsedAt: null,
+                UseCount: 0,
+                Favorite: false,
+                CustomAliases: ["ㅊㅋ"])
+        });
+
+        var results = service.Search("ㅊㅋ").ToArray();
+
+        Assert.Equal("check_mark_button", results[0].Record.Id);
+        Assert.Equal(SearchMatchType.KoreanAliasExact, results[0].MatchType);
+    }
+
+    [Fact]
     public void Search_penalizes_hidden_variants()
     {
         var service = new EmojiSearchService(

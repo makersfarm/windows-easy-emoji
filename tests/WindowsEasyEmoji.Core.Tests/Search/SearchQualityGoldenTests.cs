@@ -16,6 +16,11 @@ public sealed class SearchQualityGoldenTests
     [InlineData("체크", "check_mark_button")]
     [InlineData("ㅎㅌ", "red_heart")]
     [InlineData("따봉", "thumbs_up")]
+    [InlineData("ㅊㅋ", "party_popper")]
+    [InlineData("생일축하", "birthday_cake")]
+    [InlineData("ㄱㅅ", "folded_hands")]
+    [InlineData("ㅠㅠ", "loudly_crying_face")]
+    [InlineData("굿", "thumbs_up")]
     public void Search_returns_expected_top_result_for_korean_golden_queries(string query, string expectedId)
     {
         var service = new EmojiSearchService(LoadAppEmojiData());

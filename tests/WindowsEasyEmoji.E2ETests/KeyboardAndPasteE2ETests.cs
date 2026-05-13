@@ -222,6 +222,24 @@ public sealed class KeyboardAndPasteE2ETests
     }
 
     [UiE2EFact]
+    public async Task Celebration_shortcut_query_pastes_party_popper()
+    {
+        await AssertQueryPastesEmojiAsync("ㅊㅋ", "🎉", "party_popper");
+    }
+
+    [UiE2EFact]
+    public async Task Thanks_shortcut_query_pastes_folded_hands()
+    {
+        await AssertQueryPastesEmojiAsync("ㄱㅅ", "🙏", "folded_hands");
+    }
+
+    [UiE2EFact]
+    public async Task Crying_shortcut_query_pastes_loudly_crying_face()
+    {
+        await AssertQueryPastesEmojiAsync("ㅠㅠ", "😭", "loudly_crying_face");
+    }
+
+    [UiE2EFact]
     public async Task Custom_fallback_hotkey_shows_search_overlay()
     {
         using var session = await E2ESession.StartAsync(

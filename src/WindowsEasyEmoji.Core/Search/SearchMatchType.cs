@@ -10,5 +10,6 @@ public enum SearchMatchType
     ChosungExact = 5,
     KoreanKeywordExact = 6,
     AliasExact = 7,
-    KoreanAliasExact = 8
+    KoreanAliasExact = 8,
+    CuratedAliasExact = 9
 }
