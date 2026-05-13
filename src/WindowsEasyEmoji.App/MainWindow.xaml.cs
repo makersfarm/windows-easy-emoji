@@ -157,10 +157,10 @@ public partial class MainWindow : Window
             .ToArray();
         ResultsList.ItemsSource = results;
         ResultsList.SelectedIndex = GetSelectedIndex(results, preferredEmojiId);
-        var noResults = SearchBox.Text.Length > 0 && results.Count == 0;
+        var noResults = SearchBox.Text.Length > 0 && results.Length == 0;
         ResultsList.Visibility = noResults ? Visibility.Collapsed : Visibility.Visible;
         NoResultsPanel.Visibility = noResults ? Visibility.Visible : Visibility.Collapsed;
-        DiagnosticLog.Write($"main-window.refresh queryLength={SearchBox.Text.Length} resultCount={results.Count} selectedIndex={ResultsList.SelectedIndex} noResults={noResults}");
+        DiagnosticLog.Write($"main-window.refresh queryLength={SearchBox.Text.Length} resultCount={results.Length} selectedIndex={ResultsList.SelectedIndex} noResults={noResults}");
     }
 
     private static int GetSelectedIndex(IReadOnlyList<EmojiResultItem> results, string? preferredEmojiId)
