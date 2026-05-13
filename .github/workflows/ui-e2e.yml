@@ -14,7 +14,6 @@ jobs:
         shell: powershell
 
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
       WINDOWS_EASY_EMOJI_RUN_UI_E2E: "1"
       WINDOWS_EASY_EMOJI_E2E_ARTIFACT_DIR: ${{ github.workspace }}\artifacts\ui-e2e
       WINDOWS_EASY_EMOJI_E2E_APP_EXE: ${{ github.workspace }}\artifacts\installed-app\WindowsEasyEmoji.App.exe
@@ -63,7 +62,7 @@ jobs:
 
       - name: Upload UI E2E artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ui-e2e-${{ github.run_id }}-${{ github.run_attempt }}
           if-no-files-found: warn
